@@ -32,8 +32,8 @@
     --a1: #B4622D;   --a1-rgb: 180,98,45;
     --a2: #1F6B58;   --a2-rgb: 31,107,88;
     --serif: Georgia, 'Times New Roman', serif;
-    --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    --mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+    --sans:  system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --mono:  var(--sans);
 
     /* ---- DERIVED TOKENS. A skin should not need to touch these. ----
        They exist because the engine used to hardcode fourteen literal
@@ -66,12 +66,12 @@
   }
 
   /* ---- DARK MODE TOKEN RE-POINT ---------------------------------------
-     The skin supplies body.alt values for the thirteen identity variables.
+     The skin supplies body.dark values for the thirteen identity variables.
      Everything derived re-points here, once, for every unit. This is the
      engine-level fix for the three defects logged in MOBILE_FIXES_HANDOVER:
      a skin no longer needs the patch block at all.
      ------------------------------------------------------------------- */
-  body.alt {
+  body.dark {
     --muted:      var(--fade);
     --hair:       rgba(255,255,255,0.14);
     --hair-strong:rgba(255,255,255,0.26);
@@ -89,11 +89,9 @@
     --inset:  rgba(255,255,255,0.05);
   }
   /* Key term chips keep a visible edge once the ground inverts. */
-  body.alt .kt-term { border-color: var(--hair-strong); }
-  body.alt .kt-term summary { color: var(--ink); }
-  body.alt .kt-label { border-top-color: var(--hair-strong); }
-  /* v2 dimmed the options a learner did not pick; at 0.45 they vanish on a dark ground. */
-  body.alt .option.dimmed, body.alt .option-btn.dimmed { opacity: 0.72; }
+  body.dark .kt-term { border-color: var(--hair-strong); }
+  body.dark .kt-term summary { color: var(--ink); }
+  body.dark .kt-label { border-top-color: var(--hair-strong); }
 
   /* ---- MODE TOGGLE. Fixed bottom right, 44px minimum tap target. ---- */
   .mode-toggle {
@@ -165,13 +163,19 @@
   --cut:   #E4E3DD;   /* insets, sources, carousels */
   --ink:   #1B1D1F;
   --clay:  #5A5F63;   /* stage tags, quiet labels */
-  --fade:  #83888C;
+  /* Muted text: captions, attributions, counters. The previous value measured 3.07
+     against the card ground and was the lightest of the four source skins. */
+  --fade:  #5E6367;
   /* border red for structure, steel blue for reward */
   --a1: #A32B23;  --a1-rgb: 163,43,35;
   --a2: #2E5F8A;  --a2-rgb: 46,95,138;
-  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --serif: Georgia, 'Times New Roman', serif;
-  --mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  /* The two hover steps are derived, not identity. Left in the engine block
+     they kept the engine's bottle green against this skin's steel blue. */
+  --ink-deep: #131516;
+  --a2-deep:  #214463;
+  --sans:  'Archivo Narrow', 'Archivo', 'Inter', system-ui, -apple-system, Arial, sans-serif;
+  --serif: 'Source Serif 4', 'Charter', Georgia, serif;
+  --mono:  var(--sans);
 }
 
 /* Ground: the diagonal hatch of a disputed zone on a period map. */
@@ -294,40 +298,45 @@ h1, h2, h3 {
 
 /* ---- DARK MODE ------------------------------------------------------------
    The hatch inverts to a blueprint negative rather than simply darkening. */
-body.alt {
+body.dark {
   --sand:  #14181C;
   --paper: #1C2228;
   --cut:   #232B32;
   --ink:   #E7EBEE;
   --clay:  #9EA9B2;
   --fade:  #8B959D;
-  --a1: #D4736A;  --a1-rgb: 212,115,106;
+  /* Lifted from #D4736A: it cleared 4.5 on the card ground but measured 4.42 on the
+     darker --cut inset, where the option letters and the rank numbers sit. */
+  --a1: #DA7E75;  --a1-rgb: 218,126,117;
   --a2: #6BA3D6;  --a2-rgb: 107,163,214;
+  /* On a dark ground a hover step goes lighter, not deeper. */
+  --ink-deep: #FFFFFF;
+  --a2-deep:  #96C0E6;
 }
-body.alt { background-image:
+body.dark { background-image:
   repeating-linear-gradient(45deg,
     transparent 0 9px, rgba(231,235,238,0.042) 9px 10px) !important; }
-body.alt .card, body.alt .stat-wrap, body.alt .carousel, body.alt .kt {
+body.dark .card, body.dark .stat-wrap, body.dark .carousel, body.dark .kt {
   border-top-color: var(--a1) !important; border-left-color: var(--a1) !important; }
-body.alt .source {
+body.dark .source {
   border-color: var(--a1) !important;
   background-image: repeating-linear-gradient(45deg,
     transparent 0 7px, rgba(212,115,106,0.09) 7px 8px) !important; }
-body.alt .stage-tag, body.alt .kt-label,
-body.alt .expl-label, body.alt .pop-label { background: rgba(212,115,106,0.22) !important; color: #F2C9C4 !important; }
-body.alt .source-attr { background: rgba(212,115,106,0.22) !important; color: #F2C9C4 !important; }
-body.alt .btn-begin { background: var(--a1) !important; border-color: var(--a1) !important; color: #14181C !important; }
-body.alt .btn-begin:hover { background: #E08A82 !important; border-color: #E08A82 !important; }
-body.alt .mode-toggle { background: var(--paper); border-color: rgba(231,235,238,0.24); }
-body.alt .rule, body.alt .cover-rule, body.alt .flourish, body.alt .story-rule {
+body.dark .stage-tag, body.dark .kt-label,
+body.dark .expl-label, body.dark .pop-label { background: rgba(212,115,106,0.22) !important; color: #F2C9C4 !important; }
+body.dark .source-attr { background: rgba(212,115,106,0.22) !important; color: #F2C9C4 !important; }
+body.dark .btn-begin { background: var(--a1) !important; border-color: var(--a1) !important; color: #14181C !important; }
+body.dark .btn-begin:hover { background: #E08A82 !important; border-color: #E08A82 !important; }
+body.dark .mode-toggle { background: var(--paper); border-color: rgba(231,235,238,0.24); }
+body.dark .rule, body.dark .cover-rule, body.dark .flourish, body.dark .story-rule {
   background-image:
     linear-gradient(90deg, var(--a1) 0 84px, transparent 84px 100%),
     repeating-linear-gradient(90deg, var(--a1) 84px 96px, transparent 96px 106px) !important; }
 
-body.alt .chip { background: rgba(212,115,106,0.16) !important; color: #F2C9C4 !important; }
-body.alt .chip-recall,     body.alt .chip-extract   { background: rgba(212,115,106,0.20) !important; color: #F5D2CD !important; }
-body.alt .chip-understand, body.alt .chip-interpret { background: rgba(107,163,214,0.20) !important; color: #C3DCF1 !important; }
-body.alt .chip-apply,      body.alt .chip-evaluate  { background: rgba(231,235,238,0.16) !important; color: #E7EBEE !important; }
+body.dark .chip { background: rgba(212,115,106,0.16) !important; color: #F2C9C4 !important; }
+body.dark .chip-recall,     body.dark .chip-extract   { background: rgba(212,115,106,0.20) !important; color: #F5D2CD !important; }
+body.dark .chip-understand, body.dark .chip-interpret { background: rgba(107,163,214,0.20) !important; color: #C3DCF1 !important; }
+body.dark .chip-apply,      body.dark .chip-evaluate  { background: rgba(231,235,238,0.16) !important; color: #E7EBEE !important; }
 
 
 /* ---- DARK MODE STATE COLOURS ----------------------------------------------
@@ -335,47 +344,46 @@ body.alt .chip-apply,      body.alt .chip-evaluate  { background: rgba(231,235,2
    they give pale text on pale grounds. Both .option and .option-btn are named,
    because the lesson engine and the quiz shell use different class names. */
 
-body.alt .option, body.alt .option-btn {
+body.dark .option, body.dark .option-btn {
   background: var(--cut) !important;
   border-color: rgba(231,235,238,0.20) !important;
   color: var(--ink) !important;
 }
-body.alt .option.selected, body.alt .option-btn.selected {
+body.dark .option.selected, body.dark .option-btn.selected {
   background: rgba(107,163,214,0.16) !important; border-color: #6BA3D6 !important; }
-body.alt .option.correct, body.alt .option-btn.correct {
+body.dark .option.correct, body.dark .option-btn.correct {
   background: rgba(107,163,214,0.20) !important;
   border-color: #6BA3D6 !important;
   color: var(--ink) !important;
 }
-body.alt .option.wrong, body.alt .option-btn.wrong {
+body.dark .option.wrong, body.dark .option-btn.wrong {
   background: rgba(212,115,106,0.18) !important;
   border-color: #D4736A !important;
   color: var(--ink) !important;
 }
-body.alt .option.correct .opt-text, body.alt .option-btn.correct .opt-text,
-body.alt .option.wrong   .opt-text, body.alt .option-btn.wrong   .opt-text { color: var(--ink) !important; }
-body.alt .option.correct .opt-letter, body.alt .option-btn.correct .opt-letter { color: #8FBEE4 !important; }
-body.alt .option.wrong   .opt-letter, body.alt .option-btn.wrong   .opt-letter { color: #E39A93 !important; }
-body.alt .option.dimmed, body.alt .option-btn.dimmed { opacity: 0.72 !important; }
-body.alt .opt-mark { color: var(--ink) !important; }
+body.dark .option.correct .opt-text, body.dark .option-btn.correct .opt-text,
+body.dark .option.wrong   .opt-text, body.dark .option-btn.wrong   .opt-text { color: var(--ink) !important; }
+body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter { color: #8FBEE4 !important; }
+body.dark .option.wrong   .opt-letter, body.dark .option-btn.wrong   .opt-letter { color: #E39A93 !important; }
+body.dark .opt-mark { color: var(--ink) !important; }
 
-body.alt .primary-btn {
+body.dark .primary-btn {
   background: var(--cut) !important;
   border: 1px solid rgba(212,115,106,0.40) !important;
   color: var(--ink) !important;
 }
-body.alt .primary-btn:hover { background: #2C353D !important; }
-body.alt .primary-btn .btn-title { color: var(--ink) !important; }
-body.alt .primary-btn .btn-sub, body.alt .primary-btn .btn-arrow { color: var(--clay) !important; }
-body.alt .section-btn { border-color: rgba(231,235,238,0.18) !important; color: var(--ink) !important; }
-body.alt .section-btn:hover { background: var(--cut) !important; border-color: var(--a1) !important; }
-body.alt .primary-btn-small { background: var(--a1) !important; color: #14181C !important; }
-body.alt .primary-btn-small:hover:not(:disabled) { background: #E08A82 !important; }
-body.alt .secondary-btn { border-color: rgba(231,235,238,0.30) !important; color: var(--ink) !important; }
-body.alt .secondary-btn:hover:not(:disabled) { background: var(--cut) !important; }
-body.alt .explanation { background: var(--cut) !important; border-color: rgba(212,115,106,0.28) !important; }
-body.alt .expl-text { color: var(--ink) !important; }
-body.alt .quiz-foot, body.alt .quiz-foot a { color: var(--clay) !important; }
+body.dark .primary-btn:hover { background: #2C353D !important; }
+body.dark .primary-btn .btn-title { color: var(--ink) !important; }
+body.dark .primary-btn .btn-sub, body.dark .primary-btn .btn-arrow { color: var(--clay) !important; }
+body.dark .section-btn { border-color: rgba(231,235,238,0.18) !important; color: var(--ink) !important; }
+body.dark .section-btn:hover { background: var(--cut) !important; border-color: var(--a1) !important; }
+body.dark .primary-btn-small { background: var(--a1) !important; color: #14181C !important; }
+body.dark .primary-btn-small:hover:not(:disabled) { background: #E08A82 !important; }
+body.dark .secondary-btn { border-color: rgba(231,235,238,0.30) !important; color: var(--ink) !important; }
+body.dark .secondary-btn:hover:not(:disabled) { background: var(--cut) !important; }
+body.dark .explanation { background: var(--cut) !important; border-color: rgba(212,115,106,0.28) !important; }
+body.dark .expl-text { color: var(--ink) !important; }
+body.dark .quiz-foot, body.dark .quiz-foot a { color: var(--clay) !important; }
 
 
 /* The toggle is fixed bottom right and lands on Continue on a short viewport. */
@@ -398,8 +406,8 @@ body { padding-bottom: 4.5rem !important; }
   padding-top: 0.6rem;
 }
 .figure img { border: 1px solid rgba(163,43,35,0.35) !important; border-radius: 0 !important; }
-body.alt .figure img { border-color: rgba(212,115,106,0.38) !important; filter: brightness(0.9) contrast(1.02); }
-body.alt .figure figcaption { border-top-color: var(--a1); }
+body.dark .figure img { border-color: rgba(212,115,106,0.38) !important; filter: brightness(0.9) contrast(1.02); }
+body.dark .figure figcaption { border-top-color: var(--a1); }
 
 
 
@@ -445,7 +453,9 @@ body.alt .figure figcaption { border-top-color: var(--a1); }
   .cover-time { font-family: var(--sans); font-size: 0.8rem; color: var(--fade); margin-top: 1.4rem; letter-spacing: 0.02em; }
   .btn-begin { font-family: var(--sans); display: inline-flex; align-items: center; gap: 0.8rem; padding: 1.05rem 2.2rem; background: var(--ink); color: var(--on-ink); border: none; cursor: pointer; font-size: 1.12rem; font-weight: 700; }
   .btn-begin:hover { background: var(--ink-deep); }
-  .btn-begin .sa { color: var(--a1); font-size: 1.3rem; }
+  /* The arrow takes the button's own text colour. Painted --a1 it disappears on
+     any skin that also makes the Begin button --a1 or close to it. */
+  .btn-begin .sa { color: currentColor; font-size: 1.3rem; }
   .skip-link { display: block; margin: 1.6rem auto 0; background: transparent; border: none; color: var(--fade); font-family: var(--sans); font-size: 0.84rem; cursor: pointer; text-decoration: underline; }
 
   /* Story hook */
@@ -533,8 +543,10 @@ body.alt .figure figcaption { border-top-color: var(--a1); }
   .option.selected { background: var(--cut); border-color: var(--a1); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option.correct { background: var(--ok-bg); border-color: var(--a2); border-width: 2px; padding: 0.94rem 0.99rem; }
   .option.wrong { background: var(--no-bg); border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option.dimmed { opacity: 0.46; }
-  body.alt .option.dimmed { opacity: 0.72; }
+  /* The dimmed state fell below readable contrast at 360px. One rule per mode,
+     and nothing later in the file competes with it. */
+  .option.dimmed, .option-btn.dimmed { opacity: 0.82; }
+  body.dark .option.dimmed, body.dark .option-btn.dimmed { opacity: 0.86; }
   .opt-letter { font-family: var(--serif); font-weight: 800; color: var(--a1); min-width: 1.1rem; }
   .opt-text { flex: 1; }
   .opt-mark { font-weight: 700; font-size: 1.1rem; }
@@ -608,19 +620,8 @@ body.alt .figure figcaption { border-top-color: var(--a1); }
   .sort-place { font-family: var(--sans); flex: 1; font-size: 0.78rem; font-weight: 700; padding: 0.4rem; background: var(--paper); border: 1px solid var(--hair-strong); cursor: pointer; color: var(--ink); }
 
   /* Running summary */
-  .runsum { background: rgba(var(--a2-rgb),0.08); border: 1px solid rgba(var(--a2-rgb),0.28); border-left: 5px solid var(--a2); padding: 1.3rem 1.4rem; }
-  .runsum-label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.9rem; }
-  .runsum ol { margin: 0; padding-left: 1.3rem; }
-  .runsum li { font-size: 1.02rem; line-height: 1.66; margin-bottom: 0.7rem; color: var(--ink); }
-  .runsum li:last-child { margin-bottom: 0; }
-  .runsum li.fresh { font-weight: 700; color: var(--a2); }
 
   /* Popup */
-  .pop-back { position: fixed; inset: 0; background: var(--scrim); display: flex; align-items: center; justify-content: center; padding: 1.5rem; z-index: 50; }
-  .pop { background: var(--paper); border-top: 5px solid var(--a2); padding: 1.6rem 1.5rem; max-width: 30rem; width: 100%; box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
-  .pop-label { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--a2); font-weight: 700; margin-bottom: 0.8rem; }
-  .pop-text { font-size: 1.1rem; line-height: 1.6; font-weight: 600; color: var(--ink); margin-bottom: 1.3rem; }
-  .pop-btn { font-family: var(--sans); width: 100%; padding: 0.9rem; background: var(--a2); border: none; color: var(--on-a2); font-size: 0.98rem; font-weight: 700; cursor: pointer; }
 
   /* Nav */
   .nav { display: flex; justify-content: space-between; gap: 0.8rem; margin-top: 1rem; }
@@ -668,6 +669,24 @@ body.alt .figure figcaption { border-top-color: var(--a1); }
 </div>
 
 <script>
+/* ---- LMS EMBED EVENTS ----------------------------------------------------
+   Two moments, deliberately separate. Reaching the closing screen marks the
+   activity done for progress tracking. Choosing to leave it advances. Firing
+   advance on arrival would pull the learner off their own results screen
+   before they had read it. ------------------------------------------------ */
+var KulaLMS = (function(){
+  var done = false;
+  function send(ev){
+    try{
+      window.parent.postMessage({ type: 'lms-embed-event', version: '1.0',
+        payload: { event: ev } }, '*');
+    }catch(e){}
+  }
+  return {
+    completed: function(){ if(done) return; done = true; send('completed'); },
+    advance:   function(){ send('advance'); }
+  };
+})();
 /* kula: re-entry guard. Every declaration below is function scoped, so a
    viewer that re-runs this script re-initialises instead of throwing a
    redeclaration SyntaxError and leaving FLOW undefined. */
@@ -688,11 +707,7 @@ const COVER = {
 const RESULTS = {
   "eyebrow": "Lesson 2 report",
   "title": "Where you stand",
-  "done": {
-    "label": "Lesson complete",
-    "title": "The Iron Curtain",
-    "text": "Tap Done to continue to Lesson 3, The Response."
-  },
+  "next": "Continue to Lesson 3",
   "footer": "Next: Lesson 3, what Washington decided to do about it.",
   "bands": {
     "excellent": "You can hold two sources apart and say what each one is afraid of. Go on to Lesson 3.",
@@ -734,7 +749,7 @@ const FLOW = [
     "type": "content",
     "tag": "The turn",
     "html": "<h2>The word for what you just did</h2><p>You did not decide which friend was right. You worked out that each reading came from where the reader was standing.</p><p>That is <strong>perspective</strong>: what a source argues for depends on what it is afraid of.</p><p>Paper 1 asks this directly. <em>How does Source A differ from Source B?</em> The command word wants both positions named and set against each other. Give only one side and you have written half an answer.</p>",
-    "remember": "A comparison answer carries both sources. One side on its own is not a comparison, however well argued.",
+    "remember": "A comparison answer carries both sources. One side on its own is not a comparison, no matter how well you argue it.",
     "terms": [
       {
         "term": "Perspective",
@@ -769,7 +784,7 @@ const FLOW = [
   {
     "type": "content",
     "tag": "The evidence",
-    "html": "<h2>Czechoslovakia, February 1948</h2><p>Czechoslovakia was the one that mattered most to Western opinion. It was the only Eastern European country with a real democratic tradition, and its 1946 election had been genuinely contested.</p><p>In February 1948 the communist members of the coalition government took control of the police, forced the non-communist ministers out and took power outright. The foreign minister, Jan Masaryk, was found dead below a window two weeks later.</p><p>For anyone in the West still arguing that Soviet policy was defensive, February 1948 ended the argument. It is also why the Marshall Plan passed Congress the following month, which is Lesson 3.</p><figure class=\"figure wide\"><svg viewBox=\"0 0 620 700\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Map of Europe divided by the iron curtain in 1949, with an inset showing Germany and Berlin\"> <defs> <pattern id=\"hatch\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"> <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#A32B23\" stroke-width=\"1.7\" opacity=\"0.34\"/> </pattern> <clipPath id=\"frame\"><rect x=\"0\" y=\"0\" width=\"620\" height=\"470\"/></clipPath> </defs> <rect width=\"620\" height=\"700\" fill=\"#EFEEEA\"/> <g clip-path=\"url(#frame)\"> <path d=\"M37.4 434.9 L36.3 429.6 L31.1 428.7 L28.4 425.4 L29.3 419.6 L33.9 416.4 L34.7 412.8 L37.1 407.3 L36.8 403.5 L34.6 400.2 L34.0 397.1 L34.6 390.5 L29.9 386.4 L46.2 379.6 L60.2 381.3 L75.6 381.2 L87.9 382.9 L97.4 382.4 L115.9 382.7 L121.9 377.0 L124.1 357.6 L112.2 347.1 L103.8 342.0 L86.2 338.0 L85.1 330.5 L99.9 328.2 L119.2 330.9 L115.6 319.0 L126.4 323.6 L153.1 315.3 L156.6 306.4 L166.6 304.2 L175.8 302.0 L175.8 302.0 L181.8 299.0 L191.8 282.5 L207.5 277.6 L217.1 278.0 L219.2 281.9 L216.3 292.2 L213.4 296.4 L206.5 296.4 L208.5 308.0 L207.2 315.3 L209.5 317.7 L208.8 322.3 L214.2 325.1 L230.8 327.0 L225.0 334.2 L223.5 341.5 L220.4 343.2 L215.1 342.3 L215.5 344.9 L207.1 350.5 L206.9 355.0 L212.4 353.5 L216.4 357.8 L221.3 359.9 L226.8 359.5 L233.3 356.1 L235.3 357.7 L240.7 357.4 L243.2 353.4 L251.7 354.6 L256.8 352.9 L257.7 348.8 L264.6 350.3 L266.0 348.3 L277.3 346.6 L279.9 350.1 L296.3 352.7 L295.1 357.6 L297.8 361.8 L288.7 360.3 L279.3 363.8 L280.0 368.7 L278.6 371.4 L282.3 376.3 L293.1 381.1 L298.9 388.9 L311.6 396.4 L320.6 396.3 L323.4 398.4 L320.2 400.2 L330.5 403.5 L338.9 406.3 L348.8 411.0 L350.0 412.7 L347.8 415.9 L341.4 411.7 L331.5 410.2 L326.6 416.0 L334.9 419.3 L333.6 424.0 L328.8 424.5 L322.6 432.0 L317.9 432.7 L317.9 430.0 L320.2 425.3 L322.7 423.4 L318.3 418.3 L314.7 413.8 L310.0 412.6 L306.6 408.7 L299.2 407.1 L294.2 403.4 L285.8 402.8 L276.8 398.7 L266.3 392.7 L258.5 387.3 L254.9 377.9 L249.2 376.8 L239.8 373.7 L234.6 375.0 L227.9 379.4 L223.1 380.1 L212.7 385.4 L190.1 382.9 L173.4 385.9 L172.1 391.6 L172.7 397.0 L161.8 403.1 L147.1 405.0 L146.1 408.1 L139.0 413.1 L134.6 420.3 L139.1 425.4 L132.4 429.3 L129.9 435.0 L121.3 436.7 L113.1 443.3 L98.6 443.5 L87.6 443.3 L80.4 446.3 L76.0 449.5 L70.4 448.8 L66.2 446.0 L62.9 441.0 L52.2 439.7 L47.6 441.9 L41.5 440.7 L35.6 441.7 L37.4 434.9 Z M238.9 423.9 L234.5 421.6 L234.1 410.8 L231.5 405.6 L237.8 406.1 L243.5 403.2 L250.4 409.7 L248.8 421.5 L243.6 421.0 L238.9 423.9 Z M82.2 262.6 L79.4 259.4 L83.6 254.0 L79.8 250.6 L73.6 256.4 L73.0 244.6 L67.2 238.2 L71.3 225.1 L80.3 214.5 L89.4 215.5 L103.3 214.4 L91.0 228.5 L102.7 226.7 L115.3 226.8 L112.3 237.2 L102.0 248.3 L113.8 249.1 L114.7 250.4 L125.0 264.6 L132.8 266.5 L139.9 279.8 L143.2 284.3 L157.1 286.5 L155.7 293.7 L149.8 296.9 L154.4 302.7 L144.1 308.4 L128.7 308.3 L109.2 311.3 L103.8 309.1 L96.2 314.2 L85.6 313.0 L77.6 317.1 L71.5 314.9 L88.3 303.5 L98.6 301.2 L98.5 301.1 L80.5 299.3 L77.3 294.9 L89.3 291.4 L83.0 285.3 L85.2 277.8 L102.3 278.9 L102.3 278.9 L104.0 272.1 L96.3 264.9 L96.1 264.7 L82.2 262.6 Z M72.8 265.4 L66.6 273.5 L57.9 271.1 L50.8 271.2 L53.2 264.9 L50.8 258.5 L60.5 258.0 L72.8 265.4 Z M-28.8 97.1 L-31.5 108.1 L-18.5 119.4 L-33.4 131.7 L-34.4 132.0 L-34.4 96.7 L-28.8 97.1 Z M409.9 451.6 L416.2 454.4 L425.1 454.0 L433.6 454.6 L433.4 456.0 L439.6 455.0 L438.2 457.5 L421.7 458.2 L421.8 456.8 L407.8 455.2 L409.9 451.6 Z M302.4 440.6 L296.5 439.6 L280.5 435.2 L282.1 430.8 L295.5 431.6 L307.3 430.6 L316.0 429.9 L311.8 436.7 L313.6 439.4 L311.1 443.8 L302.4 440.6 Z M611.0 439.9 L604.8 439.8 L591.6 443.0 L582.1 443.0 L576.0 441.4 L563.4 443.8 L559.6 442.1 L559.0 446.9 L555.9 448.7 L552.8 450.6 L548.6 446.7 L553.0 443.5 L546.0 444.3 L536.4 442.3 L528.5 447.2 L511.0 448.2 L501.7 443.6 L489.4 443.3 L486.7 446.9 L478.8 447.9 L467.7 443.3 L455.1 443.5 L448.3 434.9 L439.9 430.1 L445.5 423.2 L438.3 419.0 L451.0 410.4 L468.7 410.0 L473.5 403.1 L495.4 404.4 L509.2 398.4 L522.6 395.8 L541.6 395.6 L561.6 402.1 L578.1 405.6 L591.4 404.2 L601.3 405.0 L614.9 400.3 L627.1 399.8 L638.2 404.3 L640.1 407.5 L639.0 411.9 L647.6 414.1 L652.1 416.8 L644.2 419.3 L647.8 429.4 L645.6 432.1 L651.8 439.1 L651.8 439.1 L646.3 440.5 L642.3 438.3 L628.9 437.2 L624.0 438.6 L611.0 439.9 Z M449.3 394.7 L459.2 395.9 L460.6 399.5 L470.6 402.4 L468.5 404.7 L454.9 405.2 L450.0 408.0 L440.4 412.8 L436.8 408.6 L437.0 406.8 L430.0 406.5 L424.0 405.6 L410.1 408.0 L418.0 413.1 L412.2 414.5 L405.8 414.5 L399.7 409.9 L397.6 411.9 L400.1 417.2 L405.9 421.4 L401.5 423.4 L407.9 427.4 L413.6 430.0 L413.8 434.9 L403.2 432.6 L406.6 437.0 L399.3 437.9 L403.6 445.5 L396.0 445.6 L386.6 441.9 L382.3 435.0 L380.3 429.2 L375.8 425.1 L369.9 420.1 L369.1 417.5 L374.5 413.2 L375.2 410.3 L378.9 409.0 L379.1 406.6 L386.6 405.8 L391.0 403.8 L397.2 404.0 L399.1 402.4 L401.3 402.1 L409.8 402.3 L419.0 399.8 L427.1 403.0 L437.5 402.1 L437.6 397.6 L449.3 394.7 Z M235.9 393.6 L238.2 390.1 L245.6 386.6 L247.5 394.6 L243.7 401.7 L238.5 399.8 L235.9 393.6 Z M279.8 246.6 L283.5 252.7 L276.6 262.5 L264.6 255.7 L263.0 250.7 L279.8 246.6 Z M235.9 234.1 L246.0 233.4 L250.0 229.8 L259.3 226.2 L258.9 232.8 L255.5 236.9 L256.8 240.4 L263.1 242.3 L260.3 247.0 L256.8 245.6 L248.6 254.4 L251.7 260.3 L244.3 262.1 L235.7 260.6 L231.0 253.9 L230.7 241.3 L232.6 237.9 L235.9 234.1 Z M432.7 49.1 L421.8 57.6 L409.5 53.0 L394.5 53.9 L381.7 43.7 L374.8 48.9 L367.7 49.7 L366.0 62.1 L344.4 59.1 L341.3 69.5 L330.3 69.4 L322.7 82.3 L311.2 101.6 L293.4 124.9 L297.6 130.4 L293.6 136.6 L282.2 136.4 L274.8 150.9 L275.5 170.6 L282.8 177.9 L279.0 194.4 L269.5 203.8 L264.4 211.5 L256.7 203.3 L234.0 218.7 L218.7 221.7 L202.8 215.0 L198.7 200.6 L195.1 168.1 L205.7 158.6 L236.0 145.9 L258.7 129.7 L279.7 106.9 L307.3 73.1 L326.5 59.2 L358.0 34.9 L383.2 26.1 L402.1 27.2 L419.6 10.0 L440.5 11.0 L461.2 6.8 L497.1 22.1 L482.3 27.5 L494.9 40.1 L475.3 47.9 L466.1 49.7 L470.9 35.9 L456.2 28.0 L438.4 34.8 L432.7 49.1 Z\"     fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M251.7 354.6 L243.2 353.4 L240.7 357.4 L235.3 357.7 L233.3 356.1 L226.8 359.5 L221.3 359.9 L216.4 357.8 L212.4 353.5 L206.9 355.0 L207.1 350.5 L215.5 344.9 L215.1 342.3 L220.4 343.2 L223.5 341.5 L233.3 341.5 L235.6 339.3 L247.9 342.4 L251.4 341.9 L257.2 344.7 L258.8 342.0 L269.0 342.5 L277.2 340.6 L282.7 340.9 L286.3 343.0 L287.3 341.3 L285.7 334.6 L289.8 333.3 L293.9 328.5 L302.4 331.9 L308.9 327.6 L312.9 326.8 L321.8 330.0 L327.2 329.5 L332.5 331.4 L331.6 332.7 L332.7 336.3 L331.9 340.5 L325.4 340.5 L327.6 342.7 L323.8 349.2 L321.6 350.9 L311.6 351.2 L305.8 353.5 L296.3 352.7 L279.9 350.1 L277.3 346.6 L266.0 348.3 L264.6 350.3 L257.7 348.8 L256.8 352.9 L251.7 354.6 Z M39.5 298.5 L23.2 296.8 L32.5 285.0 L26.5 273.3 L42.2 264.1 L50.8 258.5 L53.2 264.9 L50.8 271.2 L57.9 271.1 L66.6 273.5 L68.5 281.7 L59.8 291.9 L39.5 298.5 Z M275.5 170.6 L274.8 150.9 L282.2 136.4 L293.6 136.6 L297.6 130.4 L293.4 124.9 L311.2 101.6 L322.7 82.3 L330.3 69.4 L341.3 69.5 L344.4 59.1 L366.0 62.1 L367.7 49.7 L374.8 48.9 L381.7 43.7 L394.5 53.9 L409.5 53.0 L421.8 57.6 L432.7 49.1 L438.4 34.8 L456.2 28.0 L470.9 35.9 L466.1 49.7 L464.4 62.9 L482.0 75.2 L471.4 88.6 L484.7 108.1 L477.0 122.3 L487.3 134.2 L482.6 144.3 L499.6 154.8 L495.3 162.4 L484.6 170.9 L460.1 189.1 L460.1 189.1 L460.1 189.1 L439.2 190.2 L419.0 195.3 L400.4 198.1 L393.7 190.6 L382.6 186.0 L385.1 172.0 L379.6 158.7 L385.0 149.9 L395.5 140.2 L421.7 123.0 L429.4 119.6 L428.2 112.7 L412.2 104.7 L392.5 109.5 L381.3 121.0 L383.1 130.9 L364.9 143.5 L342.7 156.6 L334.3 177.2 L342.5 187.2 L353.5 194.9 L342.9 210.2 L331.0 213.3 L326.6 235.0 L320.1 246.7 L306.2 245.5 L299.7 255.2 L286.4 255.8 L282.7 244.2 L273.1 229.9 L264.4 211.5 L269.5 203.8 L279.0 194.4 L282.8 177.9 L275.5 170.6 Z\"  fill=\"#EDECE6\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M369.1 417.5 L367.2 416.9 L366.9 415.0 L360.6 411.9 L359.6 407.6 L360.6 401.4 L362.1 398.6 L360.2 397.1 L360.2 397.1 L357.8 396.4 L354.6 393.4 L349.6 391.5 L349.6 391.5 L338.8 388.1 L332.2 384.7 L321.7 381.9 L312.0 374.9 L314.3 374.1 L309.1 370.1 L308.9 366.8 L301.5 365.3 L298.0 369.5 L294.6 366.2 L294.8 362.8 L295.2 362.7 L297.8 361.8 L295.1 357.6 L296.3 352.7 L305.8 353.5 L311.6 351.2 L321.6 350.9 L323.8 349.2 L325.7 349.4 L328.0 352.7 L331.6 354.0 L340.2 358.2 L349.7 360.1 L354.0 358.6 L354.0 358.6 L362.8 356.0 L369.9 356.5 L376.2 360.4 L377.4 363.5 L384.4 365.8 L385.3 369.8 L392.0 372.6 L395.6 370.4 L398.5 371.6 L395.8 373.3 L397.9 374.9 L395.1 377.1 L396.1 380.6 L401.7 384.7 L397.3 387.6 L395.4 390.6 L396.6 391.7 L394.7 393.0 L400.5 396.0 L401.3 402.1 L399.1 402.4 L397.2 404.0 L391.0 403.8 L386.6 405.8 L379.1 406.6 L378.9 409.0 L375.2 410.3 L374.5 413.2 L369.1 417.5 Z\" fill=\"#E7E2E0\" stroke=\"#A32B23\" stroke-width=\"0.7\" stroke-dasharray=\"3 2\"/> <path d=\"M455.5 390.6 L459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L287.4 324.0 L281.5 321.4 L280.3 317.0 L278.3 313.8 L286.7 311.4 L290.9 308.7 L299.2 306.6 L302.0 304.5 L305.1 305.8 L310.2 304.7 L305.5 297.6 L306.4 293.8 L303.5 287.8 L299.4 283.7 L302.6 280.7 L299.9 274.8 L307.7 271.4 L325.7 265.9 L340.1 261.9 L351.6 263.9 L352.4 266.8 L363.5 266.9 L377.7 268.3 L398.8 268.1 L404.7 269.4 L407.4 273.0 L407.9 278.1 L411.1 282.5 L411.0 287.0 L404.1 289.3 L407.7 294.5 L407.9 299.5 L413.7 309.0 L412.4 312.1 L406.7 313.3 L396.3 322.2 L399.3 326.9 L396.8 326.3 L393.6 329.0 L391.4 333.2 L397.7 336.0 L398.5 338.8 L403.5 336.6 L410.6 337.7 L417.9 337.8 L423.3 340.3 L427.2 338.7 L435.7 337.7 L438.6 335.3 L443.4 335.3 L446.9 336.3 L450.5 339.4 L454.1 343.7 L460.7 349.7 L461.1 354.1 L459.9 358.3 L461.9 362.8 L467.1 364.6 L472.5 363.0 L477.7 364.7 L477.9 367.2 L472.4 369.3 L468.9 368.4 L465.7 380.0 L459.7 383.9 L455.5 390.6 Z\"   fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M545.5 363.5 L557.2 363.0 L555.0 366.4 L542.4 368.1 L526.8 373.7 L520.4 371.8 L522.9 367.2 L510.4 364.4 L512.4 362.5 L523.4 359.2 L521.7 358.0 L520.1 356.9 L502.2 354.4 L501.5 350.7 L490.8 351.9 L486.6 357.4 L477.7 364.7 L472.5 363.0 L467.1 364.6 L461.9 362.8 L459.9 358.3 L461.1 354.1 L460.7 349.7 L454.1 343.7 L450.5 339.4 L446.9 336.3 L443.4 335.3 L438.6 335.3 L435.7 337.7 L427.2 338.7 L423.3 340.3 L417.9 337.8 L410.6 337.7 L403.5 336.6 L398.5 338.8 L397.7 336.0 L391.4 333.2 L393.6 329.0 L396.8 326.3 L399.3 326.9 L396.3 322.2 L406.7 313.3 L412.4 312.1 L413.7 309.0 L407.9 299.5 L407.7 294.5 L404.1 289.3 L411.0 287.0 L411.1 282.5 L407.9 278.1 L407.4 273.0 L404.7 269.4 L398.8 268.1 L377.7 268.3 L363.5 266.9 L366.1 261.7 L382.0 257.8 L379.5 247.6 L379.9 238.2 L385.6 230.3 L396.4 225.9 L405.5 235.4 L414.7 235.2 L416.9 225.4 L418.3 217.7 L414.0 219.4 L406.7 214.7 L405.8 207.1 L420.3 203.3 L434.7 201.4 L447.2 203.6 L459.0 203.2 L459.0 203.2 L472.1 195.7 L460.1 189.1 L460.1 189.1 L484.6 170.9 L495.3 162.4 L499.6 154.8 L482.6 144.3 L487.3 134.2 L477.0 122.3 L484.7 108.1 L471.4 88.6 L482.0 75.2 L464.4 62.9 L466.1 49.7 L475.3 47.9 L494.9 40.1 L494.9 40.1 L506.7 33.2 L525.6 45.1 L557.0 49.7 L600.4 70.9 L609.2 79.5 L610.0 91.3 L597.2 100.3 L578.5 104.9 L527.2 91.8 L518.8 94.0 L537.5 106.5 L538.2 114.3 L539.0 130.9 L553.8 135.7 L562.7 139.7 L564.2 132.1 L557.3 125.2 L564.6 119.1 L592.4 129.2 L602.0 125.2 L594.3 113.3 L621.1 96.7 L631.7 97.7 L642.4 103.7 L649.1 91.9 L639.5 81.4 L645.1 70.6 L636.7 59.1 L654.4 62.4 L654.4 390.3 L649.1 389.4 L642.2 390.8 L640.2 389.1 L624.5 384.6 L607.6 383.1 L597.9 381.4 L596.5 382.6 L581.9 374.5 L568.8 370.9 L558.9 365.2 L567.2 363.6 L576.7 355.4 L570.3 351.4 L587.3 347.3 L586.9 345.1 L576.6 346.7 L567.5 347.5 L559.8 350.8 L549.1 351.3 L539.2 355.0 L539.8 360.3 L539.9 361.2 L545.5 363.5 Z\"     fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M277.2 340.6 L269.0 342.5 L258.8 342.0 L257.2 344.7 L251.4 341.9 L247.9 342.4 L235.6 339.3 L233.3 341.5 L223.5 341.5 L225.0 334.2 L230.8 327.0 L214.2 325.1 L208.8 322.3 L209.5 317.7 L207.2 315.3 L208.5 308.0 L206.5 296.4 L213.4 296.4 L216.3 292.2 L219.2 281.9 L217.1 278.0 L219.3 275.5 L228.9 274.9 L231.0 277.4 L238.8 271.7 L236.2 267.3 L235.7 260.6 L244.3 262.1 L251.7 260.3 L251.9 264.9 L263.0 267.6 L261.2 276.6 L258.9 286.9 L251.7 299.2 L253.2 306.9 L259.5 312.3 L276.7 312.3 L280.1 322.0 L280.1 340.8 L277.2 340.6 Z\"     fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M299.4 283.7 L303.5 287.8 L306.4 293.8 L305.5 297.6 L310.2 304.7 L305.1 305.8 L302.0 304.5 L299.2 306.6 L290.9 308.7 L286.7 311.4 L278.3 313.8 L280.3 317.0 L281.5 321.4 L287.4 324.0 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.5 267.7 L263.4 271.8 L275.1 269.6 L281.5 266.4 L294.5 271.1 L299.9 274.8 L302.6 280.7 L299.4 283.7 Z\"     fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.4 267.6\" fill=\"none\" stroke=\"#A32B23\" stroke-width=\"4.4\"       stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <circle cx=\"291.6\" cy=\"289.2\" r=\"4.6\" fill=\"#2E5F8A\" stroke=\"#EFEEEA\" stroke-width=\"1.6\"/> </g> <text x=\"86\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#5A5F63\">WEST</text> <text x=\"486\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#A32B23\">EAST</text> <line x1=\"352\" y1=\"288\" x2=\"309\" y2=\"327\" stroke=\"#A32B23\" stroke-width=\"1.1\"/> <circle cx=\"309\" cy=\"327\" r=\"2.6\" fill=\"#A32B23\"/> <text x=\"356\" y=\"286\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#A32B23\">the iron curtain</text> <line x1=\"291.6\" y1=\"289.2\" x2=\"196\" y2=\"268\" stroke=\"#2E5F8A\" stroke-width=\"1.2\"/> <text x=\"190\" y=\"266\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2E5F8A\" text-anchor=\"end\">Berlin</text> <!-- key --> <g transform=\"translate(40,486)\"> <rect x=\"0\" y=\"0\" width=\"14\" height=\"11\" fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <text x=\"21\" y=\"10\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Soviet Union and the states loyal to Moscow</text> <rect x=\"0\" y=\"19\" width=\"14\" height=\"11\" fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <text x=\"21\" y=\"29\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Western states, most of them in NATO from 1949</text> <rect x=\"0\" y=\"38\" width=\"14\" height=\"11\" fill=\"#EDECE6\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <text x=\"21\" y=\"48\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Neutral: Sweden, Finland, Switzerland, Ireland, Austria</text> <rect x=\"0\" y=\"57\" width=\"14\" height=\"11\" fill=\"#E7E2E0\" stroke=\"#A32B23\" stroke-width=\"0.7\" stroke-dasharray=\"3 2\"/> <text x=\"21\" y=\"67\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Communist but outside Soviet control: Yugoslavia, Albania</text> </g> <!-- inset --> <rect x=\"40\" y=\"572\" width=\"330\" height=\"100\" fill=\"#FBFAF7\" stroke=\"#5A5F63\" stroke-width=\"1.3\"/> <text x=\"54\" y=\"591\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#1B1D1F\">GERMANY, DIVIDED</text> <rect x=\"54\" y=\"600\" width=\"122\" height=\"52\" fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"1\"/> <rect x=\"176\" y=\"600\" width=\"150\" height=\"52\" fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"1.2\"/> <text x=\"60\" y=\"618\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#5A5F63\">British, US and</text> <text x=\"60\" y=\"630\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#5A5F63\">French zones</text> <text x=\"184\" y=\"618\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#A32B23\">Soviet zone</text> <rect x=\"266\" y=\"620\" width=\"24\" height=\"18\" fill=\"#FBFAF7\" stroke=\"#2E5F8A\" stroke-width=\"1.7\"/> <line x1=\"278\" y1=\"620\" x2=\"278\" y2=\"638\" stroke=\"#2E5F8A\" stroke-width=\"1.3\"/> <text x=\"278\" y=\"650\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"9.5\" font-weight=\"700\" fill=\"#2E5F8A\" text-anchor=\"middle\">Berlin</text> <line x1=\"290\" y1=\"626\" x2=\"336\" y2=\"610\" stroke=\"#2E5F8A\" stroke-width=\"1.1\"/> <text x=\"340\" y=\"608\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#2E5F8A\">split in four too,</text> <text x=\"340\" y=\"620\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#2E5F8A\">160 km inside</text> <text x=\"340\" y=\"632\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#2E5F8A\">the Soviet zone</text> <text x=\"40\" y=\"690\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#5A5F63\">Original illustration for Kula Revise. Boundaries from Natural Earth (public domain), grouped into their 1949 blocs.</text> </svg><figcaption>Europe by 1949. The hatched countries are the Soviet Union and the states loyal to Moscow. The heavy line is the border Churchill had called an iron curtain three years earlier. Two things are worth noticing. Yugoslavia and Albania are communist and outside Soviet control. So the division was never simply communist against capitalist. And look at the inset, because that is where this unit ends up. Berlin was split into four sectors like the country. It sits about 160 kilometres inside the Soviet zone. Original illustration for Kula Revise. Boundaries from Natural Earth, public domain.</figcaption></figure>",
+    "html": "<h2>Czechoslovakia, February 1948</h2><p>Czechoslovakia was the one that mattered most to Western opinion. It was the only Eastern European country with a real democratic tradition, and parties had really competed in its 1946 election.</p><p>In February 1948 the communist members of the coalition government took control of the police, forced the non-communist ministers out and took power outright. The foreign minister, Jan Masaryk, was found dead below a window two weeks later.</p><p>For anyone in the West still arguing that Soviet policy was defensive, February 1948 ended the argument. It is also why the Marshall Plan passed Congress the following month, which is Lesson 3.</p><figure class=\"figure wide\"><svg viewBox=\"0 0 620 700\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Map of Europe divided by the iron curtain in 1949, with an inset showing Germany and Berlin\"> <defs> <pattern id=\"hatch\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"> <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#A32B23\" stroke-width=\"1.7\" opacity=\"0.34\"/> </pattern> <clipPath id=\"frame\"><rect x=\"0\" y=\"0\" width=\"620\" height=\"470\"/></clipPath> </defs> <rect width=\"620\" height=\"700\" fill=\"#EFEEEA\"/> <g clip-path=\"url(#frame)\"> <path d=\"M37.4 434.9 L36.3 429.6 L31.1 428.7 L28.4 425.4 L29.3 419.6 L33.9 416.4 L34.7 412.8 L37.1 407.3 L36.8 403.5 L34.6 400.2 L34.0 397.1 L34.6 390.5 L29.9 386.4 L46.2 379.6 L60.2 381.3 L75.6 381.2 L87.9 382.9 L97.4 382.4 L115.9 382.7 L121.9 377.0 L124.1 357.6 L112.2 347.1 L103.8 342.0 L86.2 338.0 L85.1 330.5 L99.9 328.2 L119.2 330.9 L115.6 319.0 L126.4 323.6 L153.1 315.3 L156.6 306.4 L166.6 304.2 L175.8 302.0 L175.8 302.0 L181.8 299.0 L191.8 282.5 L207.5 277.6 L217.1 278.0 L219.2 281.9 L216.3 292.2 L213.4 296.4 L206.5 296.4 L208.5 308.0 L207.2 315.3 L209.5 317.7 L208.8 322.3 L214.2 325.1 L230.8 327.0 L225.0 334.2 L223.5 341.5 L220.4 343.2 L215.1 342.3 L215.5 344.9 L207.1 350.5 L206.9 355.0 L212.4 353.5 L216.4 357.8 L221.3 359.9 L226.8 359.5 L233.3 356.1 L235.3 357.7 L240.7 357.4 L243.2 353.4 L251.7 354.6 L256.8 352.9 L257.7 348.8 L264.6 350.3 L266.0 348.3 L277.3 346.6 L279.9 350.1 L296.3 352.7 L295.1 357.6 L297.8 361.8 L288.7 360.3 L279.3 363.8 L280.0 368.7 L278.6 371.4 L282.3 376.3 L293.1 381.1 L298.9 388.9 L311.6 396.4 L320.6 396.3 L323.4 398.4 L320.2 400.2 L330.5 403.5 L338.9 406.3 L348.8 411.0 L350.0 412.7 L347.8 415.9 L341.4 411.7 L331.5 410.2 L326.6 416.0 L334.9 419.3 L333.6 424.0 L328.8 424.5 L322.6 432.0 L317.9 432.7 L317.9 430.0 L320.2 425.3 L322.7 423.4 L318.3 418.3 L314.7 413.8 L310.0 412.6 L306.6 408.7 L299.2 407.1 L294.2 403.4 L285.8 402.8 L276.8 398.7 L266.3 392.7 L258.5 387.3 L254.9 377.9 L249.2 376.8 L239.8 373.7 L234.6 375.0 L227.9 379.4 L223.1 380.1 L212.7 385.4 L190.1 382.9 L173.4 385.9 L172.1 391.6 L172.7 397.0 L161.8 403.1 L147.1 405.0 L146.1 408.1 L139.0 413.1 L134.6 420.3 L139.1 425.4 L132.4 429.3 L129.9 435.0 L121.3 436.7 L113.1 443.3 L98.6 443.5 L87.6 443.3 L80.4 446.3 L76.0 449.5 L70.4 448.8 L66.2 446.0 L62.9 441.0 L52.2 439.7 L47.6 441.9 L41.5 440.7 L35.6 441.7 L37.4 434.9 Z M238.9 423.9 L234.5 421.6 L234.1 410.8 L231.5 405.6 L237.8 406.1 L243.5 403.2 L250.4 409.7 L248.8 421.5 L243.6 421.0 L238.9 423.9 Z M82.2 262.6 L79.4 259.4 L83.6 254.0 L79.8 250.6 L73.6 256.4 L73.0 244.6 L67.2 238.2 L71.3 225.1 L80.3 214.5 L89.4 215.5 L103.3 214.4 L91.0 228.5 L102.7 226.7 L115.3 226.8 L112.3 237.2 L102.0 248.3 L113.8 249.1 L114.7 250.4 L125.0 264.6 L132.8 266.5 L139.9 279.8 L143.2 284.3 L157.1 286.5 L155.7 293.7 L149.8 296.9 L154.4 302.7 L144.1 308.4 L128.7 308.3 L109.2 311.3 L103.8 309.1 L96.2 314.2 L85.6 313.0 L77.6 317.1 L71.5 314.9 L88.3 303.5 L98.6 301.2 L98.5 301.1 L80.5 299.3 L77.3 294.9 L89.3 291.4 L83.0 285.3 L85.2 277.8 L102.3 278.9 L102.3 278.9 L104.0 272.1 L96.3 264.9 L96.1 264.7 L82.2 262.6 Z M72.8 265.4 L66.6 273.5 L57.9 271.1 L50.8 271.2 L53.2 264.9 L50.8 258.5 L60.5 258.0 L72.8 265.4 Z M-28.8 97.1 L-31.5 108.1 L-18.5 119.4 L-33.4 131.7 L-34.4 132.0 L-34.4 96.7 L-28.8 97.1 Z M409.9 451.6 L416.2 454.4 L425.1 454.0 L433.6 454.6 L433.4 456.0 L439.6 455.0 L438.2 457.5 L421.7 458.2 L421.8 456.8 L407.8 455.2 L409.9 451.6 Z M302.4 440.6 L296.5 439.6 L280.5 435.2 L282.1 430.8 L295.5 431.6 L307.3 430.6 L316.0 429.9 L311.8 436.7 L313.6 439.4 L311.1 443.8 L302.4 440.6 Z M611.0 439.9 L604.8 439.8 L591.6 443.0 L582.1 443.0 L576.0 441.4 L563.4 443.8 L559.6 442.1 L559.0 446.9 L555.9 448.7 L552.8 450.6 L548.6 446.7 L553.0 443.5 L546.0 444.3 L536.4 442.3 L528.5 447.2 L511.0 448.2 L501.7 443.6 L489.4 443.3 L486.7 446.9 L478.8 447.9 L467.7 443.3 L455.1 443.5 L448.3 434.9 L439.9 430.1 L445.5 423.2 L438.3 419.0 L451.0 410.4 L468.7 410.0 L473.5 403.1 L495.4 404.4 L509.2 398.4 L522.6 395.8 L541.6 395.6 L561.6 402.1 L578.1 405.6 L591.4 404.2 L601.3 405.0 L614.9 400.3 L627.1 399.8 L638.2 404.3 L640.1 407.5 L639.0 411.9 L647.6 414.1 L652.1 416.8 L644.2 419.3 L647.8 429.4 L645.6 432.1 L651.8 439.1 L651.8 439.1 L646.3 440.5 L642.3 438.3 L628.9 437.2 L624.0 438.6 L611.0 439.9 Z M449.3 394.7 L459.2 395.9 L460.6 399.5 L470.6 402.4 L468.5 404.7 L454.9 405.2 L450.0 408.0 L440.4 412.8 L436.8 408.6 L437.0 406.8 L430.0 406.5 L424.0 405.6 L410.1 408.0 L418.0 413.1 L412.2 414.5 L405.8 414.5 L399.7 409.9 L397.6 411.9 L400.1 417.2 L405.9 421.4 L401.5 423.4 L407.9 427.4 L413.6 430.0 L413.8 434.9 L403.2 432.6 L406.6 437.0 L399.3 437.9 L403.6 445.5 L396.0 445.6 L386.6 441.9 L382.3 435.0 L380.3 429.2 L375.8 425.1 L369.9 420.1 L369.1 417.5 L374.5 413.2 L375.2 410.3 L378.9 409.0 L379.1 406.6 L386.6 405.8 L391.0 403.8 L397.2 404.0 L399.1 402.4 L401.3 402.1 L409.8 402.3 L419.0 399.8 L427.1 403.0 L437.5 402.1 L437.6 397.6 L449.3 394.7 Z M235.9 393.6 L238.2 390.1 L245.6 386.6 L247.5 394.6 L243.7 401.7 L238.5 399.8 L235.9 393.6 Z M279.8 246.6 L283.5 252.7 L276.6 262.5 L264.6 255.7 L263.0 250.7 L279.8 246.6 Z M235.9 234.1 L246.0 233.4 L250.0 229.8 L259.3 226.2 L258.9 232.8 L255.5 236.9 L256.8 240.4 L263.1 242.3 L260.3 247.0 L256.8 245.6 L248.6 254.4 L251.7 260.3 L244.3 262.1 L235.7 260.6 L231.0 253.9 L230.7 241.3 L232.6 237.9 L235.9 234.1 Z M432.7 49.1 L421.8 57.6 L409.5 53.0 L394.5 53.9 L381.7 43.7 L374.8 48.9 L367.7 49.7 L366.0 62.1 L344.4 59.1 L341.3 69.5 L330.3 69.4 L322.7 82.3 L311.2 101.6 L293.4 124.9 L297.6 130.4 L293.6 136.6 L282.2 136.4 L274.8 150.9 L275.5 170.6 L282.8 177.9 L279.0 194.4 L269.5 203.8 L264.4 211.5 L256.7 203.3 L234.0 218.7 L218.7 221.7 L202.8 215.0 L198.7 200.6 L195.1 168.1 L205.7 158.6 L236.0 145.9 L258.7 129.7 L279.7 106.9 L307.3 73.1 L326.5 59.2 L358.0 34.9 L383.2 26.1 L402.1 27.2 L419.6 10.0 L440.5 11.0 L461.2 6.8 L497.1 22.1 L482.3 27.5 L494.9 40.1 L475.3 47.9 L466.1 49.7 L470.9 35.9 L456.2 28.0 L438.4 34.8 L432.7 49.1 Z\"     fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M251.7 354.6 L243.2 353.4 L240.7 357.4 L235.3 357.7 L233.3 356.1 L226.8 359.5 L221.3 359.9 L216.4 357.8 L212.4 353.5 L206.9 355.0 L207.1 350.5 L215.5 344.9 L215.1 342.3 L220.4 343.2 L223.5 341.5 L233.3 341.5 L235.6 339.3 L247.9 342.4 L251.4 341.9 L257.2 344.7 L258.8 342.0 L269.0 342.5 L277.2 340.6 L282.7 340.9 L286.3 343.0 L287.3 341.3 L285.7 334.6 L289.8 333.3 L293.9 328.5 L302.4 331.9 L308.9 327.6 L312.9 326.8 L321.8 330.0 L327.2 329.5 L332.5 331.4 L331.6 332.7 L332.7 336.3 L331.9 340.5 L325.4 340.5 L327.6 342.7 L323.8 349.2 L321.6 350.9 L311.6 351.2 L305.8 353.5 L296.3 352.7 L279.9 350.1 L277.3 346.6 L266.0 348.3 L264.6 350.3 L257.7 348.8 L256.8 352.9 L251.7 354.6 Z M39.5 298.5 L23.2 296.8 L32.5 285.0 L26.5 273.3 L42.2 264.1 L50.8 258.5 L53.2 264.9 L50.8 271.2 L57.9 271.1 L66.6 273.5 L68.5 281.7 L59.8 291.9 L39.5 298.5 Z M275.5 170.6 L274.8 150.9 L282.2 136.4 L293.6 136.6 L297.6 130.4 L293.4 124.9 L311.2 101.6 L322.7 82.3 L330.3 69.4 L341.3 69.5 L344.4 59.1 L366.0 62.1 L367.7 49.7 L374.8 48.9 L381.7 43.7 L394.5 53.9 L409.5 53.0 L421.8 57.6 L432.7 49.1 L438.4 34.8 L456.2 28.0 L470.9 35.9 L466.1 49.7 L464.4 62.9 L482.0 75.2 L471.4 88.6 L484.7 108.1 L477.0 122.3 L487.3 134.2 L482.6 144.3 L499.6 154.8 L495.3 162.4 L484.6 170.9 L460.1 189.1 L460.1 189.1 L460.1 189.1 L439.2 190.2 L419.0 195.3 L400.4 198.1 L393.7 190.6 L382.6 186.0 L385.1 172.0 L379.6 158.7 L385.0 149.9 L395.5 140.2 L421.7 123.0 L429.4 119.6 L428.2 112.7 L412.2 104.7 L392.5 109.5 L381.3 121.0 L383.1 130.9 L364.9 143.5 L342.7 156.6 L334.3 177.2 L342.5 187.2 L353.5 194.9 L342.9 210.2 L331.0 213.3 L326.6 235.0 L320.1 246.7 L306.2 245.5 L299.7 255.2 L286.4 255.8 L282.7 244.2 L273.1 229.9 L264.4 211.5 L269.5 203.8 L279.0 194.4 L282.8 177.9 L275.5 170.6 Z\"  fill=\"#EDECE6\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M369.1 417.5 L367.2 416.9 L366.9 415.0 L360.6 411.9 L359.6 407.6 L360.6 401.4 L362.1 398.6 L360.2 397.1 L360.2 397.1 L357.8 396.4 L354.6 393.4 L349.6 391.5 L349.6 391.5 L338.8 388.1 L332.2 384.7 L321.7 381.9 L312.0 374.9 L314.3 374.1 L309.1 370.1 L308.9 366.8 L301.5 365.3 L298.0 369.5 L294.6 366.2 L294.8 362.8 L295.2 362.7 L297.8 361.8 L295.1 357.6 L296.3 352.7 L305.8 353.5 L311.6 351.2 L321.6 350.9 L323.8 349.2 L325.7 349.4 L328.0 352.7 L331.6 354.0 L340.2 358.2 L349.7 360.1 L354.0 358.6 L354.0 358.6 L362.8 356.0 L369.9 356.5 L376.2 360.4 L377.4 363.5 L384.4 365.8 L385.3 369.8 L392.0 372.6 L395.6 370.4 L398.5 371.6 L395.8 373.3 L397.9 374.9 L395.1 377.1 L396.1 380.6 L401.7 384.7 L397.3 387.6 L395.4 390.6 L396.6 391.7 L394.7 393.0 L400.5 396.0 L401.3 402.1 L399.1 402.4 L397.2 404.0 L391.0 403.8 L386.6 405.8 L379.1 406.6 L378.9 409.0 L375.2 410.3 L374.5 413.2 L369.1 417.5 Z\" fill=\"#E7E2E0\" stroke=\"#A32B23\" stroke-width=\"0.7\" stroke-dasharray=\"3 2\"/> <path d=\"M455.5 390.6 L459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L287.4 324.0 L281.5 321.4 L280.3 317.0 L278.3 313.8 L286.7 311.4 L290.9 308.7 L299.2 306.6 L302.0 304.5 L305.1 305.8 L310.2 304.7 L305.5 297.6 L306.4 293.8 L303.5 287.8 L299.4 283.7 L302.6 280.7 L299.9 274.8 L307.7 271.4 L325.7 265.9 L340.1 261.9 L351.6 263.9 L352.4 266.8 L363.5 266.9 L377.7 268.3 L398.8 268.1 L404.7 269.4 L407.4 273.0 L407.9 278.1 L411.1 282.5 L411.0 287.0 L404.1 289.3 L407.7 294.5 L407.9 299.5 L413.7 309.0 L412.4 312.1 L406.7 313.3 L396.3 322.2 L399.3 326.9 L396.8 326.3 L393.6 329.0 L391.4 333.2 L397.7 336.0 L398.5 338.8 L403.5 336.6 L410.6 337.7 L417.9 337.8 L423.3 340.3 L427.2 338.7 L435.7 337.7 L438.6 335.3 L443.4 335.3 L446.9 336.3 L450.5 339.4 L454.1 343.7 L460.7 349.7 L461.1 354.1 L459.9 358.3 L461.9 362.8 L467.1 364.6 L472.5 363.0 L477.7 364.7 L477.9 367.2 L472.4 369.3 L468.9 368.4 L465.7 380.0 L459.7 383.9 L455.5 390.6 Z\"   fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M545.5 363.5 L557.2 363.0 L555.0 366.4 L542.4 368.1 L526.8 373.7 L520.4 371.8 L522.9 367.2 L510.4 364.4 L512.4 362.5 L523.4 359.2 L521.7 358.0 L520.1 356.9 L502.2 354.4 L501.5 350.7 L490.8 351.9 L486.6 357.4 L477.7 364.7 L472.5 363.0 L467.1 364.6 L461.9 362.8 L459.9 358.3 L461.1 354.1 L460.7 349.7 L454.1 343.7 L450.5 339.4 L446.9 336.3 L443.4 335.3 L438.6 335.3 L435.7 337.7 L427.2 338.7 L423.3 340.3 L417.9 337.8 L410.6 337.7 L403.5 336.6 L398.5 338.8 L397.7 336.0 L391.4 333.2 L393.6 329.0 L396.8 326.3 L399.3 326.9 L396.3 322.2 L406.7 313.3 L412.4 312.1 L413.7 309.0 L407.9 299.5 L407.7 294.5 L404.1 289.3 L411.0 287.0 L411.1 282.5 L407.9 278.1 L407.4 273.0 L404.7 269.4 L398.8 268.1 L377.7 268.3 L363.5 266.9 L366.1 261.7 L382.0 257.8 L379.5 247.6 L379.9 238.2 L385.6 230.3 L396.4 225.9 L405.5 235.4 L414.7 235.2 L416.9 225.4 L418.3 217.7 L414.0 219.4 L406.7 214.7 L405.8 207.1 L420.3 203.3 L434.7 201.4 L447.2 203.6 L459.0 203.2 L459.0 203.2 L472.1 195.7 L460.1 189.1 L460.1 189.1 L484.6 170.9 L495.3 162.4 L499.6 154.8 L482.6 144.3 L487.3 134.2 L477.0 122.3 L484.7 108.1 L471.4 88.6 L482.0 75.2 L464.4 62.9 L466.1 49.7 L475.3 47.9 L494.9 40.1 L494.9 40.1 L506.7 33.2 L525.6 45.1 L557.0 49.7 L600.4 70.9 L609.2 79.5 L610.0 91.3 L597.2 100.3 L578.5 104.9 L527.2 91.8 L518.8 94.0 L537.5 106.5 L538.2 114.3 L539.0 130.9 L553.8 135.7 L562.7 139.7 L564.2 132.1 L557.3 125.2 L564.6 119.1 L592.4 129.2 L602.0 125.2 L594.3 113.3 L621.1 96.7 L631.7 97.7 L642.4 103.7 L649.1 91.9 L639.5 81.4 L645.1 70.6 L636.7 59.1 L654.4 62.4 L654.4 390.3 L649.1 389.4 L642.2 390.8 L640.2 389.1 L624.5 384.6 L607.6 383.1 L597.9 381.4 L596.5 382.6 L581.9 374.5 L568.8 370.9 L558.9 365.2 L567.2 363.6 L576.7 355.4 L570.3 351.4 L587.3 347.3 L586.9 345.1 L576.6 346.7 L567.5 347.5 L559.8 350.8 L549.1 351.3 L539.2 355.0 L539.8 360.3 L539.9 361.2 L545.5 363.5 Z\"     fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M277.2 340.6 L269.0 342.5 L258.8 342.0 L257.2 344.7 L251.4 341.9 L247.9 342.4 L235.6 339.3 L233.3 341.5 L223.5 341.5 L225.0 334.2 L230.8 327.0 L214.2 325.1 L208.8 322.3 L209.5 317.7 L207.2 315.3 L208.5 308.0 L206.5 296.4 L213.4 296.4 L216.3 292.2 L219.2 281.9 L217.1 278.0 L219.3 275.5 L228.9 274.9 L231.0 277.4 L238.8 271.7 L236.2 267.3 L235.7 260.6 L244.3 262.1 L251.7 260.3 L251.9 264.9 L263.0 267.6 L261.2 276.6 L258.9 286.9 L251.7 299.2 L253.2 306.9 L259.5 312.3 L276.7 312.3 L280.1 322.0 L280.1 340.8 L277.2 340.6 Z\"     fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M299.4 283.7 L303.5 287.8 L306.4 293.8 L305.5 297.6 L310.2 304.7 L305.1 305.8 L302.0 304.5 L299.2 306.6 L290.9 308.7 L286.7 311.4 L278.3 313.8 L280.3 317.0 L281.5 321.4 L287.4 324.0 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.5 267.7 L263.4 271.8 L275.1 269.6 L281.5 266.4 L294.5 271.1 L299.9 274.8 L302.6 280.7 L299.4 283.7 Z\"     fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.4 267.6\" fill=\"none\" stroke=\"#A32B23\" stroke-width=\"4.4\"       stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <circle cx=\"291.6\" cy=\"289.2\" r=\"4.6\" fill=\"#2E5F8A\" stroke=\"#EFEEEA\" stroke-width=\"1.6\"/> </g> <text x=\"86\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#5A5F63\">WEST</text> <text x=\"486\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"17\" font-weight=\"700\" fill=\"#A32B23\">EAST</text> <line x1=\"352\" y1=\"288\" x2=\"309\" y2=\"327\" stroke=\"#A32B23\" stroke-width=\"1.1\"/> <circle cx=\"309\" cy=\"327\" r=\"2.6\" fill=\"#A32B23\"/> <text x=\"356\" y=\"286\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#A32B23\">the iron curtain</text> <line x1=\"291.6\" y1=\"289.2\" x2=\"196\" y2=\"268\" stroke=\"#2E5F8A\" stroke-width=\"1.2\"/> <text x=\"190\" y=\"266\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" font-weight=\"700\" fill=\"#2E5F8A\" text-anchor=\"end\">Berlin</text> <!-- key --> <g transform=\"translate(40,486)\"> <rect x=\"0\" y=\"0\" width=\"14\" height=\"11\" fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <text x=\"21\" y=\"10\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Soviet Union and the states loyal to Moscow</text> <rect x=\"0\" y=\"19\" width=\"14\" height=\"11\" fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <text x=\"21\" y=\"29\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Western states, most of them in NATO from 1949</text> <rect x=\"0\" y=\"38\" width=\"14\" height=\"11\" fill=\"#EDECE6\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <text x=\"21\" y=\"48\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Neutral: Sweden, Finland, Switzerland, Ireland, Austria</text> <rect x=\"0\" y=\"57\" width=\"14\" height=\"11\" fill=\"#E7E2E0\" stroke=\"#A32B23\" stroke-width=\"0.7\" stroke-dasharray=\"3 2\"/> <text x=\"21\" y=\"67\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"11.5\" fill=\"#1B1D1F\">Communist but outside Soviet control: Yugoslavia, Albania</text> </g> <!-- inset --> <rect x=\"40\" y=\"572\" width=\"330\" height=\"100\" fill=\"#FBFAF7\" stroke=\"#5A5F63\" stroke-width=\"1.3\"/> <text x=\"54\" y=\"591\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"12\" font-weight=\"700\" fill=\"#1B1D1F\">GERMANY, DIVIDED</text> <rect x=\"54\" y=\"600\" width=\"122\" height=\"52\" fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"1\"/> <rect x=\"176\" y=\"600\" width=\"150\" height=\"52\" fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"1.2\"/> <text x=\"60\" y=\"618\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#5A5F63\">British, US and</text> <text x=\"60\" y=\"630\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#5A5F63\">French zones</text> <text x=\"184\" y=\"618\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#A32B23\">Soviet zone</text> <rect x=\"266\" y=\"620\" width=\"24\" height=\"18\" fill=\"#FBFAF7\" stroke=\"#2E5F8A\" stroke-width=\"1.7\"/> <line x1=\"278\" y1=\"620\" x2=\"278\" y2=\"638\" stroke=\"#2E5F8A\" stroke-width=\"1.3\"/> <text x=\"278\" y=\"650\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"9.5\" font-weight=\"700\" fill=\"#2E5F8A\" text-anchor=\"middle\">Berlin</text> <line x1=\"290\" y1=\"626\" x2=\"336\" y2=\"610\" stroke=\"#2E5F8A\" stroke-width=\"1.1\"/> <text x=\"340\" y=\"608\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" font-weight=\"700\" fill=\"#2E5F8A\">split in four too,</text> <text x=\"340\" y=\"620\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#2E5F8A\">160 km inside</text> <text x=\"340\" y=\"632\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#2E5F8A\">the Soviet zone</text> <text x=\"40\" y=\"690\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"10\" fill=\"#5A5F63\">Original illustration for Kula Revise. Boundaries from Natural Earth (public domain), grouped into their 1949 blocs.</text> </svg><figcaption>Europe by 1949. The hatched countries are the Soviet Union and the states loyal to Moscow. The heavy line is the border Churchill had called an iron curtain three years earlier. Two things are worth noticing. Yugoslavia and Albania are communist and outside Soviet control. So the division was never simply communist against capitalist. And look at the inset, because that is where this unit ends up. Berlin was split into four sectors like the country. It sits about 160 kilometres inside the Soviet zone. Original illustration for Kula Revise. Boundaries from Natural Earth, public domain.</figcaption></figure>",
     "remember": "Czechoslovakia 1948 is the turning point of Western opinion. Learn it as a cause of what happens next, not as an event on its own.",
     "terms": [
       {
@@ -899,7 +914,7 @@ const FLOW = [
       "From ordinary Russian people, who are hostile to the outside world"
     ],
     "correct": 0,
-    "explanation": "Kennan says it twice: inner-Russian necessities, and a traditional sense of insecurity. Option {opt2} is the exact thing he rules out in the same sentence. That is why it looks right if you read quickly. Option {opt3} reverses him, because he says ordinary Russians are friendly. Quote the sentence that answers the question and you are done.",
+    "explanation": "Kennan says it twice. Inner-Russian necessities. A traditional sense of insecurity. Option {opt2} is the exact thing he rules out in that same sentence, which is why it looks right if you read fast. Option {opt3} turns him round, because he says ordinary Russians are friendly. Find the sentence that answers the question and quote it.",
     "marks": "(1 x 2)  2 marks"
   },
   {
@@ -965,7 +980,7 @@ const FLOW = [
       "Very useful, because it correctly predicted every single thing that happened"
     ],
     "correct": 0,
-    "explanation": "Take a position and say why the source can do the job. A telegram to head office is written to persuade colleagues, not the public. So it shows you the reasoning rather than the presentation. Option {opt1} is a fair point and a weaker answer, because this telegram was circulated across the government. Naming the job a source can do is the whole of a usefulness answer.",
+    "explanation": "Take a position, then say what the source can do. This telegram went to head office, not to a newspaper. Kennan was arguing with his own colleagues, so you get his real reasoning and not a public version of it. Option {opt1} is a fair point but a weaker answer, because this telegram was passed around the whole government. Naming the job a source can do is the whole of a usefulness answer.",
     "marks": "(2 x 2)  4 marks"
   },
   {
@@ -998,27 +1013,6 @@ const FLOW = [
         "body": "Eight Eastern European states have governments loyal to Moscow. The three Baltic republics have been annexed outright."
       }
     ]
-  },
-  {
-    "type": "question",
-    "build": true,
-    "part": "Each side read the other's actions as proof of a plan rather than a reaction, and because both acted on that reading, by 1948 each had produced exactly the evidence the other was looking for",
-    "q": "Which sentence best sums up what this lesson establishes?",
-    "options": [
-      "Each side read the other's actions as proof of a plan rather than a reaction, and because both acted on that reading, by 1948 each had produced exactly the evidence the other was looking for",
-      "Stalin gave a speech in February 1946 blaming capitalism for the war, Kennan sent a long telegram from Moscow two weeks later, Churchill spoke at Fulton in March, and communists took power in Czechoslovakia during 1948",
-      "The Soviet Union planned from the beginning to communise the whole of Europe, and every step it took between 1945 and 1948 was part of one strategy that the West correctly identified at the time it was happening"
-    ],
-    "correct": 0,
-    "explanation": "Option {opt0} names the mechanism: two readings, each acted on, each confirming the other. Option {opt1} is accurate line by line and that is exactly why it tempts you. It never says what any of it produced, so it is narrative rather than argument. Option {opt2} takes one side's reading as fact, which is what this lesson has shown you not to do.",
-    "noSource": true,
-    "buildLabel": "What Lesson 2 argues"
-  },
-  {
-    "type": "runsum",
-    "tag": "Your running summary",
-    "heading": "What this lesson argues",
-    "label": "The argument so far"
   },
   {
     "type": "content",
@@ -1059,10 +1053,8 @@ const state = {
   order: {},               // qIdx -> shuffled content-index array
   carRead: {},             // stepIdx -> Set of read card indices
   interState: {},          // qIdx -> working state for order/sort
-  poppedBuild: {},         // qIdx -> bool (running-summary popup already shown)
 };
 
-const buildIds = FLOW.map((f,i)=>f.build?i:null).filter(i=>i!==null);
 const assessedIds = FLOW.map((f,i)=>(f.type==="question"&&f.level)?i:null).filter(i=>i!==null);
 
 function esc(s){
@@ -1410,30 +1402,6 @@ function renderSort(item){
   });
 }
 
-// ============ RUNNING SUMMARY (own screen) ============
-function renderRunsum(item){
-  const parts = buildIds.filter(i=>i<=state.idx && state.revealed[i]).map(i=>FLOW[i].part);
-  const freshIdx = parts.length-1;
-  const lis = parts.map((p,i)=>`<li class="${i===freshIdx?"fresh":""}">${esc(p)}</li>`).join("");
-  stage.innerHTML = `
-    <div class="card">
-      <div class="stage-tag">${esc(item.tag||"Your running summary")}</div>
-      ${item.heading?`<h2>${esc(item.heading)}</h2>`:""}
-      ${item.html?item.html:""}
-      <div class="runsum"><div class="runsum-label">${esc(item.label||"Your running summary")}</div><ol>${lis}</ol></div>
-      ${item.outro?`<p class="runsum-outro">${item.outro}</p>`:""}
-    </div>`;
-}
-
-// ============ POPUP after a build question ============
-function showBuildPop(part, label){
-  const back=document.createElement("div");
-  back.className="pop-back";
-  back.innerHTML=`<div class="pop"><div class="pop-label">${esc(label||"The line this lesson argues")}</div><div class="pop-text">${esc(part)}</div><button class="pop-btn" id="pop-ok">Got it</button></div>`;
-  document.body.appendChild(back);
-  document.getElementById("pop-ok").addEventListener("click",()=>back.remove());
-}
-
 // ============ NAV ============
 function syncNav(isQuestion){
   nav.classList.remove("hidden");
@@ -1462,12 +1430,6 @@ function syncNavInteractive(canCheck, answered, onCheck){
 }
 
 function defaultNext(){
-  // fire the running-summary popup when leaving a build question
-  const cur=FLOW[state.idx];
-  if(cur && cur.build && state.revealed[state.idx] && !state.poppedBuild[state.idx]){
-    state.poppedBuild[state.idx]=true;
-    showBuildPop(cur.part, cur.buildLabel);
-  }
   if(state.idx<FLOW.length-1){ state.idx++; render(); } else showResults();
 }
 
@@ -1492,7 +1454,6 @@ function render(){
     case "stat": renderStat(item); syncNav(false); break;
     case "source": renderSource(item); syncNav(false); break;
     case "question": renderQuestion(item); break;
-    case "runsum": renderRunsum(item); syncNav(false); break;
     default: renderContent(item); syncNav(false);
   }
 }
@@ -1533,8 +1494,6 @@ function showResults(){
     const p=Math.round(g/ids.length*100);
     return `<div class="bd-row"><div class="bd-name">${sp}</div><div class="bd-bar"><div class="bd-fill" style="width:${p}%"></div></div><div class="bd-score">${g}/${ids.length}</div></div>`;
   }).join("");
-  const parts=buildIds.filter(i=>state.revealed[i]).map(i=>FLOW[i].part);
-  const runsum = parts.length?`<div class="breakdown"><div class="breakdown-label">Your running summary</div><ol style="margin:0;padding-left:1.3rem;">${parts.map(p=>`<li style="font-size:0.98rem;line-height:1.62;margin-bottom:0.6rem;">${esc(p)}</li>`).join("")}</ol></div>`:"";
   stage.innerHTML = `
     <div class="results-head">
       <div class="results-eyebrow">${RESULTS.eyebrow||"Lesson report"}</div>
@@ -1547,24 +1506,19 @@ function showResults(){
     </div>
     <div class="grade-desc">${desc}</div>
     <div class="breakdown"><div class="breakdown-label">By skill</div>${rows}</div>
-    ${runsum}
     <div class="results-actions">
       <button class="btn-secondary" id="restart-btn">Restart lesson</button>
-      <button class="btn-primary" id="finish-btn">Finish &rarr;</button>
+      <button class="btn-primary" id="finish-btn">${esc(RESULTS.next||"Continue")} &rarr;</button>
     </div>
-    ${RESULTS.footer?`<div style="text-align:center;margin-top:1.1rem;font-size:0.92rem;color:var(--fade);">${esc(RESULTS.footer)}</div>`:""}`;
+    ${RESULTS.footer?`<div style="text-align:center;margin-top:1.1rem;padding-bottom:4.5rem;font-size:0.92rem;color:var(--fade);">${esc(RESULTS.footer)}</div>`:""}`;
   document.getElementById("restart-btn").addEventListener("click",()=>{
-    state.idx=-1; state.answers={}; state.revealed={}; state.order={}; state.carRead={}; state.interState={}; state.poppedBuild={};
+    state.idx=-1; state.answers={}; state.revealed={}; state.order={}; state.carRead={}; state.interState={};
     renderCover();
   });
-  document.getElementById("finish-btn").addEventListener("click",()=>{
-    const back=document.createElement("div");
-    back.className="pop-back";
-    const D = RESULTS.done||{};
-    back.innerHTML=`<div class="pop"><div class="pop-label">${esc(D.label||"Lesson complete")}</div>${D.title?`<h3 style="margin:.4rem 0 .2rem;font-size:1.05rem;">${esc(D.title)}</h3>`:""}<div class="pop-text">${esc(D.text||"Tap Done to continue to the next lesson.")}</div><button class="pop-btn" id="fin-ok">Done</button></div>`;
-    document.body.appendChild(back);
-    document.getElementById("fin-ok").addEventListener("click",()=>back.remove());
-  });
+  /* The button at the end of the lesson is the thing that continues. It does
+     not point at a control somewhere else on the page. */
+  document.getElementById("finish-btn").addEventListener("click",()=>{ KulaLMS.advance(); });
+  KulaLMS.completed();
 }
 
 function isRight(i){
@@ -1583,30 +1537,36 @@ renderCover();
    Injects its own button so there is no stray markup, and lives inside the
    single script block so a first-to-last script extraction still parses. */
 (function(){
-  var NATIVE = "light";
-  try{ if(localStorage.getItem("kula-mode")==="alt"){ document.body.classList.add("alt"); } }catch(e){}
+  /* What is stored is the mode the learner chose, "light" or "dark". Never a
+     class name and never "native": neither describes anything on a unit built
+     the other way round. For an essay unit set NATIVE "dark", FLIP "light",
+     CLS "bright". Nothing else changes. */
+  var NATIVE = "light";   // the mode this unit is designed in
+  var FLIP   = "dark";    // the mode the toggle offers
+  var CLS    = "dark";    // the class that produces FLIP in this unit
+  try{ if(localStorage.getItem("kula-mode")===FLIP){ document.body.classList.add(CLS); } }catch(e){}
   var SUN='<circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/>';
   var MOON='<path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/>';
-  var b=document.getElementById("mode-toggle");
+  var b=document.getElementById("kula-mode-toggle");
   if(!b){
     b=document.createElement("button");
-    b.className="mode-toggle"; b.id="mode-toggle"; b.type="button";
+    b.className="mode-toggle"; b.id="kula-mode-toggle"; b.type="button";
     b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true" id="mode-icon"></svg><span id="mode-label"></span>';
     document.body.appendChild(b);
   }
   var lab=document.getElementById("mode-label"), ic=document.getElementById("mode-icon");
   function paint(){
-    var onAlt=document.body.classList.contains("alt");
-    var showing = onAlt ? (NATIVE==="dark" ? "light" : "dark") : NATIVE;
+    var flipped = document.body.classList.contains(CLS);
+    var showing = flipped ? FLIP : NATIVE;
     var offering = showing==="dark" ? "light" : "dark";
-    lab.textContent = offering==="light" ? "Light Mode" : "Dark Mode";
+    lab.textContent = offering==="light" ? "Light mode" : "Dark mode";
     ic.innerHTML = offering==="light" ? SUN : MOON;
-    b.setAttribute("aria-pressed", onAlt ? "true" : "false");
+    b.setAttribute("aria-pressed", showing==="dark" ? "true" : "false");
     b.setAttribute("aria-label", "Switch to " + offering + " mode");
   }
   b.addEventListener("click",function(){
-    var onAlt=document.body.classList.toggle("alt");
-    try{ localStorage.setItem("kula-mode", onAlt ? "alt" : "native"); }catch(e){}
+    var flipped=document.body.classList.toggle(CLS);
+    try{ localStorage.setItem("kula-mode", flipped ? FLIP : NATIVE); }catch(e){}
     paint();
   });
   paint();
