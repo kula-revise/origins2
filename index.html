@@ -653,6 +653,360 @@ body.dark .figure figcaption { border-top-color: var(--a1); }
   .results-actions button { flex: 1; }
   .hidden { display: none !important; }
 
+
+/* ============================================================
+   LESSON 2 FLAGSHIP LAYER
+   Hand patch on the built file. Three jobs:
+     1. the floating mode toggle stops covering the Continue
+        button and the body text,
+     2. attribution stops shouting over the source it credits,
+     3. the two sources stop looking like the same object.
+   Nothing here touches the step flow, the question mechanics
+   or the results breakdowns.
+   ============================================================ */
+
+/* ---- 1. TOGGLE CLEARANCE ------------------------------------
+   .nav sits in normal flow and .mode-toggle is fixed bottom right,
+   so at the foot of a page the toggle sat on top of Continue.
+   Reserve the corner, and drop the toggle back at rest so it
+   stops obscuring source text mid scroll. ------------------- */
+.container { padding-bottom: 4.8rem !important; }
+.mode-toggle { opacity: 0.5; transition: opacity 0.18s ease; }
+.mode-toggle:hover, .mode-toggle:focus-visible, .mode-toggle:active { opacity: 1; }
+@media (hover: none) { .mode-toggle { opacity: 0.62; } }
+
+/* ---- 2. ATTRIBUTION AS A CAPTION, NOT A BANNER --------------
+   The provenance line is still complete and still first in the
+   DOM for a screen reader. It just stops being the loudest
+   thing in the box. ---------------------------------------- */
+.source { display: flex !important; flex-direction: column; }
+.source .source-body   { order: 1; }
+.source .source-attr   { order: 2; }
+.source .toggle-btn    { order: 3; }
+.source .toggle-body   { order: 4; }
+.source-attr {
+  background: transparent !important;
+  color: var(--fade) !important;
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  line-height: 1.55 !important;
+  padding: 0.7rem 0 0 !important;
+  margin: 0.9rem 0 0 !important;
+  border-top: 1px solid var(--hair-strong) !important;
+}
+body.dark .source-attr {
+  background: transparent !important;
+  color: var(--fade) !important;
+  border-top-color: var(--hair-strong) !important;
+}
+
+/* ---- 3. TWO SOURCES, TWO OBJECTS ----------------------------
+   The lesson asks the learner to hold a speech against a cable.
+   Until now both arrived in the same red hatched box, so the
+   only difference on the screen was the words. Source A keeps
+   the red of the eastern bloc on this unit's map. Source B
+   takes the steel blue the same map gives Berlin and the West.
+   ---------------------------------------------------------- */
+
+/* Source A: a printed speech, set as a page from the Moscow edition. */
+.source.src-speech { border-color: var(--a1) !important; }
+.source.src-speech .source-body > p:first-of-type::first-letter {
+  font-family: var(--serif); font-size: 3.05rem; line-height: 0.82;
+  float: left; padding: 0.28rem 0.5rem 0 0; color: var(--a1); font-weight: 600;
+}
+.src-imprint {
+  font-family: var(--sans); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; text-align: center;
+  color: var(--a1); padding-bottom: 0.85rem; margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(var(--a1-rgb),0.32);
+}
+
+/* Source B: an incoming cable. Cold ground, no hatch, machine type. */
+.source.src-cable {
+  padding: 1rem 0.85rem !important;
+  border-color: var(--a2) !important;
+  background: #E6EAEE !important;
+  background-image: none !important;
+  box-shadow: 5px 5px 0 rgba(var(--a2-rgb),0.16) !important;
+}
+body.dark .source.src-cable { background: rgba(46,95,138,0.16) !important; }
+.source.src-cable .source-body,
+.source.src-cable .source-body p {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace !important;
+  font-size: 1rem !important;
+  line-height: 1.7 !important;
+  letter-spacing: -0.022em;
+}
+.source.src-cable .source-attr { border-top-color: rgba(var(--a2-rgb),0.4) !important; }
+.source.src-cable .toggle-btn { color: var(--a2) !important; }
+.cable-head {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.66rem; line-height: 1.85; letter-spacing: 0.02em;
+  text-transform: uppercase; color: var(--a2);
+  border-top: 3px double var(--a2); border-bottom: 3px double var(--a2);
+  padding: 0.6rem 0; margin: 0 0 1.05rem;
+}
+.cable-head b { font-weight: 700; }
+.cable-head .cab-secret {
+  float: right; border: 1.5px solid var(--a2); padding: 0 0.34rem;
+  letter-spacing: 0.18em; font-weight: 700;
+}
+body.dark .cable-head, body.dark .source.src-cable .toggle-btn { color: #96C0E6; }
+body.dark .cable-head { border-color: #96C0E6; }
+body.dark .cable-head .cab-secret { border-color: #96C0E6; }
+
+/* ---- 4. THE FACE OFF ----------------------------------------
+   The comparison question used to be the first moment the two
+   documents met. Now they meet on a screen of their own, with
+   no editorial line telling the learner what each one blames.
+   ---------------------------------------------------------- */
+.faceoff { margin: 1.25rem 0 0.4rem; }
+.fo-panel { border: 2px solid var(--a1); background: var(--cut); padding: 0.95rem 1rem 1rem; }
+.fo-panel + .fo-panel { margin-top: 0; border-top: 0; }
+.fo-a { border-color: var(--a1); background-image:
+  repeating-linear-gradient(45deg, transparent 0 7px, rgba(163,43,35,0.055) 7px 8px); }
+.fo-b { border-color: var(--a2); background: #E6EAEE; background-image: none; }
+body.dark .fo-b { background: rgba(46,95,138,0.16); }
+.fo-head {
+  font-family: var(--sans); font-size: 0.63rem; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.6rem;
+}
+.fo-a .fo-head { color: var(--a1); }
+.fo-b .fo-head { color: var(--a2); }
+body.dark .fo-b .fo-head { color: #96C0E6; }
+.fo-panel p { font-size: 0.95rem; line-height: 1.66; margin: 0 0 0.6rem; }
+.fo-panel p:last-child { margin-bottom: 0; }
+.fo-b p { font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
+  font-size: 0.82rem; line-height: 1.72; }
+.fo-seam {
+  font-family: var(--sans); font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--fade);
+  text-align: center; padding: 0.5rem 0; border-left: 2px solid var(--hair-strong);
+  border-right: 2px solid var(--hair-strong);
+}
+@media (min-width: 700px) {
+  .faceoff { display: grid; grid-template-columns: 1fr 1fr; }
+  .fo-panel + .fo-panel { border-top: 2px solid var(--a2); }
+  .fo-seam { display: none; }
+}
+
+/* ---- 5. RESULTS: THE BAND CARD STOPS ORPHANING --------------
+   At 390px the auto fit grid gives two columns, so the third
+   card sat half width against dead space. ------------------- */
+@media (max-width: 619px) {
+  .score-row .score-block:nth-child(3) { grid-column: 1 / -1; }
+}
+
+/* ---- 6. THE REOPEN STRIP ------------------------------------
+   Two sources means two tabs, so give the tabs room to read as
+   controls rather than as part of the cue line. ------------- */
+.peek-tab { font-family: var(--sans) !important; letter-spacing: 0.08em; }
+
+
+/* ---- 7. THE HOOK AS A CLOCKED SCENE -------------------------
+   The marker becomes a stamped time rather than a headline, in
+   the same machine face the cable carries later in the lesson.
+   The narration sits back and the line the learner has to hold
+   sits forward, so the ladder reads as arriving rather than as
+   a paragraph broken up. ------------------------------------ */
+.story-num {
+  font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace !important;
+  font-size: clamp(3.4rem, 14vw, 5.2rem) !important;
+  font-weight: 400 !important;
+  color: var(--a1) !important;
+  letter-spacing: -0.03em !important;
+  font-variant-numeric: tabular-nums;
+}
+.story-unit {
+  font-size: 0.66rem !important;
+  letter-spacing: 0.26em !important;
+  color: var(--fade) !important;
+  margin-top: 0.35rem !important;
+}
+.story-rule { margin: 1.15rem 0 1.5rem !important; }
+.story-line { color: var(--clay); }
+.story-line strong { color: var(--ink); font-weight: 700; }
+.story-line.last { color: var(--a2) !important; font-style: normal !important; font-weight: 600 !important; }
+.story-line.last::before {
+  content: ""; display: block; width: 46px; height: 2px;
+  background: var(--a2); margin: 1.4rem 0 1.1rem;
+}
+body.dark .story-line strong { color: var(--white, #E7EBEE); }
+
+
+/* The reopen cue previews the source's own words now, so it reads as prose. */
+.peek-who { text-transform: none !important; letter-spacing: 0 !important; }
+
+/* ---- 7. THE TIME RAIL ---------------------------------------
+   A hook line can now carry a marker, so a run of years reads as
+   a run of years rather than as a paragraph broken up. Side one
+   takes the red this unit gives the east on its map; side two
+   takes the steel blue it gives the west. The same two colours
+   then carry Source A, Source B and the face off panels, so the
+   learner meets one visual argument four times in the lesson.
+   ---------------------------------------------------------- */
+.story-line.marked {
+  display: grid; grid-template-columns: 4.6rem 1fr; gap: 0.85rem;
+  align-items: baseline; margin-bottom: 1.15rem;
+}
+.tl-mark {
+  font-family: var(--sans); font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.13em; text-transform: uppercase; color: var(--a1);
+  border-left: 2px solid var(--a1); padding-left: 0.5rem; line-height: 1.5;
+}
+.tl-text { display: block; }
+.story-b .tl-mark { color: var(--a2); border-left-color: var(--a2); }
+.story-b .story-num { color: var(--a2) !important; }
+.story-b .story-rule {
+  background-image:
+    linear-gradient(90deg, var(--a2) 0 84px, transparent 84px 100%),
+    repeating-linear-gradient(90deg, var(--a2) 84px 96px, transparent 96px 106px) !important;
+}
+body.dark .story-b .tl-mark { color: #96C0E6; border-left-color: #96C0E6; }
+body.dark .story-b .story-num { color: #96C0E6 !important; }
+.story-line.marked + .story-line:not(.marked) { margin-top: 1.8rem; }
+/* The engine draws a short rule before the closing line with a ::before.
+   Inside a grid that pseudo element claims a cell and shoves the marker
+   and the text out of their columns, so a marked closing line collapsed
+   to one word per row. Take the rule off the grid and hang it above. */
+.story-line.marked.last {
+  color: var(--clay) !important; font-weight: 400 !important; font-style: normal !important;
+}
+.story-line.marked.last::before { display: none !important; }
+@media (max-width: 400px) {
+  .story-line.marked { grid-template-columns: 4rem 1fr; gap: 0.7rem; }
+}
+
+
+/* ---- 8. CORRECT READS GREEN ---------------------------------
+   The reward accent in this skin is the steel blue the map gives
+   the west, and that blue is now doing a second job: Source B,
+   side two of the hook, and the right hand face off panel. A
+   correct answer wearing the same blue read as "this is Kennan"
+   rather than "you got it". So the earned states take a green of
+   their own and the identity keeps its two colours.
+
+   Green is added here, not by repointing --a2, because --a2 also
+   paints the primary button, the marks, the story rule and the
+   breakdown label. Changing the token would turn the whole unit
+   green and lose the argument the red and blue are making.
+
+   Measured on the skin's own grounds:
+     light  #2A6349 letter and border on the tint   4.68 : 1
+            ink body text on the tint              11.0  : 1
+     dark   #8BD1A4 letter and border on the tint   5.11 : 1
+   Colour is never the only signal: the tick and the cross glyphs
+   carry the state as well, which matters for the commonest form
+   of colour blindness, where red against green is the hard pair.
+   ---------------------------------------------------------- */
+:root { --ok: #2A6349; --ok-rgb: 42,99,73; }
+body.dark { --ok: #8BD1A4; --ok-rgb: 139,209,164; }
+
+.option.correct, .option-btn.correct {
+  background: rgba(var(--ok-rgb),0.13) !important;
+  border-color: var(--ok) !important;
+}
+.option.correct .opt-letter, .option-btn.correct .opt-letter { color: var(--ok) !important; }
+.option.correct .opt-mark,   .option-btn.correct .opt-mark   { color: var(--ok) !important; }
+
+body.dark .option.correct, body.dark .option-btn.correct {
+  background: rgba(var(--ok-rgb),0.20) !important;
+  border-color: var(--ok) !important;
+  color: var(--ink) !important;
+}
+body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter { color: var(--ok) !important; }
+body.dark .option.correct .opt-mark,   body.dark .option-btn.correct .opt-mark   { color: var(--ok) !important; }
+
+/* A correctly placed item in the sort and order questions is the
+   same signal, so it takes the same green. */
+.inter-item.ok {
+  background: rgba(var(--ok-rgb),0.13) !important;
+  border-color: var(--ok) !important;
+}
+.inter-item.ok .rank { color: var(--ok) !important; }
+body.dark .inter-item.ok { background: rgba(var(--ok-rgb),0.20) !important; border-color: var(--ok) !important; }
+
+/* The results bars measure what the learner earned, so they match. */
+.bd-fill { background: var(--ok) !important; }
+
+
+/* ---- 9. THE CABLE HOLDS ITS COLOUR IN DARK MODE -------------
+   The skin repaints every .source with the red accent and the
+   red hatch when the ground inverts, which put Source B back in
+   Moscow's colour at night. Restated after it, so the speech and
+   the cable stay two different objects in both modes.
+   ---------------------------------------------------------- */
+body.dark .source.src-cable {
+  border-color: #6BA3D6 !important;
+  background: rgba(107,163,214,0.14) !important;
+  background-image: none !important;
+  box-shadow: 5px 5px 0 rgba(107,163,214,0.16) !important;
+}
+body.dark .source.src-cable .source-attr { border-top-color: rgba(107,163,214,0.4) !important; }
+body.dark .cable-head { color: #96C0E6 !important; border-color: #96C0E6 !important; }
+body.dark .cable-head .cab-secret { border-color: #96C0E6 !important; }
+body.dark .source.src-cable .toggle-btn { color: #96C0E6 !important; }
+body.dark .fo-b { background: rgba(107,163,214,0.14) !important; border-color: #6BA3D6 !important; }
+body.dark .fo-b .fo-head { color: #96C0E6 !important; }
+
+
+/* ---- 10. THE CORRECT OPTION FILLS -----------------------------
+   A 13 per cent tint was too quiet: on a bright phone screen the
+   right answer and the untouched options were nearly the same
+   card. The correct option now takes a solid green ground with
+   the skin's hard offset shadow, so it reads as the answer from
+   across the room and not on inspection.
+
+   The asymmetry is deliberate. The option you got right is loud.
+   The one you picked and got wrong stays a quiet clay tint with
+   a firm border, because a learner who is already wrong does not
+   need it shouted at them.
+
+   Measured: light  paper text on #215239        8.63 : 1
+                    the fill against the page    7.76 : 1
+             dark   ink text on #8BD1A4          9.99 : 1
+   ------------------------------------------------------------ */
+:root { --ok: #215239; --ok-rgb: 33,82,57; --on-ok: #FBFAF7; }
+body.dark { --ok: #8BD1A4; --ok-rgb: 139,209,164; --on-ok: #14181C; }
+
+.option.correct, .option-btn.correct,
+body.dark .option.correct, body.dark .option-btn.correct {
+  background: var(--ok) !important;
+  border: 2px solid var(--ok) !important;
+  box-shadow: 5px 5px 0 rgba(var(--ok-rgb),0.30) !important;
+  color: var(--on-ok) !important;
+}
+.option.correct .opt-text, .option-btn.correct .opt-text,
+.option.correct .opt-letter, .option-btn.correct .opt-letter,
+.option.correct .opt-mark, .option-btn.correct .opt-mark,
+body.dark .option.correct .opt-text, body.dark .option-btn.correct .opt-text,
+body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter,
+body.dark .option.correct .opt-mark, body.dark .option-btn.correct .opt-mark {
+  color: var(--on-ok) !important;
+}
+.option.correct .opt-letter, .option-btn.correct .opt-letter { opacity: 0.85; }
+
+/* The wrong pick keeps its warm tint and gains a firm edge, so the
+   pair reads at a glance without the wrong one competing. */
+.option.wrong, .option-btn.wrong {
+  background: var(--no-bg) !important;
+  border: 2px solid var(--a1) !important;
+  box-shadow: none !important;
+}
+.option.wrong .opt-letter, .option.wrong .opt-mark,
+.option-btn.wrong .opt-letter, .option-btn.wrong .opt-mark { color: var(--a1) !important; }
+
+/* A correctly placed item in the sort and order questions is the
+   same signal, so it fills the same way. */
+.inter-item.ok, body.dark .inter-item.ok {
+  background: var(--ok) !important;
+  border: 2px solid var(--ok) !important;
+  color: var(--on-ok) !important;
+}
+.inter-item.ok span, .inter-item.ok .rank,
+body.dark .inter-item.ok span, body.dark .inter-item.ok .rank { color: var(--on-ok) !important; }
+.inter-item.ok .rank { opacity: 0.85; }
+
 </style>
 </head>
 <body>
@@ -721,34 +1075,84 @@ const RESULTS = {
 const FLOW = [
   {
     "type": "story",
-    "marker": "The new girl",
-    "markerLabel": "Somewhere you know &middot; second week of term",
+    "side": "a",
+    "marker": "Side one",
+    "markerLabel": "Two families &middot; one wall &middot; three years",
     "lines": [
-      "A new girl joins your class in March and sits by herself at break every day.",
-      "One of your friends says she clearly thinks she is better than everyone here.",
-      "Another says she is terrified and waiting for somebody to ask her over.",
-      "Same girl. Two readings.",
-      "Neither of them has spoken to her. Each is reading her through what they would be feeling."
+      {
+        "mark": "Year one",
+        "text": "They play music late. You knock on the wall. They stop greeting you for a month."
+      },
+      {
+        "mark": "Year two",
+        "text": "Your mother passes their gate and looks straight ahead. They started it, so she owes them nothing."
+      },
+      {
+        "mark": "Year three",
+        "text": "You plant a tree. They complain that it will take the light from their kitchen."
+      },
+      {
+        "mark": "Last week",
+        "text": "They cut the branch that hung over their side. Nobody asked you first."
+      },
+      {
+        "mark": "Today",
+        "text": "**You could say exactly who started this.**"
+      }
+    ]
+  },
+  {
+    "type": "story",
+    "side": "b",
+    "marker": "Side two",
+    "markerLabel": "The same wall &middot; the same three years",
+    "lines": [
+      {
+        "mark": "Year one",
+        "text": "Someone bangs on the wall at eight in the evening. Your father decides they are not worth speaking to."
+      },
+      {
+        "mark": "Year two",
+        "text": "The woman next door walks past your gate and looks straight ahead. She started it."
+      },
+      {
+        "mark": "Year three",
+        "text": "They plant a tree hard against the line, where your kitchen gets its light."
+      },
+      {
+        "mark": "Last week",
+        "text": "Your father cuts the branch on your own side of the fence. He asks nobody, because why would he."
+      },
+      {
+        "mark": "Today",
+        "text": "**You could say exactly who started this.**"
+      },
+      {
+        "text": "**Same wall. Same three years. Nobody lied.**"
+      },
+      {
+        "text": "You settle arguments like this every week. Now hand the same argument to two governments who can destroy each other."
+      }
     ]
   },
   {
     "type": "question",
     "kind": "instinct",
-    "q": "Which reading is right?",
+    "q": "Which family started it?",
     "options": [
-      "She does think she is better than the people in this class",
-      "She is frightened and is waiting for somebody to ask her over",
-      "Both could be true, and sitting alone cannot decide between them",
-      "Neither, because nobody can know anything until they speak to her"
+      "The family who first complained about the music late at night",
+      "The family who planted the tree along the boundary line",
+      "Both accounts are true, and neither one settles who started it",
+      "Neither, because nobody watched the whole three years from outside"
     ],
     "correct": 2,
-    "explanation": "There is no score on this one. The behaviour is one fact and it supports both readings equally well. What separates your two friends is not evidence, it is what each of them expects people to be like. You are about to watch two governments do this to each other, thirteen days apart. Neither of them will be lying.",
+    "explanation": "There is no score on this one. Every event in both lists happened, and neither side left anything out. What separates the two accounts is not evidence. It is what each family had already decided about the other. You are about to watch two governments do this to each other, thirteen days apart, and neither of them is lying.",
     "noSource": true
   },
   {
     "type": "content",
     "tag": "The turn",
-    "html": "<h2>The word for what you just did</h2><p>You did not decide which friend was right. You worked out that each reading came from where the reader was standing.</p><p>That is <strong>perspective</strong>: what a source argues for depends on what it is afraid of.</p><p>Paper 1 asks this directly. <em>How does Source A differ from Source B?</em> The command word wants both positions named and set against each other. Give only one side and you have written half an answer.</p>",
+    "html": "<h2>The word for what you just did</h2><p>You did not settle who started it. You worked out that each account was built out of where the teller was standing.</p><p>That is <strong>perspective</strong>: what a source argues for depends on what it is afraid of.</p><p>Paper 1 asks this directly. <em>How does Source A differ from Source B?</em> The command word wants both positions named and set against each other. Give only one side and you have written half an answer.</p>",
     "remember": "A comparison answer carries both sources. One side on its own is not a comparison, no matter how well you argue it.",
     "terms": [
       {
@@ -825,11 +1229,13 @@ const FLOW = [
   },
   {
     "type": "source",
-    "tag": "The source",
+    "tag": "Source A",
+    "sourceLabel": "Source A",
+    "sourceKind": "speech",
     "html": "<h2>Stalin, 9 February 1946</h2><p>An election speech at the Bolshoi Theatre in Moscow, his first major speech since the war ended.</p><p><strong>First pass:</strong> what does he say caused the Second World War?</p><p><strong>Second pass:</strong> if that is the cause, what follows about the future?</p>",
     "source": {
       "attr": "Source A: from the speech delivered by J V Stalin at a meeting of voters of the Stalin electoral district, Moscow, 9 February 1946. From the English edition published by the Foreign Languages Publishing House, Moscow, 1946. Out of copyright.",
-      "body": "<p>It would be wrong to think that the Second World War broke out accidentally, or as a result of blunders [mistakes] committed by certain statesmen, although blunders were certainly committed. As a matter of fact, the war broke out as the inevitable [unavoidable] result of the development of world economic and political forces on the basis of present-day monopolistic capitalism.</p><p>Marxists have more than once stated that the capitalist system of world economy contains the elements of a general crisis and military conflicts, that, in view of that, the development of world capitalism in our times does not proceed smoothly and evenly, but through crises and catastrophic wars.</p><p>The point is that the uneven development of capitalist countries usually leads, in the course of time, to a sharp disturbance of the equilibrium [balance] within the world system of capitalism, and that group of capitalist countries [which] regards itself as being less securely provided with raw materials and markets usually attempts to change the situation and to redistribute spheres of influence in its own favour, by employing armed force.</p>",
+      "body": "<div class=\"src-imprint\">Speech to the voters &middot; Bolshoi Theatre, Moscow</div><p>It would be wrong to think that the Second World War broke out accidentally, or as a result of blunders [mistakes] committed by certain statesmen, although blunders were certainly committed. As a matter of fact, the war broke out as the inevitable [unavoidable] result of the development of world economic and political forces on the basis of present-day monopolistic capitalism.</p><p>Marxists have more than once stated that the capitalist system of world economy contains the elements of a general crisis and military conflicts, that, in view of that, the development of world capitalism in our times does not proceed smoothly and evenly, but through crises and catastrophic wars.</p><p>The point is that the uneven development of capitalist countries usually leads, in the course of time, to a sharp disturbance of the equilibrium [balance] within the world system of capitalism, and that group of capitalist countries [which] regards itself as being less securely provided with raw materials and markets usually attempts to change the situation and to redistribute spheres of influence in its own favour, by employing armed force.</p>",
       "toggle": "Two things need naming. Monopolistic capitalism is the Marxist term for capitalism at the stage where a few huge firms dominate, and Stalin is arguing that this stage of capitalism produces wars by itself, without anyone choosing one. Inevitable is the word doing the most work: if wars come from how capitalism is built, then no treaty and no goodwill can prevent the next one. Notice also what he does not say. He never names the United States or Britain, and he does not have to. The audience knew which countries were capitalist, and so did every diplomat who read the transcript.",
       "toggleLabel": "What does this actually mean?"
     },
@@ -884,12 +1290,14 @@ const FLOW = [
   },
   {
     "type": "source",
-    "tag": "The source",
+    "tag": "Source B",
+    "sourceLabel": "Source B",
+    "sourceKind": "cable",
     "html": "<h2>Kennan, 22 February 1946</h2><p>Thirteen days later, the second most senior American diplomat in Moscow answered a routine question from Washington with eight thousand words. It was never meant to be published.</p><p><strong>First pass:</strong> what does he say Soviet behaviour comes from?</p><p><strong>Second pass:</strong> hold it against Source A. They are describing the same relationship. What does each one blame?</p>",
     "source": {
       "attr": "Source B: from the telegram sent by George Kennan, the American charg&eacute; d'affaires in Moscow, to the Secretary of State, 22 February 1946, known as the Long Telegram. Department of State Records, reprinted in Foreign Relations of the United States 1946, Volume VI, Government Printing Office, 1969. A United States government work.",
-      "body": "<p>(a) USSR still lives in antagonistic [hostile] 'capitalist encirclement' with which in the long run there can be no permanent peaceful coexistence &hellip;</p><p>It indicates that Soviet party line is not based on any objective analysis of situation beyond Russia's borders; that it has, indeed, little to do with conditions outside of Russia; that it arises mainly from basic inner-Russian necessities which existed before recent war and exist today.</p><p>At bottom of Kremlin's neurotic [anxious] view of world affairs is traditional and instinctive Russian sense of insecurity. Originally, this was insecurity of a peaceful agricultural people trying to live on vast exposed plain in neighborhood of fierce nomadic peoples &hellip;</p><p>First, it does not represent natural outlook of Russian people. Latter are, by and large, friendly to outside world &hellip;</p>",
-      "toggle": "Three things are worth knowing before you judge this source. The clipped grammar with words missing is not carelessness: telegrams were charged by the word, so articles get dropped. Capitalist encirclement is Kennan quoting the Soviet view back, not stating his own. And the argument he is making is that Soviet hostility comes from inside Russia and its history, which means it will not be fixed by anything the West offers or concedes. That conclusion is what made the telegram famous, and it is the seed of the policy in Lesson 3.",
+      "body": "<div class=\"cable-head\"><span class=\"cab-secret\">Secret</span>861.00/2 2246 : Telegram<br><b>The Charg&eacute; in the Soviet Union (Kennan) to the Secretary of State</b><br>No. 511 &middot; Moscow, 22 February 1946, 9 p.m.<br>Received Washington, 22 February, 3:52 p.m.</div><p>(a) USSR still lives in antagonistic [hostile] 'capitalist encirclement' with which in the long run there can be no permanent peaceful coexistence &hellip;</p><p>It indicates that Soviet party line is not based on any objective analysis of situation beyond Russia's borders; that it has, indeed, little to do with conditions outside of Russia; that it arises mainly from basic inner-Russian necessities which existed before recent war and exist today.</p><p>At bottom of Kremlin's neurotic [anxious] view of world affairs is traditional and instinctive Russian sense of insecurity. Originally, this was insecurity of a peaceful agricultural people trying to live on vast exposed plain in neighborhood of fierce nomadic peoples &hellip;</p><p>First, it does not represent natural outlook of Russian people. Latter are, by and large, friendly to outside world &hellip;</p>",
+      "toggle": "Start with the block at the top, because it is evidence too. Secret means this was written for about a dozen readers inside the American government. The two clock times are Moscow time and Washington time, which is why the telegram appears to arrive before it was sent. The clipped grammar with words missing is not carelessness: telegrams were charged by the word, so articles get dropped. Capitalist encirclement is Kennan quoting the Soviet view back, not stating his own. And the argument he is making is that Soviet hostility comes from inside Russia and its history, which means it will not be fixed by anything the West offers or concedes. That conclusion is what made the telegram famous, and it is the seed of the policy in Lesson 3.",
       "toggleLabel": "What does this actually mean?"
     },
     "terms": [
@@ -954,6 +1362,12 @@ const FLOW = [
     ],
     "explanation": "February 1945, then February 1946 twice, then March 1946, then 1948 twice. The pair most people reverse is Stalin's speech and Kennan's telegram. The order is the whole point, because Kennan is answering a mood Stalin had just created. Put the telegram first and you turn a response into a provocation. That is the opposite argument to the one you meant.",
     "noSource": true
+  },
+  {
+    "type": "content",
+    "tag": "Hold them together",
+    "html": "<h2>Thirteen days apart, on one screen</h2><p>You have read these one at a time. The exam will not let you do that.</p><p>Here is a piece of each, set against the other. Both men are explaining where the danger comes from.</p><div class=\"faceoff\"><div class=\"fo-panel fo-a\"><div class=\"fo-head\">Source A &middot; Stalin &middot; 9 February</div><p>As a matter of fact, the war broke out as the inevitable [unavoidable] result of the development of world economic and political forces on the basis of present-day monopolistic capitalism.</p></div><div class=\"fo-seam\">same relationship &middot; thirteen days</div><div class=\"fo-panel fo-b\"><div class=\"fo-head\">Source B &middot; Kennan &middot; 22 February</div><p>It indicates that Soviet party line is not based on any objective analysis of situation beyond Russia's borders &hellip; that it arises mainly from basic inner-Russian necessities which existed before recent war and exist today.</p></div></div><p>Find the cause each panel names before you turn the page.</p><p>Name both, in one sentence each, and you have a comparison. Name one and a marker has half an answer in front of them, however well you write it.</p>",
+    "remember": "Two panels, one sentence each. That is the shape of every comparison answer you will write."
   },
   {
     "type": "question",
@@ -1107,10 +1521,13 @@ function firstContentIdx(){
 function renderStory(item){
   const lines = item.lines.map((l,i)=>{
     const last = i===item.lines.length-1 ? " last" : "";
-    return `<div class="story-line${last}">${esc(l)}</div>`;
+    const o = (typeof l === "string") ? { text: l } : l;
+    const body = esc(o.text).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    const mk = o.mark ? `<span class="tl-mark">${esc(o.mark)}</span>` : "";
+    return `<div class="story-line${last}${o.mark?" marked":""}">${mk}<span class="tl-text">${body}</span></div>`;
   }).join("");
   stage.innerHTML = `
-    <div class="story">
+    <div class="story${item.side?" story-"+item.side:""}">
       <div class="story-num">${esc(item.marker)}</div>
       <div class="story-unit">${esc(item.markerLabel||"")}</div>
       <div class="story-rule"></div>
@@ -1217,7 +1634,8 @@ function peekShell(list){
     : `Tap to read ${esc(list[0].label)} again`;
   const who = many
     ? list.map(s=>esc(s.label)).join(" &middot; ")
-    : esc(stripTags(list[0].attr)).slice(0,90);
+    : esc(list[0].body.replace(/^\s*<div[^>]*>[\s\S]*?<\/div>/,"")
+            .replace(/<[^>]*>/g," ")).replace(/\s+/g," ").trim().slice(0,84) + "&hellip;";
   const tabs = many
     ? `<div class="peek-tabs" role="tablist">${list.map((s,i)=>
         `<button class="peek-tab${i===list.length-1?" on":""}" data-peek="${i}" role="tab">${esc(s.label)}</button>`).join("")}</div>`
@@ -1269,7 +1687,7 @@ function renderSource(item){
     <div class="card">
       ${item.tag?`<div class="stage-tag">${esc(item.tag)}</div>`:""}
       ${item.html||""}
-      <div class="source">
+      <div class="source${item.sourceKind?" src-"+item.sourceKind:""}">
         <div class="source-attr">${s.attr}</div>
         <div class="source-body">${s.body}</div>
         ${s.toggle?`<button class="toggle-btn" data-toggle>${s.toggleLabel||"What does this actually mean?"}</button><div class="toggle-body">${s.toggle}</div>`:""}
