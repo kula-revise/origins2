@@ -1174,6 +1174,19 @@ body.dark .map-key li { color: var(--ink); }
   .top-meta { padding-right: 9.5rem; }
 }
 
+
+/* ---- The wrong-answer glyph clears 4.5 on the dark ground -----
+   --a1 measured 3.76 against the wrong-option tint once the rgba
+   is composited. The tick and the cross are what carry the state
+   for a learner who cannot separate the two hues, so the glyph
+   has to be legible on its own. 5.57 after this.
+   -------------------------------------------------------------- */
+body.dark .option.wrong .opt-letter, body.dark .option.wrong .opt-mark,
+body.dark .option-btn.wrong .opt-letter, body.dark .option-btn.wrong .opt-mark,
+body.dark .inter-item.no .inter-mark, body.dark .inter-item.no .rank {
+  color: #EFA79E !important;
+}
+
 </style>
 </head>
 <body class="dark">
@@ -1242,84 +1255,44 @@ const RESULTS = {
 const FLOW = [
   {
     "type": "story",
-    "side": "a",
-    "marker": "Side one",
-    "markerLabel": "Two families &middot; one wall &middot; three years",
+    "marker": "The same soldiers, twice",
+    "markerLabel": "Archangel and Vladivostok &middot; 1918",
     "lines": [
       {
-        "mark": "Year one",
-        "text": "They play music late. You knock on the wall. They stop greeting you for a month."
+        "text": "Russia leaves the war against Germany. Within months British, French, American and Japanese troops land on Russian soil."
       },
       {
-        "mark": "Year two",
-        "text": "Your mother passes their gate and looks straight ahead. They started it, so she owes them nothing."
+        "text": "London says the troops are there to guard war supplies and to hold an eastern front against Germany."
       },
       {
-        "mark": "Year three",
-        "text": "You plant a tree. They complain that it will take the light from their kitchen."
+        "text": "Moscow says fourteen states have invaded to put down a revolution."
       },
       {
-        "mark": "Last week",
-        "text": "They cut the branch that hung over their side. Nobody asked you first."
+        "text": "**Both describe the same landings.**"
       },
       {
-        "mark": "Today",
-        "text": "**You could say exactly who started this.**"
-      }
-    ]
-  },
-  {
-    "type": "story",
-    "side": "b",
-    "marker": "Side two",
-    "markerLabel": "The same wall &middot; the same three years",
-    "lines": [
-      {
-        "mark": "Year one",
-        "text": "Someone bangs on the wall at eight in the evening. Your father decides they are not worth speaking to."
-      },
-      {
-        "mark": "Year two",
-        "text": "The woman next door walks past your gate and looks straight ahead. She started it."
-      },
-      {
-        "mark": "Year three",
-        "text": "They plant a tree hard against the line, where your kitchen gets its light."
-      },
-      {
-        "mark": "Last week",
-        "text": "Your father cuts the branch on your own side of the fence. He asks nobody, because why would he."
-      },
-      {
-        "mark": "Today",
-        "text": "**You could say exactly who started this.**"
-      },
-      {
-        "text": "**Same wall. Same three years. Nobody lied.**"
-      },
-      {
-        "text": "You settle arguments like this every week. Now hand the same argument to two governments who can destroy each other."
+        "text": "Twenty-seven years later those governments are allies. Each of them still remembers what the other did in 1918."
       }
     ]
   },
   {
     "type": "question",
     "kind": "instinct",
-    "q": "Which family started it?",
+    "q": "Which account of the landings would a historian trust?",
     "options": [
-      "The family who first complained about the music late at night",
-      "The family who planted the tree along the boundary line",
-      "Both accounts are true, and neither one settles who started it",
-      "Neither, because nobody watched the whole three years from outside"
+      "London's, because a government knows its own reason for sending troops",
+      "Moscow's, because the troops landed on Russian soil and not on British",
+      "Both, because each side describes a part of what those troops did",
+      "Neither, because a government explaining its own army always misleads"
     ],
     "correct": 2,
-    "explanation": "There is no score on this one. Every event in both lists happened, and neither side left anything out. What separates the two accounts is not evidence. It is what each family had already decided about the other. You are about to watch two governments do this to each other, thirteen days apart, and neither of them is lying.",
+    "explanation": "There is no score on this one. The war supplies were real, and so was the fighting against the new government. Each side is telling you the part it could see and the part it needed. You are about to watch two governments do this to each other, thirteen days apart. In the exam an answer that picks a winner between two sources like these earns nothing, because the question is asking what each source is for.",
     "noSource": true
   },
   {
     "type": "content",
     "tag": "The turn",
-    "html": "<h2>The word for what you just did</h2><p>You did not settle who started it. You worked out that each account was built out of where the teller was standing.</p><p>That is <strong>perspective</strong>: what a source argues for depends on what it is afraid of.</p><p>Paper 1 asks this directly. <em>How does Source A differ from Source B?</em> The command word wants both positions named and set against each other. Give only one side and you have written half an answer.</p>",
+    "html": "<h2>The word for what you just did</h2><p>You did not settle which account of the landings was right. You worked out that each was built out of where the teller was standing.</p><p>That is <strong>perspective</strong>: what a source argues for depends on what it is afraid of.</p><p>Paper 1 asks this directly. <em>How does Source A differ from Source B?</em> The command word wants both positions named and set against each other. Give only one side and you have written half an answer.</p>",
     "remember": "A comparison answer carries both sources. One side on its own is not a comparison, no matter how well you argue it.",
     "terms": [
       {
@@ -1344,7 +1317,7 @@ const FLOW = [
       },
       {
         "term": "Satellite state",
-        "def": "A country that is independent on paper but whose government follows another power's instructions."
+        "def": "A country that is called independent but whose government follows another power's instructions."
       },
       {
         "term": "Red Army",
@@ -1598,7 +1571,7 @@ const FLOW = [
   {
     "type": "content",
     "tag": "Beyond the exam",
-    "html": "<h2>Reading people through your own fear</h2><p>Stalin looked at the West and saw a system that produces wars. Kennan looked at the Soviet Union and saw a country that has always felt surrounded. Each was describing something real, and each was describing it from inside his own worry.</p><p>The habit worth keeping is the one from the girl at break. When two people give you opposite readings of the same behaviour, the useful question is not which is right. It is what each of them is afraid of.</p><p>That question works on an argument between friends, on two news reports of the same protest, and on any two sources you are asked to compare.</p>"
+    "html": "<h2>Reading people through your own fear</h2><p>Stalin looked at the West and saw a system that produces wars. Kennan looked at the Soviet Union and saw a country that has always felt surrounded. Each was describing something real, and each was describing it from inside his own worry.</p><p>Think back to the two families and the wall. When two people give you opposite accounts of the same events, the useful question is not which one is right. It is what each of them is worried about.</p><p>That question works on an argument between friends, on two news reports of the same protest, and on any two sources you are asked to compare.</p>"
   }
 ];
 
@@ -2151,7 +2124,7 @@ function showResults(){
   });
   /* The button at the end of the lesson is the thing that continues. It does
      not point at a control somewhere else on the page. */
-  document.getElementById("finish-btn").addEventListener("click",()=>{ KulaLMS.advance(); });
+  document.getElementById("finish-btn").onclick = ()=>{ KulaLMS.advance(); };
   KulaLMS.completed();
 }
 
