@@ -158,21 +158,21 @@
      - mono appears nowhere */
 
 :root {
-  --sand:  #EFEEEA;   /* page: cold paper */
-  --paper: #FBFAF7;   /* cards */
-  --cut:   #E4E3DD;   /* insets, sources, carousels */
-  --ink:   #1B1D1F;
-  --clay:  #5A5F63;   /* stage tags, quiet labels */
+  --sand:  #EAEEF4;   /* page: cold screen white, no cream */
+  --paper: #FFFFFF;   /* cards: flat, not ivory */
+  --cut:   #DFE5EE;   /* insets, sources, carousels */
+  --ink:   #0E1219;
+  --clay:  #4B5563;   /* stage tags, quiet labels */
   /* Muted text: captions, attributions, counters. The previous value measured 3.07
      against the card ground and was the lightest of the four source skins. */
-  --fade:  #5E6367;
+  --fade:  #586372;
   /* border red for structure, steel blue for reward */
-  --a1: #A32B23;  --a1-rgb: 163,43,35;
-  --a2: #2E5F8A;  --a2-rgb: 46,95,138;
+  --a1: #5A12E0;  --a1-rgb: 90,18,224;
+  --a2: #0057D9;  --a2-rgb: 0,87,217;
   /* The two hover steps are derived, not identity. Left in the engine block
      they kept the engine's bottle green against this skin's steel blue. */
-  --ink-deep: #131516;
-  --a2-deep:  #214463;
+  --ink-deep: #0A0D12;
+  --a2-deep:  #0043A8;
   --sans:  'Archivo Narrow', 'Archivo', 'Inter', system-ui, -apple-system, Arial, sans-serif;
   --serif: 'Source Serif 4', 'Charter', Georgia, serif;
   --mono:  var(--sans);
@@ -183,7 +183,7 @@ body {
   font-family: var(--serif) !important;
   background-image:
     repeating-linear-gradient(45deg,
-      transparent 0 9px, rgba(27,29,31,0.034) 9px 10px) !important;
+      transparent 0 9px, rgba(14,18,25,0.034) 9px 10px) !important;
 }
 h1, h2, h3 {
   font-family: var(--sans) !important;
@@ -208,7 +208,7 @@ h1, h2, h3 {
   letter-spacing: 0.01em !important;
   text-transform: none !important;
   background: var(--a1) !important;
-  color: #F6F1F0 !important;
+  color: #FFFFFF !important;
   border-radius: 0 !important;
   padding: 0.24rem 0.62rem !important;
   display: inline-block;
@@ -225,7 +225,7 @@ h1, h2, h3 {
   background: var(--cut) !important;
   background-image:
     repeating-linear-gradient(45deg,
-      transparent 0 7px, rgba(163,43,35,0.055) 7px 8px) !important;
+      transparent 0 7px, rgba(90,18,224,0.055) 7px 8px) !important;
   border: 2px solid var(--a1) !important;
   border-radius: 0 !important;
   padding: 1.15rem 1.2rem !important;
@@ -237,7 +237,7 @@ h1, h2, h3 {
   font-weight: 700 !important;
   letter-spacing: 0.01em !important;
   text-transform: none !important;
-  color: #F6F1F0 !important;
+  color: #FFFFFF !important;
   background: var(--a1);
   border-radius: 0;
   padding: 0.5rem 0.62rem;
@@ -285,12 +285,12 @@ h1, h2, h3 {
 
 .btn-begin {
   background: var(--a1) !important;
-  color: #F6F1F0 !important;
+  color: #FFFFFF !important;
   border: 2px solid var(--a1) !important;
   border-radius: 0 !important;
   font-family: var(--sans) !important;
 }
-.btn-begin:hover { background: #862017 !important; border-color: #862017 !important; }
+.btn-begin:hover { background: #3A0B96 !important; border-color: #3A0B96 !important; }
 
 .stat-num { color: var(--a1) !important; font-family: var(--sans) !important; font-weight: 700 !important; }
 .stat-label { color: var(--clay) !important; font-family: var(--sans) !important; }
@@ -299,44 +299,44 @@ h1, h2, h3 {
 /* ---- DARK MODE ------------------------------------------------------------
    The hatch inverts to a blueprint negative rather than simply darkening. */
 body.dark {
-  --sand:  #14181C;
-  --paper: #1C2228;
-  --cut:   #232B32;
-  --ink:   #E7EBEE;
-  --clay:  #9EA9B2;
-  --fade:  #8B959D;
-  /* Lifted from #D4736A: it cleared 4.5 on the card ground but measured 4.42 on the
+  --sand:  #090B11;
+  --paper: #141822;
+  --cut:   #1D2330;
+  --ink:   #EDF1F8;
+  --clay:  #9AA6B8;
+  --fade:  #8E9BAE;
+  /* Lifted from #B79BFF: it cleared 4.5 on the card ground but measured 4.42 on the
      darker --cut inset, where the option letters and the rank numbers sit. */
-  --a1: #DA7E75;  --a1-rgb: 218,126,117;
-  --a2: #6BA3D6;  --a2-rgb: 107,163,214;
+  --a1: #B79BFF;  --a1-rgb: 183,155,255;
+  --a2: #4CC9F0;  --a2-rgb: 76,201,240;
   /* On a dark ground a hover step goes lighter, not deeper. */
   --ink-deep: #FFFFFF;
-  --a2-deep:  #96C0E6;
+  --a2-deep:  #7FDCF7;
 }
 body.dark { background-image:
   repeating-linear-gradient(45deg,
-    transparent 0 9px, rgba(231,235,238,0.042) 9px 10px) !important; }
+    transparent 0 9px, rgba(237,241,248,0.042) 9px 10px) !important; }
 body.dark .card, body.dark .stat-wrap, body.dark .carousel, body.dark .kt {
   border-top-color: var(--a1) !important; border-left-color: var(--a1) !important; }
 body.dark .source {
   border-color: var(--a1) !important;
   background-image: repeating-linear-gradient(45deg,
-    transparent 0 7px, rgba(212,115,106,0.09) 7px 8px) !important; }
+    transparent 0 7px, rgba(183,155,255,0.09) 7px 8px) !important; }
 body.dark .stage-tag, body.dark .kt-label,
-body.dark .expl-label, body.dark .pop-label { background: rgba(212,115,106,0.22) !important; color: #F2C9C4 !important; }
-body.dark .source-attr { background: rgba(212,115,106,0.22) !important; color: #F2C9C4 !important; }
-body.dark .btn-begin { background: var(--a1) !important; border-color: var(--a1) !important; color: #14181C !important; }
-body.dark .btn-begin:hover { background: #E08A82 !important; border-color: #E08A82 !important; }
-body.dark .mode-toggle { background: var(--paper); border-color: rgba(231,235,238,0.24); }
+body.dark .expl-label, body.dark .pop-label { background: rgba(183,155,255,0.22) !important; color: #EFE7FF !important; }
+body.dark .source-attr { background: rgba(183,155,255,0.22) !important; color: #EFE7FF !important; }
+body.dark .btn-begin { background: var(--a1) !important; border-color: var(--a1) !important; color: #090B11 !important; }
+body.dark .btn-begin:hover { background: #CDB6FF !important; border-color: #CDB6FF !important; }
+body.dark .mode-toggle { background: var(--paper); border-color: rgba(237,241,248,0.24); }
 body.dark .rule, body.dark .cover-rule, body.dark .flourish, body.dark .story-rule {
   background-image:
     linear-gradient(90deg, var(--a1) 0 84px, transparent 84px 100%),
     repeating-linear-gradient(90deg, var(--a1) 84px 96px, transparent 96px 106px) !important; }
 
-body.dark .chip { background: rgba(212,115,106,0.16) !important; color: #F2C9C4 !important; }
-body.dark .chip-recall,     body.dark .chip-extract   { background: rgba(212,115,106,0.20) !important; color: #F5D2CD !important; }
-body.dark .chip-understand, body.dark .chip-interpret { background: rgba(107,163,214,0.20) !important; color: #C3DCF1 !important; }
-body.dark .chip-apply,      body.dark .chip-evaluate  { background: rgba(231,235,238,0.16) !important; color: #E7EBEE !important; }
+body.dark .chip { background: rgba(183,155,255,0.16) !important; color: #EFE7FF !important; }
+body.dark .chip-recall,     body.dark .chip-extract   { background: rgba(183,155,255,0.20) !important; color: #EFE7FF !important; }
+body.dark .chip-understand, body.dark .chip-interpret { background: rgba(76,201,240,0.20) !important; color: #CFF0FC !important; }
+body.dark .chip-apply,      body.dark .chip-evaluate  { background: rgba(237,241,248,0.16) !important; color: #EDF1F8 !important; }
 
 
 /* ---- DARK MODE STATE COLOURS ----------------------------------------------
@@ -346,42 +346,42 @@ body.dark .chip-apply,      body.dark .chip-evaluate  { background: rgba(231,235
 
 body.dark .option, body.dark .option-btn {
   background: var(--cut) !important;
-  border-color: rgba(231,235,238,0.20) !important;
+  border-color: rgba(237,241,248,0.20) !important;
   color: var(--ink) !important;
 }
 body.dark .option.selected, body.dark .option-btn.selected {
-  background: rgba(107,163,214,0.16) !important; border-color: #6BA3D6 !important; }
+  background: rgba(76,201,240,0.16) !important; border-color: #4CC9F0 !important; }
 body.dark .option.correct, body.dark .option-btn.correct {
-  background: rgba(107,163,214,0.20) !important;
-  border-color: #6BA3D6 !important;
+  background: rgba(76,201,240,0.20) !important;
+  border-color: #4CC9F0 !important;
   color: var(--ink) !important;
 }
 body.dark .option.wrong, body.dark .option-btn.wrong {
-  background: rgba(212,115,106,0.18) !important;
-  border-color: #D4736A !important;
+  background: rgba(183,155,255,0.18) !important;
+  border-color: #B79BFF !important;
   color: var(--ink) !important;
 }
 body.dark .option.correct .opt-text, body.dark .option-btn.correct .opt-text,
 body.dark .option.wrong   .opt-text, body.dark .option-btn.wrong   .opt-text { color: var(--ink) !important; }
-body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter { color: #8FBEE4 !important; }
-body.dark .option.wrong   .opt-letter, body.dark .option-btn.wrong   .opt-letter { color: #E39A93 !important; }
+body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter { color: #7FDCF7 !important; }
+body.dark .option.wrong   .opt-letter, body.dark .option-btn.wrong   .opt-letter { color: #CDB6FF !important; }
 body.dark .opt-mark { color: var(--ink) !important; }
 
 body.dark .primary-btn {
   background: var(--cut) !important;
-  border: 1px solid rgba(212,115,106,0.40) !important;
+  border: 1px solid rgba(183,155,255,0.40) !important;
   color: var(--ink) !important;
 }
-body.dark .primary-btn:hover { background: #2C353D !important; }
+body.dark .primary-btn:hover { background: #252C3B !important; }
 body.dark .primary-btn .btn-title { color: var(--ink) !important; }
 body.dark .primary-btn .btn-sub, body.dark .primary-btn .btn-arrow { color: var(--clay) !important; }
-body.dark .section-btn { border-color: rgba(231,235,238,0.18) !important; color: var(--ink) !important; }
+body.dark .section-btn { border-color: rgba(237,241,248,0.18) !important; color: var(--ink) !important; }
 body.dark .section-btn:hover { background: var(--cut) !important; border-color: var(--a1) !important; }
-body.dark .primary-btn-small { background: var(--a1) !important; color: #14181C !important; }
-body.dark .primary-btn-small:hover:not(:disabled) { background: #E08A82 !important; }
-body.dark .secondary-btn { border-color: rgba(231,235,238,0.30) !important; color: var(--ink) !important; }
+body.dark .primary-btn-small { background: var(--a1) !important; color: #090B11 !important; }
+body.dark .primary-btn-small:hover:not(:disabled) { background: #CDB6FF !important; }
+body.dark .secondary-btn { border-color: rgba(237,241,248,0.30) !important; color: var(--ink) !important; }
 body.dark .secondary-btn:hover:not(:disabled) { background: var(--cut) !important; }
-body.dark .explanation { background: var(--cut) !important; border-color: rgba(212,115,106,0.28) !important; }
+body.dark .explanation { background: var(--cut) !important; border-color: rgba(183,155,255,0.28) !important; }
 body.dark .expl-text { color: var(--ink) !important; }
 body.dark .quiz-foot, body.dark .quiz-foot a { color: var(--clay) !important; }
 
@@ -405,8 +405,8 @@ body { padding-bottom: 4.5rem !important; }
   border-top: 2px solid var(--a1);
   padding-top: 0.6rem;
 }
-.figure img { border: 1px solid rgba(163,43,35,0.35) !important; border-radius: 0 !important; }
-body.dark .figure img { border-color: rgba(212,115,106,0.38) !important; filter: brightness(0.9) contrast(1.02); }
+.figure img { border: 1px solid rgba(90,18,224,0.35) !important; border-radius: 0 !important; }
+body.dark .figure img { border-color: rgba(183,155,255,0.38) !important; filter: brightness(0.9) contrast(1.02); }
 body.dark .figure figcaption { border-top-color: var(--a1); }
 
 
@@ -751,9 +751,9 @@ body.dark .source.src-cable { background: rgba(46,95,138,0.16) !important; }
   float: right; border: 1.5px solid var(--a2); padding: 0 0.34rem;
   letter-spacing: 0.18em; font-weight: 700;
 }
-body.dark .cable-head, body.dark .source.src-cable .toggle-btn { color: #96C0E6; }
-body.dark .cable-head { border-color: #96C0E6; }
-body.dark .cable-head .cab-secret { border-color: #96C0E6; }
+body.dark .cable-head, body.dark .source.src-cable .toggle-btn { color: #7FDCF7; }
+body.dark .cable-head { border-color: #7FDCF7; }
+body.dark .cable-head .cab-secret { border-color: #7FDCF7; }
 
 /* ---- 4. THE FACE OFF ----------------------------------------
    The comparison question used to be the first moment the two
@@ -764,7 +764,7 @@ body.dark .cable-head .cab-secret { border-color: #96C0E6; }
 .fo-panel { border: 2px solid var(--a1); background: var(--cut); padding: 0.95rem 1rem 1rem; }
 .fo-panel + .fo-panel { margin-top: 0; border-top: 0; }
 .fo-a { border-color: var(--a1); background-image:
-  repeating-linear-gradient(45deg, transparent 0 7px, rgba(163,43,35,0.055) 7px 8px); }
+  repeating-linear-gradient(45deg, transparent 0 7px, rgba(90,18,224,0.055) 7px 8px); }
 .fo-b { border-color: var(--a2); background: #E6EAEE; background-image: none; }
 body.dark .fo-b { background: rgba(46,95,138,0.16); }
 .fo-head {
@@ -773,7 +773,7 @@ body.dark .fo-b { background: rgba(46,95,138,0.16); }
 }
 .fo-a .fo-head { color: var(--a1); }
 .fo-b .fo-head { color: var(--a2); }
-body.dark .fo-b .fo-head { color: #96C0E6; }
+body.dark .fo-b .fo-head { color: #7FDCF7; }
 .fo-panel p { font-size: 0.95rem; line-height: 1.66; margin: 0 0 0.6rem; }
 .fo-panel p:last-child { margin-bottom: 0; }
 .fo-b p { font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, 'Liberation Mono', monospace;
@@ -831,7 +831,7 @@ body.dark .fo-b .fo-head { color: #96C0E6; }
   content: ""; display: block; width: 46px; height: 2px;
   background: var(--a2); margin: 1.4rem 0 1.1rem;
 }
-body.dark .story-line strong { color: var(--white, #E7EBEE); }
+body.dark .story-line strong { color: var(--white, #EDF1F8); }
 
 
 /* The reopen cue previews the source's own words now, so it reads as prose. */
@@ -862,8 +862,8 @@ body.dark .story-line strong { color: var(--white, #E7EBEE); }
     linear-gradient(90deg, var(--a2) 0 84px, transparent 84px 100%),
     repeating-linear-gradient(90deg, var(--a2) 84px 96px, transparent 96px 106px) !important;
 }
-body.dark .story-b .tl-mark { color: #96C0E6; border-left-color: #96C0E6; }
-body.dark .story-b .story-num { color: #96C0E6 !important; }
+body.dark .story-b .tl-mark { color: #7FDCF7; border-left-color: #7FDCF7; }
+body.dark .story-b .story-num { color: #7FDCF7 !important; }
 .story-line.marked + .story-line:not(.marked) { margin-top: 1.8rem; }
 /* The engine draws a short rule before the closing line with a ::before.
    Inside a grid that pseudo element claims a cell and shoves the marker
@@ -937,17 +937,17 @@ body.dark .inter-item.ok { background: rgba(var(--ok-rgb),0.20) !important; bord
    the cable stay two different objects in both modes.
    ---------------------------------------------------------- */
 body.dark .source.src-cable {
-  border-color: #6BA3D6 !important;
-  background: rgba(107,163,214,0.14) !important;
+  border-color: #4CC9F0 !important;
+  background: rgba(76,201,240,0.14) !important;
   background-image: none !important;
-  box-shadow: 5px 5px 0 rgba(107,163,214,0.16) !important;
+  box-shadow: 5px 5px 0 rgba(76,201,240,0.16) !important;
 }
-body.dark .source.src-cable .source-attr { border-top-color: rgba(107,163,214,0.4) !important; }
-body.dark .cable-head { color: #96C0E6 !important; border-color: #96C0E6 !important; }
-body.dark .cable-head .cab-secret { border-color: #96C0E6 !important; }
-body.dark .source.src-cable .toggle-btn { color: #96C0E6 !important; }
-body.dark .fo-b { background: rgba(107,163,214,0.14) !important; border-color: #6BA3D6 !important; }
-body.dark .fo-b .fo-head { color: #96C0E6 !important; }
+body.dark .source.src-cable .source-attr { border-top-color: rgba(76,201,240,0.4) !important; }
+body.dark .cable-head { color: #7FDCF7 !important; border-color: #7FDCF7 !important; }
+body.dark .cable-head .cab-secret { border-color: #7FDCF7 !important; }
+body.dark .source.src-cable .toggle-btn { color: #7FDCF7 !important; }
+body.dark .fo-b { background: rgba(76,201,240,0.14) !important; border-color: #4CC9F0 !important; }
+body.dark .fo-b .fo-head { color: #7FDCF7 !important; }
 
 
 /* ---- 10. THE CORRECT OPTION FILLS -----------------------------
@@ -966,8 +966,8 @@ body.dark .fo-b .fo-head { color: #96C0E6 !important; }
                     the fill against the page    7.76 : 1
              dark   ink text on #8BD1A4          9.99 : 1
    ------------------------------------------------------------ */
-:root { --ok: #215239; --ok-rgb: 33,82,57; --on-ok: #FBFAF7; }
-body.dark { --ok: #8BD1A4; --ok-rgb: 139,209,164; --on-ok: #14181C; }
+:root { --ok: #215239; --ok-rgb: 33,82,57; --on-ok: #FFFFFF; }
+body.dark { --ok: #8BD1A4; --ok-rgb: 139,209,164; --on-ok: #090B11; }
 
 .option.correct, .option-btn.correct,
 body.dark .option.correct, body.dark .option-btn.correct {
@@ -1083,12 +1083,12 @@ body.dark .inter-item.ok span, body.dark .inter-item.ok .rank { color: var(--on-
   font-family: var(--sans); font-size: 0.86rem; line-height: 1.5;
   color: var(--ink); margin-bottom: 0.5rem;
 }
-.mk { flex: 0 0 auto; width: 20px; height: 14px; margin-top: 0.18rem; border: 1px solid #8B8F93; }
-.mk-east { border-color: #A32B23; background-image:
-  repeating-linear-gradient(45deg, transparent 0 5px, rgba(163,43,35,0.42) 5px 6px); }
-.mk-west { background: #DCDBD4; }
-.mk-neutral { background: #EDECE6; }
-.mk-outside { border-color: #A32B23; border-style: dashed; background: #E7E2E0; }
+.mk { flex: 0 0 auto; width: 20px; height: 14px; margin-top: 0.18rem; border: 1px solid #7C8798; }
+.mk-east { border-color: #5A12E0; background-image:
+  repeating-linear-gradient(45deg, transparent 0 5px, rgba(90,18,224,0.42) 5px 6px); }
+.mk-west { background: #CFD8E4; }
+.mk-neutral { background: #E3E9F1; }
+.mk-outside { border-color: #5A12E0; border-style: dashed; background: #E1E4EE; }
 body.dark .map-key li { color: var(--ink); }
 
 .inset-block { margin-top: 1.1rem; border-top: 1px solid var(--hair-strong); padding-top: 0.9rem; }
@@ -1328,7 +1328,7 @@ const FLOW = [
   {
     "type": "content",
     "tag": "The evidence",
-    "html": "<h2>Czechoslovakia, February 1948</h2><p>Czechoslovakia was the one that mattered most to Western opinion. It was the only Eastern European country with a real democratic tradition, and parties had really competed in its 1946 election.</p><p>In February 1948 the communist members of the coalition government took control of the police, forced the non-communist ministers out and took power outright. The foreign minister, Jan Masaryk, was found dead below a window two weeks later.</p><p>For anyone in the West still arguing that Soviet policy was defensive, February 1948 ended the argument. It is also why the Marshall Plan passed Congress the following month, which is Lesson 3.</p><figure class=\"figure wide\"><svg viewBox=\"0 0 620 470\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Map of Europe divided by the iron curtain in 1949, with an inset showing Germany and Berlin\"> <defs> <pattern id=\"hatch\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"> <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#A32B23\" stroke-width=\"1.7\" opacity=\"0.34\"/> </pattern> <clipPath id=\"frame\"><rect x=\"0\" y=\"0\" width=\"620\" height=\"470\"/></clipPath> </defs> <rect width=\"620\" height=\"700\" fill=\"#EFEEEA\"/> <g clip-path=\"url(#frame)\"> <path d=\"M37.4 434.9 L36.3 429.6 L31.1 428.7 L28.4 425.4 L29.3 419.6 L33.9 416.4 L34.7 412.8 L37.1 407.3 L36.8 403.5 L34.6 400.2 L34.0 397.1 L34.6 390.5 L29.9 386.4 L46.2 379.6 L60.2 381.3 L75.6 381.2 L87.9 382.9 L97.4 382.4 L115.9 382.7 L121.9 377.0 L124.1 357.6 L112.2 347.1 L103.8 342.0 L86.2 338.0 L85.1 330.5 L99.9 328.2 L119.2 330.9 L115.6 319.0 L126.4 323.6 L153.1 315.3 L156.6 306.4 L166.6 304.2 L175.8 302.0 L175.8 302.0 L181.8 299.0 L191.8 282.5 L207.5 277.6 L217.1 278.0 L219.2 281.9 L216.3 292.2 L213.4 296.4 L206.5 296.4 L208.5 308.0 L207.2 315.3 L209.5 317.7 L208.8 322.3 L214.2 325.1 L230.8 327.0 L225.0 334.2 L223.5 341.5 L220.4 343.2 L215.1 342.3 L215.5 344.9 L207.1 350.5 L206.9 355.0 L212.4 353.5 L216.4 357.8 L221.3 359.9 L226.8 359.5 L233.3 356.1 L235.3 357.7 L240.7 357.4 L243.2 353.4 L251.7 354.6 L256.8 352.9 L257.7 348.8 L264.6 350.3 L266.0 348.3 L277.3 346.6 L279.9 350.1 L296.3 352.7 L295.1 357.6 L297.8 361.8 L288.7 360.3 L279.3 363.8 L280.0 368.7 L278.6 371.4 L282.3 376.3 L293.1 381.1 L298.9 388.9 L311.6 396.4 L320.6 396.3 L323.4 398.4 L320.2 400.2 L330.5 403.5 L338.9 406.3 L348.8 411.0 L350.0 412.7 L347.8 415.9 L341.4 411.7 L331.5 410.2 L326.6 416.0 L334.9 419.3 L333.6 424.0 L328.8 424.5 L322.6 432.0 L317.9 432.7 L317.9 430.0 L320.2 425.3 L322.7 423.4 L318.3 418.3 L314.7 413.8 L310.0 412.6 L306.6 408.7 L299.2 407.1 L294.2 403.4 L285.8 402.8 L276.8 398.7 L266.3 392.7 L258.5 387.3 L254.9 377.9 L249.2 376.8 L239.8 373.7 L234.6 375.0 L227.9 379.4 L223.1 380.1 L212.7 385.4 L190.1 382.9 L173.4 385.9 L172.1 391.6 L172.7 397.0 L161.8 403.1 L147.1 405.0 L146.1 408.1 L139.0 413.1 L134.6 420.3 L139.1 425.4 L132.4 429.3 L129.9 435.0 L121.3 436.7 L113.1 443.3 L98.6 443.5 L87.6 443.3 L80.4 446.3 L76.0 449.5 L70.4 448.8 L66.2 446.0 L62.9 441.0 L52.2 439.7 L47.6 441.9 L41.5 440.7 L35.6 441.7 L37.4 434.9 Z M238.9 423.9 L234.5 421.6 L234.1 410.8 L231.5 405.6 L237.8 406.1 L243.5 403.2 L250.4 409.7 L248.8 421.5 L243.6 421.0 L238.9 423.9 Z M82.2 262.6 L79.4 259.4 L83.6 254.0 L79.8 250.6 L73.6 256.4 L73.0 244.6 L67.2 238.2 L71.3 225.1 L80.3 214.5 L89.4 215.5 L103.3 214.4 L91.0 228.5 L102.7 226.7 L115.3 226.8 L112.3 237.2 L102.0 248.3 L113.8 249.1 L114.7 250.4 L125.0 264.6 L132.8 266.5 L139.9 279.8 L143.2 284.3 L157.1 286.5 L155.7 293.7 L149.8 296.9 L154.4 302.7 L144.1 308.4 L128.7 308.3 L109.2 311.3 L103.8 309.1 L96.2 314.2 L85.6 313.0 L77.6 317.1 L71.5 314.9 L88.3 303.5 L98.6 301.2 L98.5 301.1 L80.5 299.3 L77.3 294.9 L89.3 291.4 L83.0 285.3 L85.2 277.8 L102.3 278.9 L102.3 278.9 L104.0 272.1 L96.3 264.9 L96.1 264.7 L82.2 262.6 Z M72.8 265.4 L66.6 273.5 L57.9 271.1 L50.8 271.2 L53.2 264.9 L50.8 258.5 L60.5 258.0 L72.8 265.4 Z M-28.8 97.1 L-31.5 108.1 L-18.5 119.4 L-33.4 131.7 L-34.4 132.0 L-34.4 96.7 L-28.8 97.1 Z M409.9 451.6 L416.2 454.4 L425.1 454.0 L433.6 454.6 L433.4 456.0 L439.6 455.0 L438.2 457.5 L421.7 458.2 L421.8 456.8 L407.8 455.2 L409.9 451.6 Z M302.4 440.6 L296.5 439.6 L280.5 435.2 L282.1 430.8 L295.5 431.6 L307.3 430.6 L316.0 429.9 L311.8 436.7 L313.6 439.4 L311.1 443.8 L302.4 440.6 Z M611.0 439.9 L604.8 439.8 L591.6 443.0 L582.1 443.0 L576.0 441.4 L563.4 443.8 L559.6 442.1 L559.0 446.9 L555.9 448.7 L552.8 450.6 L548.6 446.7 L553.0 443.5 L546.0 444.3 L536.4 442.3 L528.5 447.2 L511.0 448.2 L501.7 443.6 L489.4 443.3 L486.7 446.9 L478.8 447.9 L467.7 443.3 L455.1 443.5 L448.3 434.9 L439.9 430.1 L445.5 423.2 L438.3 419.0 L451.0 410.4 L468.7 410.0 L473.5 403.1 L495.4 404.4 L509.2 398.4 L522.6 395.8 L541.6 395.6 L561.6 402.1 L578.1 405.6 L591.4 404.2 L601.3 405.0 L614.9 400.3 L627.1 399.8 L638.2 404.3 L640.1 407.5 L639.0 411.9 L647.6 414.1 L652.1 416.8 L644.2 419.3 L647.8 429.4 L645.6 432.1 L651.8 439.1 L651.8 439.1 L646.3 440.5 L642.3 438.3 L628.9 437.2 L624.0 438.6 L611.0 439.9 Z M449.3 394.7 L459.2 395.9 L460.6 399.5 L470.6 402.4 L468.5 404.7 L454.9 405.2 L450.0 408.0 L440.4 412.8 L436.8 408.6 L437.0 406.8 L430.0 406.5 L424.0 405.6 L410.1 408.0 L418.0 413.1 L412.2 414.5 L405.8 414.5 L399.7 409.9 L397.6 411.9 L400.1 417.2 L405.9 421.4 L401.5 423.4 L407.9 427.4 L413.6 430.0 L413.8 434.9 L403.2 432.6 L406.6 437.0 L399.3 437.9 L403.6 445.5 L396.0 445.6 L386.6 441.9 L382.3 435.0 L380.3 429.2 L375.8 425.1 L369.9 420.1 L369.1 417.5 L374.5 413.2 L375.2 410.3 L378.9 409.0 L379.1 406.6 L386.6 405.8 L391.0 403.8 L397.2 404.0 L399.1 402.4 L401.3 402.1 L409.8 402.3 L419.0 399.8 L427.1 403.0 L437.5 402.1 L437.6 397.6 L449.3 394.7 Z M235.9 393.6 L238.2 390.1 L245.6 386.6 L247.5 394.6 L243.7 401.7 L238.5 399.8 L235.9 393.6 Z M279.8 246.6 L283.5 252.7 L276.6 262.5 L264.6 255.7 L263.0 250.7 L279.8 246.6 Z M235.9 234.1 L246.0 233.4 L250.0 229.8 L259.3 226.2 L258.9 232.8 L255.5 236.9 L256.8 240.4 L263.1 242.3 L260.3 247.0 L256.8 245.6 L248.6 254.4 L251.7 260.3 L244.3 262.1 L235.7 260.6 L231.0 253.9 L230.7 241.3 L232.6 237.9 L235.9 234.1 Z M432.7 49.1 L421.8 57.6 L409.5 53.0 L394.5 53.9 L381.7 43.7 L374.8 48.9 L367.7 49.7 L366.0 62.1 L344.4 59.1 L341.3 69.5 L330.3 69.4 L322.7 82.3 L311.2 101.6 L293.4 124.9 L297.6 130.4 L293.6 136.6 L282.2 136.4 L274.8 150.9 L275.5 170.6 L282.8 177.9 L279.0 194.4 L269.5 203.8 L264.4 211.5 L256.7 203.3 L234.0 218.7 L218.7 221.7 L202.8 215.0 L198.7 200.6 L195.1 168.1 L205.7 158.6 L236.0 145.9 L258.7 129.7 L279.7 106.9 L307.3 73.1 L326.5 59.2 L358.0 34.9 L383.2 26.1 L402.1 27.2 L419.6 10.0 L440.5 11.0 L461.2 6.8 L497.1 22.1 L482.3 27.5 L494.9 40.1 L475.3 47.9 L466.1 49.7 L470.9 35.9 L456.2 28.0 L438.4 34.8 L432.7 49.1 Z\"     fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M251.7 354.6 L243.2 353.4 L240.7 357.4 L235.3 357.7 L233.3 356.1 L226.8 359.5 L221.3 359.9 L216.4 357.8 L212.4 353.5 L206.9 355.0 L207.1 350.5 L215.5 344.9 L215.1 342.3 L220.4 343.2 L223.5 341.5 L233.3 341.5 L235.6 339.3 L247.9 342.4 L251.4 341.9 L257.2 344.7 L258.8 342.0 L269.0 342.5 L277.2 340.6 L282.7 340.9 L286.3 343.0 L287.3 341.3 L285.7 334.6 L289.8 333.3 L293.9 328.5 L302.4 331.9 L308.9 327.6 L312.9 326.8 L321.8 330.0 L327.2 329.5 L332.5 331.4 L331.6 332.7 L332.7 336.3 L331.9 340.5 L325.4 340.5 L327.6 342.7 L323.8 349.2 L321.6 350.9 L311.6 351.2 L305.8 353.5 L296.3 352.7 L279.9 350.1 L277.3 346.6 L266.0 348.3 L264.6 350.3 L257.7 348.8 L256.8 352.9 L251.7 354.6 Z M39.5 298.5 L23.2 296.8 L32.5 285.0 L26.5 273.3 L42.2 264.1 L50.8 258.5 L53.2 264.9 L50.8 271.2 L57.9 271.1 L66.6 273.5 L68.5 281.7 L59.8 291.9 L39.5 298.5 Z M275.5 170.6 L274.8 150.9 L282.2 136.4 L293.6 136.6 L297.6 130.4 L293.4 124.9 L311.2 101.6 L322.7 82.3 L330.3 69.4 L341.3 69.5 L344.4 59.1 L366.0 62.1 L367.7 49.7 L374.8 48.9 L381.7 43.7 L394.5 53.9 L409.5 53.0 L421.8 57.6 L432.7 49.1 L438.4 34.8 L456.2 28.0 L470.9 35.9 L466.1 49.7 L464.4 62.9 L482.0 75.2 L471.4 88.6 L484.7 108.1 L477.0 122.3 L487.3 134.2 L482.6 144.3 L499.6 154.8 L495.3 162.4 L484.6 170.9 L460.1 189.1 L460.1 189.1 L460.1 189.1 L439.2 190.2 L419.0 195.3 L400.4 198.1 L393.7 190.6 L382.6 186.0 L385.1 172.0 L379.6 158.7 L385.0 149.9 L395.5 140.2 L421.7 123.0 L429.4 119.6 L428.2 112.7 L412.2 104.7 L392.5 109.5 L381.3 121.0 L383.1 130.9 L364.9 143.5 L342.7 156.6 L334.3 177.2 L342.5 187.2 L353.5 194.9 L342.9 210.2 L331.0 213.3 L326.6 235.0 L320.1 246.7 L306.2 245.5 L299.7 255.2 L286.4 255.8 L282.7 244.2 L273.1 229.9 L264.4 211.5 L269.5 203.8 L279.0 194.4 L282.8 177.9 L275.5 170.6 Z\"  fill=\"#EDECE6\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M369.1 417.5 L367.2 416.9 L366.9 415.0 L360.6 411.9 L359.6 407.6 L360.6 401.4 L362.1 398.6 L360.2 397.1 L360.2 397.1 L357.8 396.4 L354.6 393.4 L349.6 391.5 L349.6 391.5 L338.8 388.1 L332.2 384.7 L321.7 381.9 L312.0 374.9 L314.3 374.1 L309.1 370.1 L308.9 366.8 L301.5 365.3 L298.0 369.5 L294.6 366.2 L294.8 362.8 L295.2 362.7 L297.8 361.8 L295.1 357.6 L296.3 352.7 L305.8 353.5 L311.6 351.2 L321.6 350.9 L323.8 349.2 L325.7 349.4 L328.0 352.7 L331.6 354.0 L340.2 358.2 L349.7 360.1 L354.0 358.6 L354.0 358.6 L362.8 356.0 L369.9 356.5 L376.2 360.4 L377.4 363.5 L384.4 365.8 L385.3 369.8 L392.0 372.6 L395.6 370.4 L398.5 371.6 L395.8 373.3 L397.9 374.9 L395.1 377.1 L396.1 380.6 L401.7 384.7 L397.3 387.6 L395.4 390.6 L396.6 391.7 L394.7 393.0 L400.5 396.0 L401.3 402.1 L399.1 402.4 L397.2 404.0 L391.0 403.8 L386.6 405.8 L379.1 406.6 L378.9 409.0 L375.2 410.3 L374.5 413.2 L369.1 417.5 Z\" fill=\"#E7E2E0\" stroke=\"#A32B23\" stroke-width=\"0.7\" stroke-dasharray=\"3 2\"/> <path d=\"M455.5 390.6 L459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L287.4 324.0 L281.5 321.4 L280.3 317.0 L278.3 313.8 L286.7 311.4 L290.9 308.7 L299.2 306.6 L302.0 304.5 L305.1 305.8 L310.2 304.7 L305.5 297.6 L306.4 293.8 L303.5 287.8 L299.4 283.7 L302.6 280.7 L299.9 274.8 L307.7 271.4 L325.7 265.9 L340.1 261.9 L351.6 263.9 L352.4 266.8 L363.5 266.9 L377.7 268.3 L398.8 268.1 L404.7 269.4 L407.4 273.0 L407.9 278.1 L411.1 282.5 L411.0 287.0 L404.1 289.3 L407.7 294.5 L407.9 299.5 L413.7 309.0 L412.4 312.1 L406.7 313.3 L396.3 322.2 L399.3 326.9 L396.8 326.3 L393.6 329.0 L391.4 333.2 L397.7 336.0 L398.5 338.8 L403.5 336.6 L410.6 337.7 L417.9 337.8 L423.3 340.3 L427.2 338.7 L435.7 337.7 L438.6 335.3 L443.4 335.3 L446.9 336.3 L450.5 339.4 L454.1 343.7 L460.7 349.7 L461.1 354.1 L459.9 358.3 L461.9 362.8 L467.1 364.6 L472.5 363.0 L477.7 364.7 L477.9 367.2 L472.4 369.3 L468.9 368.4 L465.7 380.0 L459.7 383.9 L455.5 390.6 Z\"   fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M545.5 363.5 L557.2 363.0 L555.0 366.4 L542.4 368.1 L526.8 373.7 L520.4 371.8 L522.9 367.2 L510.4 364.4 L512.4 362.5 L523.4 359.2 L521.7 358.0 L520.1 356.9 L502.2 354.4 L501.5 350.7 L490.8 351.9 L486.6 357.4 L477.7 364.7 L472.5 363.0 L467.1 364.6 L461.9 362.8 L459.9 358.3 L461.1 354.1 L460.7 349.7 L454.1 343.7 L450.5 339.4 L446.9 336.3 L443.4 335.3 L438.6 335.3 L435.7 337.7 L427.2 338.7 L423.3 340.3 L417.9 337.8 L410.6 337.7 L403.5 336.6 L398.5 338.8 L397.7 336.0 L391.4 333.2 L393.6 329.0 L396.8 326.3 L399.3 326.9 L396.3 322.2 L406.7 313.3 L412.4 312.1 L413.7 309.0 L407.9 299.5 L407.7 294.5 L404.1 289.3 L411.0 287.0 L411.1 282.5 L407.9 278.1 L407.4 273.0 L404.7 269.4 L398.8 268.1 L377.7 268.3 L363.5 266.9 L366.1 261.7 L382.0 257.8 L379.5 247.6 L379.9 238.2 L385.6 230.3 L396.4 225.9 L405.5 235.4 L414.7 235.2 L416.9 225.4 L418.3 217.7 L414.0 219.4 L406.7 214.7 L405.8 207.1 L420.3 203.3 L434.7 201.4 L447.2 203.6 L459.0 203.2 L459.0 203.2 L472.1 195.7 L460.1 189.1 L460.1 189.1 L484.6 170.9 L495.3 162.4 L499.6 154.8 L482.6 144.3 L487.3 134.2 L477.0 122.3 L484.7 108.1 L471.4 88.6 L482.0 75.2 L464.4 62.9 L466.1 49.7 L475.3 47.9 L494.9 40.1 L494.9 40.1 L506.7 33.2 L525.6 45.1 L557.0 49.7 L600.4 70.9 L609.2 79.5 L610.0 91.3 L597.2 100.3 L578.5 104.9 L527.2 91.8 L518.8 94.0 L537.5 106.5 L538.2 114.3 L539.0 130.9 L553.8 135.7 L562.7 139.7 L564.2 132.1 L557.3 125.2 L564.6 119.1 L592.4 129.2 L602.0 125.2 L594.3 113.3 L621.1 96.7 L631.7 97.7 L642.4 103.7 L649.1 91.9 L639.5 81.4 L645.1 70.6 L636.7 59.1 L654.4 62.4 L654.4 390.3 L649.1 389.4 L642.2 390.8 L640.2 389.1 L624.5 384.6 L607.6 383.1 L597.9 381.4 L596.5 382.6 L581.9 374.5 L568.8 370.9 L558.9 365.2 L567.2 363.6 L576.7 355.4 L570.3 351.4 L587.3 347.3 L586.9 345.1 L576.6 346.7 L567.5 347.5 L559.8 350.8 L549.1 351.3 L539.2 355.0 L539.8 360.3 L539.9 361.2 L545.5 363.5 Z\"     fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M277.2 340.6 L269.0 342.5 L258.8 342.0 L257.2 344.7 L251.4 341.9 L247.9 342.4 L235.6 339.3 L233.3 341.5 L223.5 341.5 L225.0 334.2 L230.8 327.0 L214.2 325.1 L208.8 322.3 L209.5 317.7 L207.2 315.3 L208.5 308.0 L206.5 296.4 L213.4 296.4 L216.3 292.2 L219.2 281.9 L217.1 278.0 L219.3 275.5 L228.9 274.9 L231.0 277.4 L238.8 271.7 L236.2 267.3 L235.7 260.6 L244.3 262.1 L251.7 260.3 L251.9 264.9 L263.0 267.6 L261.2 276.6 L258.9 286.9 L251.7 299.2 L253.2 306.9 L259.5 312.3 L276.7 312.3 L280.1 322.0 L280.1 340.8 L277.2 340.6 Z\"     fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"0.7\"/> <path d=\"M299.4 283.7 L303.5 287.8 L306.4 293.8 L305.5 297.6 L310.2 304.7 L305.1 305.8 L302.0 304.5 L299.2 306.6 L290.9 308.7 L286.7 311.4 L278.3 313.8 L280.3 317.0 L281.5 321.4 L287.4 324.0 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.5 267.7 L263.4 271.8 L275.1 269.6 L281.5 266.4 L294.5 271.1 L299.9 274.8 L302.6 280.7 L299.4 283.7 Z\"     fill=\"url(#hatch)\" stroke=\"#A32B23\" stroke-width=\"0.9\"/> <path d=\"M459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.4 267.6\" fill=\"none\" stroke=\"#A32B23\" stroke-width=\"4.4\"       stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <circle cx=\"291.6\" cy=\"289.2\" r=\"6.4\" fill=\"#2E5F8A\" stroke=\"#EFEEEA\" stroke-width=\"1.6\"/> </g> <text x=\"86\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#5A5F63\">WEST</text> <text x=\"486\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#A32B23\">EAST</text> <line x1=\"352\" y1=\"288\" x2=\"309\" y2=\"327\" stroke=\"#A32B23\" stroke-width=\"2\"/> <circle cx=\"309\" cy=\"327\" r=\"2.6\" fill=\"#A32B23\"/> <text x=\"356\" y=\"286\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#A32B23\">the iron curtain</text> <line x1=\"291.6\" y1=\"289.2\" x2=\"196\" y2=\"268\" stroke=\"#2E5F8A\" stroke-width=\"2\"/> <text x=\"190\" y=\"266\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#2E5F8A\" text-anchor=\"end\">Berlin</text></svg><ul class=\"map-key\"><li><span class=\"mk mk-east\"></span>Soviet Union and the states loyal to Moscow</li><li><span class=\"mk mk-west\"></span>Western states, most of them in NATO from 1949</li><li><span class=\"mk mk-neutral\"></span>Neutral: Sweden, Finland, Switzerland, Ireland, Austria</li><li><span class=\"mk mk-outside\"></span>Communist but outside Soviet control: Yugoslavia and Albania</li></ul><div class=\"inset-block\"><div class=\"inset-head\">Germany, divided</div><svg viewBox=\"0 0 330 108\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Germany split into western zones and a Soviet zone, with Berlin divided inside the Soviet zone\"><defs><pattern id=\"hatch2\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#A32B23\" stroke-width=\"1.7\" opacity=\"0.34\"/></pattern></defs><rect x=\"0\" y=\"0\" width=\"330\" height=\"108\" fill=\"#EFEEEA\"/><rect x=\"1\" y=\"1\" width=\"150\" height=\"74\" fill=\"#DCDBD4\" stroke=\"#8B8F93\" stroke-width=\"1\"/><rect x=\"151\" y=\"1\" width=\"178\" height=\"74\" fill=\"#EDECE6\" stroke=\"#A32B23\" stroke-width=\"1.2\"/><rect x=\"151\" y=\"1\" width=\"178\" height=\"74\" fill=\"url(#hatch2)\" stroke=\"#A32B23\" stroke-width=\"1.2\"/><text x=\"10\" y=\"26\" font-size=\"15\" fill=\"#3F454A\">British, US and</text><text x=\"10\" y=\"45\" font-size=\"15\" fill=\"#3F454A\">French zones</text><text x=\"161\" y=\"26\" font-size=\"15\" fill=\"#8E2019\">Soviet zone</text><rect x=\"238\" y=\"30\" width=\"32\" height=\"24\" fill=\"#FBFAF7\" stroke=\"#2E5F8A\" stroke-width=\"2\"/><line x1=\"254\" y1=\"30\" x2=\"254\" y2=\"54\" stroke=\"#2E5F8A\" stroke-width=\"1.6\"/><text x=\"254\" y=\"70\" font-size=\"15\" font-weight=\"700\" fill=\"#2E5F8A\" text-anchor=\"middle\">Berlin</text></svg><p class=\"inset-note\">Berlin was split into four sectors, the same as the country. It sat about 160 kilometres inside the Soviet zone.</p></div><figcaption>Europe by 1949. The heavy line is the border Churchill had called an iron curtain three years earlier. Two things are worth noticing. Yugoslavia and Albania are communist and outside Soviet control, so the division was never simply communist against capitalist. And look at Berlin, because that is where this unit ends up. Original illustration for Kula Revise. Boundaries from Natural Earth, public domain.</figcaption></figure>",
+    "html": "<h2>Czechoslovakia, February 1948</h2><p>Czechoslovakia was the one that mattered most to Western opinion. It was the only Eastern European country with a real democratic tradition, and parties had really competed in its 1946 election.</p><p>In February 1948 the communist members of the coalition government took control of the police, forced the non-communist ministers out and took power outright. The foreign minister, Jan Masaryk, was found dead below a window two weeks later.</p><p>For anyone in the West still arguing that Soviet policy was defensive, February 1948 ended the argument. It is also why the Marshall Plan passed Congress the following month, which is Lesson 3.</p><figure class=\"figure wide\"><svg viewBox=\"0 0 620 470\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Map of Europe divided by the iron curtain in 1949, with an inset showing Germany and Berlin\"> <defs> <pattern id=\"hatch\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"> <line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#5A12E0\" stroke-width=\"1.7\" opacity=\"0.34\"/> </pattern> <clipPath id=\"frame\"><rect x=\"0\" y=\"0\" width=\"620\" height=\"470\"/></clipPath> </defs> <rect width=\"620\" height=\"700\" fill=\"#EAEEF4\"/> <g clip-path=\"url(#frame)\"> <path d=\"M37.4 434.9 L36.3 429.6 L31.1 428.7 L28.4 425.4 L29.3 419.6 L33.9 416.4 L34.7 412.8 L37.1 407.3 L36.8 403.5 L34.6 400.2 L34.0 397.1 L34.6 390.5 L29.9 386.4 L46.2 379.6 L60.2 381.3 L75.6 381.2 L87.9 382.9 L97.4 382.4 L115.9 382.7 L121.9 377.0 L124.1 357.6 L112.2 347.1 L103.8 342.0 L86.2 338.0 L85.1 330.5 L99.9 328.2 L119.2 330.9 L115.6 319.0 L126.4 323.6 L153.1 315.3 L156.6 306.4 L166.6 304.2 L175.8 302.0 L175.8 302.0 L181.8 299.0 L191.8 282.5 L207.5 277.6 L217.1 278.0 L219.2 281.9 L216.3 292.2 L213.4 296.4 L206.5 296.4 L208.5 308.0 L207.2 315.3 L209.5 317.7 L208.8 322.3 L214.2 325.1 L230.8 327.0 L225.0 334.2 L223.5 341.5 L220.4 343.2 L215.1 342.3 L215.5 344.9 L207.1 350.5 L206.9 355.0 L212.4 353.5 L216.4 357.8 L221.3 359.9 L226.8 359.5 L233.3 356.1 L235.3 357.7 L240.7 357.4 L243.2 353.4 L251.7 354.6 L256.8 352.9 L257.7 348.8 L264.6 350.3 L266.0 348.3 L277.3 346.6 L279.9 350.1 L296.3 352.7 L295.1 357.6 L297.8 361.8 L288.7 360.3 L279.3 363.8 L280.0 368.7 L278.6 371.4 L282.3 376.3 L293.1 381.1 L298.9 388.9 L311.6 396.4 L320.6 396.3 L323.4 398.4 L320.2 400.2 L330.5 403.5 L338.9 406.3 L348.8 411.0 L350.0 412.7 L347.8 415.9 L341.4 411.7 L331.5 410.2 L326.6 416.0 L334.9 419.3 L333.6 424.0 L328.8 424.5 L322.6 432.0 L317.9 432.7 L317.9 430.0 L320.2 425.3 L322.7 423.4 L318.3 418.3 L314.7 413.8 L310.0 412.6 L306.6 408.7 L299.2 407.1 L294.2 403.4 L285.8 402.8 L276.8 398.7 L266.3 392.7 L258.5 387.3 L254.9 377.9 L249.2 376.8 L239.8 373.7 L234.6 375.0 L227.9 379.4 L223.1 380.1 L212.7 385.4 L190.1 382.9 L173.4 385.9 L172.1 391.6 L172.7 397.0 L161.8 403.1 L147.1 405.0 L146.1 408.1 L139.0 413.1 L134.6 420.3 L139.1 425.4 L132.4 429.3 L129.9 435.0 L121.3 436.7 L113.1 443.3 L98.6 443.5 L87.6 443.3 L80.4 446.3 L76.0 449.5 L70.4 448.8 L66.2 446.0 L62.9 441.0 L52.2 439.7 L47.6 441.9 L41.5 440.7 L35.6 441.7 L37.4 434.9 Z M238.9 423.9 L234.5 421.6 L234.1 410.8 L231.5 405.6 L237.8 406.1 L243.5 403.2 L250.4 409.7 L248.8 421.5 L243.6 421.0 L238.9 423.9 Z M82.2 262.6 L79.4 259.4 L83.6 254.0 L79.8 250.6 L73.6 256.4 L73.0 244.6 L67.2 238.2 L71.3 225.1 L80.3 214.5 L89.4 215.5 L103.3 214.4 L91.0 228.5 L102.7 226.7 L115.3 226.8 L112.3 237.2 L102.0 248.3 L113.8 249.1 L114.7 250.4 L125.0 264.6 L132.8 266.5 L139.9 279.8 L143.2 284.3 L157.1 286.5 L155.7 293.7 L149.8 296.9 L154.4 302.7 L144.1 308.4 L128.7 308.3 L109.2 311.3 L103.8 309.1 L96.2 314.2 L85.6 313.0 L77.6 317.1 L71.5 314.9 L88.3 303.5 L98.6 301.2 L98.5 301.1 L80.5 299.3 L77.3 294.9 L89.3 291.4 L83.0 285.3 L85.2 277.8 L102.3 278.9 L102.3 278.9 L104.0 272.1 L96.3 264.9 L96.1 264.7 L82.2 262.6 Z M72.8 265.4 L66.6 273.5 L57.9 271.1 L50.8 271.2 L53.2 264.9 L50.8 258.5 L60.5 258.0 L72.8 265.4 Z M-28.8 97.1 L-31.5 108.1 L-18.5 119.4 L-33.4 131.7 L-34.4 132.0 L-34.4 96.7 L-28.8 97.1 Z M409.9 451.6 L416.2 454.4 L425.1 454.0 L433.6 454.6 L433.4 456.0 L439.6 455.0 L438.2 457.5 L421.7 458.2 L421.8 456.8 L407.8 455.2 L409.9 451.6 Z M302.4 440.6 L296.5 439.6 L280.5 435.2 L282.1 430.8 L295.5 431.6 L307.3 430.6 L316.0 429.9 L311.8 436.7 L313.6 439.4 L311.1 443.8 L302.4 440.6 Z M611.0 439.9 L604.8 439.8 L591.6 443.0 L582.1 443.0 L576.0 441.4 L563.4 443.8 L559.6 442.1 L559.0 446.9 L555.9 448.7 L552.8 450.6 L548.6 446.7 L553.0 443.5 L546.0 444.3 L536.4 442.3 L528.5 447.2 L511.0 448.2 L501.7 443.6 L489.4 443.3 L486.7 446.9 L478.8 447.9 L467.7 443.3 L455.1 443.5 L448.3 434.9 L439.9 430.1 L445.5 423.2 L438.3 419.0 L451.0 410.4 L468.7 410.0 L473.5 403.1 L495.4 404.4 L509.2 398.4 L522.6 395.8 L541.6 395.6 L561.6 402.1 L578.1 405.6 L591.4 404.2 L601.3 405.0 L614.9 400.3 L627.1 399.8 L638.2 404.3 L640.1 407.5 L639.0 411.9 L647.6 414.1 L652.1 416.8 L644.2 419.3 L647.8 429.4 L645.6 432.1 L651.8 439.1 L651.8 439.1 L646.3 440.5 L642.3 438.3 L628.9 437.2 L624.0 438.6 L611.0 439.9 Z M449.3 394.7 L459.2 395.9 L460.6 399.5 L470.6 402.4 L468.5 404.7 L454.9 405.2 L450.0 408.0 L440.4 412.8 L436.8 408.6 L437.0 406.8 L430.0 406.5 L424.0 405.6 L410.1 408.0 L418.0 413.1 L412.2 414.5 L405.8 414.5 L399.7 409.9 L397.6 411.9 L400.1 417.2 L405.9 421.4 L401.5 423.4 L407.9 427.4 L413.6 430.0 L413.8 434.9 L403.2 432.6 L406.6 437.0 L399.3 437.9 L403.6 445.5 L396.0 445.6 L386.6 441.9 L382.3 435.0 L380.3 429.2 L375.8 425.1 L369.9 420.1 L369.1 417.5 L374.5 413.2 L375.2 410.3 L378.9 409.0 L379.1 406.6 L386.6 405.8 L391.0 403.8 L397.2 404.0 L399.1 402.4 L401.3 402.1 L409.8 402.3 L419.0 399.8 L427.1 403.0 L437.5 402.1 L437.6 397.6 L449.3 394.7 Z M235.9 393.6 L238.2 390.1 L245.6 386.6 L247.5 394.6 L243.7 401.7 L238.5 399.8 L235.9 393.6 Z M279.8 246.6 L283.5 252.7 L276.6 262.5 L264.6 255.7 L263.0 250.7 L279.8 246.6 Z M235.9 234.1 L246.0 233.4 L250.0 229.8 L259.3 226.2 L258.9 232.8 L255.5 236.9 L256.8 240.4 L263.1 242.3 L260.3 247.0 L256.8 245.6 L248.6 254.4 L251.7 260.3 L244.3 262.1 L235.7 260.6 L231.0 253.9 L230.7 241.3 L232.6 237.9 L235.9 234.1 Z M432.7 49.1 L421.8 57.6 L409.5 53.0 L394.5 53.9 L381.7 43.7 L374.8 48.9 L367.7 49.7 L366.0 62.1 L344.4 59.1 L341.3 69.5 L330.3 69.4 L322.7 82.3 L311.2 101.6 L293.4 124.9 L297.6 130.4 L293.6 136.6 L282.2 136.4 L274.8 150.9 L275.5 170.6 L282.8 177.9 L279.0 194.4 L269.5 203.8 L264.4 211.5 L256.7 203.3 L234.0 218.7 L218.7 221.7 L202.8 215.0 L198.7 200.6 L195.1 168.1 L205.7 158.6 L236.0 145.9 L258.7 129.7 L279.7 106.9 L307.3 73.1 L326.5 59.2 L358.0 34.9 L383.2 26.1 L402.1 27.2 L419.6 10.0 L440.5 11.0 L461.2 6.8 L497.1 22.1 L482.3 27.5 L494.9 40.1 L475.3 47.9 L466.1 49.7 L470.9 35.9 L456.2 28.0 L438.4 34.8 L432.7 49.1 Z\"     fill=\"#CFD8E4\" stroke=\"#7C8798\" stroke-width=\"0.7\"/> <path d=\"M251.7 354.6 L243.2 353.4 L240.7 357.4 L235.3 357.7 L233.3 356.1 L226.8 359.5 L221.3 359.9 L216.4 357.8 L212.4 353.5 L206.9 355.0 L207.1 350.5 L215.5 344.9 L215.1 342.3 L220.4 343.2 L223.5 341.5 L233.3 341.5 L235.6 339.3 L247.9 342.4 L251.4 341.9 L257.2 344.7 L258.8 342.0 L269.0 342.5 L277.2 340.6 L282.7 340.9 L286.3 343.0 L287.3 341.3 L285.7 334.6 L289.8 333.3 L293.9 328.5 L302.4 331.9 L308.9 327.6 L312.9 326.8 L321.8 330.0 L327.2 329.5 L332.5 331.4 L331.6 332.7 L332.7 336.3 L331.9 340.5 L325.4 340.5 L327.6 342.7 L323.8 349.2 L321.6 350.9 L311.6 351.2 L305.8 353.5 L296.3 352.7 L279.9 350.1 L277.3 346.6 L266.0 348.3 L264.6 350.3 L257.7 348.8 L256.8 352.9 L251.7 354.6 Z M39.5 298.5 L23.2 296.8 L32.5 285.0 L26.5 273.3 L42.2 264.1 L50.8 258.5 L53.2 264.9 L50.8 271.2 L57.9 271.1 L66.6 273.5 L68.5 281.7 L59.8 291.9 L39.5 298.5 Z M275.5 170.6 L274.8 150.9 L282.2 136.4 L293.6 136.6 L297.6 130.4 L293.4 124.9 L311.2 101.6 L322.7 82.3 L330.3 69.4 L341.3 69.5 L344.4 59.1 L366.0 62.1 L367.7 49.7 L374.8 48.9 L381.7 43.7 L394.5 53.9 L409.5 53.0 L421.8 57.6 L432.7 49.1 L438.4 34.8 L456.2 28.0 L470.9 35.9 L466.1 49.7 L464.4 62.9 L482.0 75.2 L471.4 88.6 L484.7 108.1 L477.0 122.3 L487.3 134.2 L482.6 144.3 L499.6 154.8 L495.3 162.4 L484.6 170.9 L460.1 189.1 L460.1 189.1 L460.1 189.1 L439.2 190.2 L419.0 195.3 L400.4 198.1 L393.7 190.6 L382.6 186.0 L385.1 172.0 L379.6 158.7 L385.0 149.9 L395.5 140.2 L421.7 123.0 L429.4 119.6 L428.2 112.7 L412.2 104.7 L392.5 109.5 L381.3 121.0 L383.1 130.9 L364.9 143.5 L342.7 156.6 L334.3 177.2 L342.5 187.2 L353.5 194.9 L342.9 210.2 L331.0 213.3 L326.6 235.0 L320.1 246.7 L306.2 245.5 L299.7 255.2 L286.4 255.8 L282.7 244.2 L273.1 229.9 L264.4 211.5 L269.5 203.8 L279.0 194.4 L282.8 177.9 L275.5 170.6 Z\"  fill=\"#E3E9F1\" stroke=\"#7C8798\" stroke-width=\"0.7\"/> <path d=\"M369.1 417.5 L367.2 416.9 L366.9 415.0 L360.6 411.9 L359.6 407.6 L360.6 401.4 L362.1 398.6 L360.2 397.1 L360.2 397.1 L357.8 396.4 L354.6 393.4 L349.6 391.5 L349.6 391.5 L338.8 388.1 L332.2 384.7 L321.7 381.9 L312.0 374.9 L314.3 374.1 L309.1 370.1 L308.9 366.8 L301.5 365.3 L298.0 369.5 L294.6 366.2 L294.8 362.8 L295.2 362.7 L297.8 361.8 L295.1 357.6 L296.3 352.7 L305.8 353.5 L311.6 351.2 L321.6 350.9 L323.8 349.2 L325.7 349.4 L328.0 352.7 L331.6 354.0 L340.2 358.2 L349.7 360.1 L354.0 358.6 L354.0 358.6 L362.8 356.0 L369.9 356.5 L376.2 360.4 L377.4 363.5 L384.4 365.8 L385.3 369.8 L392.0 372.6 L395.6 370.4 L398.5 371.6 L395.8 373.3 L397.9 374.9 L395.1 377.1 L396.1 380.6 L401.7 384.7 L397.3 387.6 L395.4 390.6 L396.6 391.7 L394.7 393.0 L400.5 396.0 L401.3 402.1 L399.1 402.4 L397.2 404.0 L391.0 403.8 L386.6 405.8 L379.1 406.6 L378.9 409.0 L375.2 410.3 L374.5 413.2 L369.1 417.5 Z\" fill=\"#E1E4EE\" stroke=\"#5A12E0\" stroke-width=\"0.7\" stroke-dasharray=\"3 2\"/> <path d=\"M455.5 390.6 L459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L287.4 324.0 L281.5 321.4 L280.3 317.0 L278.3 313.8 L286.7 311.4 L290.9 308.7 L299.2 306.6 L302.0 304.5 L305.1 305.8 L310.2 304.7 L305.5 297.6 L306.4 293.8 L303.5 287.8 L299.4 283.7 L302.6 280.7 L299.9 274.8 L307.7 271.4 L325.7 265.9 L340.1 261.9 L351.6 263.9 L352.4 266.8 L363.5 266.9 L377.7 268.3 L398.8 268.1 L404.7 269.4 L407.4 273.0 L407.9 278.1 L411.1 282.5 L411.0 287.0 L404.1 289.3 L407.7 294.5 L407.9 299.5 L413.7 309.0 L412.4 312.1 L406.7 313.3 L396.3 322.2 L399.3 326.9 L396.8 326.3 L393.6 329.0 L391.4 333.2 L397.7 336.0 L398.5 338.8 L403.5 336.6 L410.6 337.7 L417.9 337.8 L423.3 340.3 L427.2 338.7 L435.7 337.7 L438.6 335.3 L443.4 335.3 L446.9 336.3 L450.5 339.4 L454.1 343.7 L460.7 349.7 L461.1 354.1 L459.9 358.3 L461.9 362.8 L467.1 364.6 L472.5 363.0 L477.7 364.7 L477.9 367.2 L472.4 369.3 L468.9 368.4 L465.7 380.0 L459.7 383.9 L455.5 390.6 Z\"   fill=\"url(#hatch)\" stroke=\"#5A12E0\" stroke-width=\"0.9\"/> <path d=\"M545.5 363.5 L557.2 363.0 L555.0 366.4 L542.4 368.1 L526.8 373.7 L520.4 371.8 L522.9 367.2 L510.4 364.4 L512.4 362.5 L523.4 359.2 L521.7 358.0 L520.1 356.9 L502.2 354.4 L501.5 350.7 L490.8 351.9 L486.6 357.4 L477.7 364.7 L472.5 363.0 L467.1 364.6 L461.9 362.8 L459.9 358.3 L461.1 354.1 L460.7 349.7 L454.1 343.7 L450.5 339.4 L446.9 336.3 L443.4 335.3 L438.6 335.3 L435.7 337.7 L427.2 338.7 L423.3 340.3 L417.9 337.8 L410.6 337.7 L403.5 336.6 L398.5 338.8 L397.7 336.0 L391.4 333.2 L393.6 329.0 L396.8 326.3 L399.3 326.9 L396.3 322.2 L406.7 313.3 L412.4 312.1 L413.7 309.0 L407.9 299.5 L407.7 294.5 L404.1 289.3 L411.0 287.0 L411.1 282.5 L407.9 278.1 L407.4 273.0 L404.7 269.4 L398.8 268.1 L377.7 268.3 L363.5 266.9 L366.1 261.7 L382.0 257.8 L379.5 247.6 L379.9 238.2 L385.6 230.3 L396.4 225.9 L405.5 235.4 L414.7 235.2 L416.9 225.4 L418.3 217.7 L414.0 219.4 L406.7 214.7 L405.8 207.1 L420.3 203.3 L434.7 201.4 L447.2 203.6 L459.0 203.2 L459.0 203.2 L472.1 195.7 L460.1 189.1 L460.1 189.1 L484.6 170.9 L495.3 162.4 L499.6 154.8 L482.6 144.3 L487.3 134.2 L477.0 122.3 L484.7 108.1 L471.4 88.6 L482.0 75.2 L464.4 62.9 L466.1 49.7 L475.3 47.9 L494.9 40.1 L494.9 40.1 L506.7 33.2 L525.6 45.1 L557.0 49.7 L600.4 70.9 L609.2 79.5 L610.0 91.3 L597.2 100.3 L578.5 104.9 L527.2 91.8 L518.8 94.0 L537.5 106.5 L538.2 114.3 L539.0 130.9 L553.8 135.7 L562.7 139.7 L564.2 132.1 L557.3 125.2 L564.6 119.1 L592.4 129.2 L602.0 125.2 L594.3 113.3 L621.1 96.7 L631.7 97.7 L642.4 103.7 L649.1 91.9 L639.5 81.4 L645.1 70.6 L636.7 59.1 L654.4 62.4 L654.4 390.3 L649.1 389.4 L642.2 390.8 L640.2 389.1 L624.5 384.6 L607.6 383.1 L597.9 381.4 L596.5 382.6 L581.9 374.5 L568.8 370.9 L558.9 365.2 L567.2 363.6 L576.7 355.4 L570.3 351.4 L587.3 347.3 L586.9 345.1 L576.6 346.7 L567.5 347.5 L559.8 350.8 L549.1 351.3 L539.2 355.0 L539.8 360.3 L539.9 361.2 L545.5 363.5 Z\"     fill=\"url(#hatch)\" stroke=\"#5A12E0\" stroke-width=\"0.9\"/> <path d=\"M277.2 340.6 L269.0 342.5 L258.8 342.0 L257.2 344.7 L251.4 341.9 L247.9 342.4 L235.6 339.3 L233.3 341.5 L223.5 341.5 L225.0 334.2 L230.8 327.0 L214.2 325.1 L208.8 322.3 L209.5 317.7 L207.2 315.3 L208.5 308.0 L206.5 296.4 L213.4 296.4 L216.3 292.2 L219.2 281.9 L217.1 278.0 L219.3 275.5 L228.9 274.9 L231.0 277.4 L238.8 271.7 L236.2 267.3 L235.7 260.6 L244.3 262.1 L251.7 260.3 L251.9 264.9 L263.0 267.6 L261.2 276.6 L258.9 286.9 L251.7 299.2 L253.2 306.9 L259.5 312.3 L276.7 312.3 L280.1 322.0 L280.1 340.8 L277.2 340.6 Z\"     fill=\"#CFD8E4\" stroke=\"#7C8798\" stroke-width=\"0.7\"/> <path d=\"M299.4 283.7 L303.5 287.8 L306.4 293.8 L305.5 297.6 L310.2 304.7 L305.1 305.8 L302.0 304.5 L299.2 306.6 L290.9 308.7 L286.7 311.4 L278.3 313.8 L280.3 317.0 L281.5 321.4 L287.4 324.0 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.5 267.7 L263.4 271.8 L275.1 269.6 L281.5 266.4 L294.5 271.1 L299.9 274.8 L302.6 280.7 L299.4 283.7 Z\"     fill=\"url(#hatch)\" stroke=\"#5A12E0\" stroke-width=\"0.9\"/> <path d=\"M459.2 395.9 L449.3 394.7 L437.6 397.6 L437.5 402.1 L427.1 403.0 L419.0 399.8 L409.8 402.3 L401.3 402.1 L400.5 396.0 L394.7 393.0 L396.6 391.7 L395.4 390.6 L397.3 387.6 L401.7 384.7 L396.1 380.6 L395.1 377.1 L397.9 374.9 L395.8 373.3 L398.5 371.6 L395.6 370.4 L392.0 372.6 L385.3 369.8 L384.4 365.8 L377.4 363.5 L376.2 360.4 L369.9 356.5 L362.8 356.0 L354.0 358.6 L354.0 358.6 L349.7 360.1 L340.2 358.2 L331.6 354.0 L328.0 352.7 L325.7 349.4 L323.8 349.2 L327.6 342.7 L325.4 340.5 L331.9 340.5 L332.7 336.3 L331.6 332.7 L332.5 331.4 L327.2 329.5 L321.8 330.0 L312.9 326.8 L308.9 327.6 L302.4 331.9 L293.9 328.5 L289.8 333.3 L285.7 334.6 L287.3 341.3 L286.3 343.0 L282.7 340.9 L280.1 340.8 L280.1 322.0 L276.7 312.3 L259.5 312.3 L253.2 306.9 L251.7 299.2 L258.9 286.9 L261.2 276.6 L263.0 267.6 L263.4 267.6\" fill=\"none\" stroke=\"#5A12E0\" stroke-width=\"4.4\"       stroke-linecap=\"round\" stroke-linejoin=\"round\"/> <circle cx=\"291.6\" cy=\"289.2\" r=\"6.4\" fill=\"#0057D9\" stroke=\"#EAEEF4\" stroke-width=\"1.6\"/> </g> <text x=\"86\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#4B5563\">WEST</text> <text x=\"486\" y=\"196\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"30\" font-weight=\"700\" fill=\"#5A12E0\">EAST</text> <line x1=\"352\" y1=\"288\" x2=\"309\" y2=\"327\" stroke=\"#5A12E0\" stroke-width=\"2\"/> <circle cx=\"309\" cy=\"327\" r=\"2.6\" fill=\"#5A12E0\"/> <text x=\"356\" y=\"286\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#5A12E0\">the iron curtain</text> <line x1=\"291.6\" y1=\"289.2\" x2=\"196\" y2=\"268\" stroke=\"#0057D9\" stroke-width=\"2\"/> <text x=\"190\" y=\"266\" font-family=\"Archivo Narrow, Archivo, sans-serif\" font-size=\"21\" font-weight=\"700\" fill=\"#0057D9\" text-anchor=\"end\">Berlin</text></svg><ul class=\"map-key\"><li><span class=\"mk mk-east\"></span>Soviet Union and the states loyal to Moscow</li><li><span class=\"mk mk-west\"></span>Western states, most of them in NATO from 1949</li><li><span class=\"mk mk-neutral\"></span>Neutral: Sweden, Finland, Switzerland, Ireland, Austria</li><li><span class=\"mk mk-outside\"></span>Communist but outside Soviet control: Yugoslavia and Albania</li></ul><div class=\"inset-block\"><div class=\"inset-head\">Germany, divided</div><svg viewBox=\"0 0 330 108\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Germany split into western zones and a Soviet zone, with Berlin divided inside the Soviet zone\"><defs><pattern id=\"hatch2\" width=\"7\" height=\"7\" patternTransform=\"rotate(45)\" patternUnits=\"userSpaceOnUse\"><line x1=\"0\" y1=\"0\" x2=\"0\" y2=\"7\" stroke=\"#5A12E0\" stroke-width=\"1.7\" opacity=\"0.34\"/></pattern></defs><rect x=\"0\" y=\"0\" width=\"330\" height=\"108\" fill=\"#EAEEF4\"/><rect x=\"1\" y=\"1\" width=\"150\" height=\"74\" fill=\"#CFD8E4\" stroke=\"#7C8798\" stroke-width=\"1\"/><rect x=\"151\" y=\"1\" width=\"178\" height=\"74\" fill=\"#E3E9F1\" stroke=\"#5A12E0\" stroke-width=\"1.2\"/><rect x=\"151\" y=\"1\" width=\"178\" height=\"74\" fill=\"url(#hatch2)\" stroke=\"#5A12E0\" stroke-width=\"1.2\"/><text x=\"10\" y=\"26\" font-size=\"15\" fill=\"#3A4250\">British, US and</text><text x=\"10\" y=\"45\" font-size=\"15\" fill=\"#3A4250\">French zones</text><text x=\"161\" y=\"26\" font-size=\"15\" fill=\"#4E0FC7\">Soviet zone</text><rect x=\"238\" y=\"30\" width=\"32\" height=\"24\" fill=\"#FFFFFF\" stroke=\"#0057D9\" stroke-width=\"2\"/><line x1=\"254\" y1=\"30\" x2=\"254\" y2=\"54\" stroke=\"#0057D9\" stroke-width=\"1.6\"/><text x=\"254\" y=\"70\" font-size=\"15\" font-weight=\"700\" fill=\"#0057D9\" text-anchor=\"middle\">Berlin</text></svg><p class=\"inset-note\">Berlin was split into four sectors, the same as the country. It sat about 160 kilometres inside the Soviet zone.</p></div><figcaption>Europe by 1949. The heavy line is the border Churchill had called an iron curtain three years earlier. Two things are worth noticing. Yugoslavia and Albania are communist and outside Soviet control, so the division was never simply communist against capitalist. And look at Berlin, because that is where this unit ends up. Original illustration for Kula Revise. Boundaries from Natural Earth, public domain.</figcaption></figure>",
     "remember": "Czechoslovakia 1948 is the turning point of Western opinion. Learn it as a cause of what happens next, not as an event on its own.",
     "terms": [
       {
