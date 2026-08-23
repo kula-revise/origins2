@@ -533,6 +533,8 @@ body.dark .figure figcaption { border-top-color: var(--a1); }
   .toggle-btn { font-family: var(--sans); background: transparent; border: none; color: var(--a1); cursor: pointer; font-size: 0.88rem; font-weight: 600; text-decoration: underline; padding: 0.7rem 0 0; }
   .toggle-body { display: none; margin-top: 0.7rem; padding-top: 0.7rem; border-top: 1px dashed var(--hair-strong); font-size: 0.94rem; color: var(--muted); line-height: 1.66; }
   .toggle-body.open { display: block; }
+  .toggle-body p { font-size: inherit; line-height: inherit; color: inherit; margin: 0 0 0.75rem; }
+  .toggle-body p:last-child { margin-bottom: 0; }
 
   /* Questions */
   .q-text { font-size: 1.16rem; line-height: 1.5; font-weight: 600; margin-bottom: 1.2rem; }
@@ -1286,7 +1288,7 @@ const FLOW = [
       "Neither, because a government explaining its own army always misleads"
     ],
     "correct": 2,
-    "explanation": "There is no score on this one. The war supplies were real, and so was the fighting against the new government. Each side is telling you the part it could see and the part it needed. You are about to watch two governments do this to each other, thirteen days apart. In the exam an answer that picks a winner between two sources like these earns nothing, because the question is asking what each source is for.",
+    "explanation": "London's war supplies were real. So was the fighting against the new Russian government. Each side described the half of the landings that suited it, and neither had to lie to do that. In a moment you will read two governments doing the same thing to each other, thirteen days apart. In the exam, an answer that picks a winner between two sources like these earns nothing. The question is asking what each source was written to do.",
     "noSource": true
   },
   {
@@ -1376,7 +1378,7 @@ const FLOW = [
     "source": {
       "attr": "Source A: from the speech delivered by J V Stalin at a meeting of voters of the Stalin electoral district, Moscow, 9 February 1946. From the English edition published by the Foreign Languages Publishing House, Moscow, 1946. Out of copyright.",
       "body": "<div class=\"src-imprint\">Speech to the voters &middot; Bolshoi Theatre, Moscow</div><p>It would be wrong to think that the Second World War broke out accidentally, or as a result of blunders [mistakes] committed by certain statesmen, although blunders were certainly committed. As a matter of fact, the war broke out as the inevitable [unavoidable] result of the development of world economic and political forces on the basis of present-day monopolistic capitalism.</p><p>Marxists have more than once stated that the capitalist system of world economy contains the elements of a general crisis and military conflicts, that, in view of that, the development of world capitalism in our times does not proceed smoothly and evenly, but through crises and catastrophic wars.</p><p>The point is that the uneven development of capitalist countries usually leads, in the course of time, to a sharp disturbance of the equilibrium [balance] within the world system of capitalism, and that group of capitalist countries [which] regards itself as being less securely provided with raw materials and markets usually attempts to change the situation and to redistribute spheres of influence in its own favour, by employing armed force.</p>",
-      "toggle": "Two things need naming. Monopolistic capitalism is the Marxist term for capitalism at the stage where a few huge firms dominate, and Stalin is arguing that this stage of capitalism produces wars by itself, without anyone choosing one. Inevitable is the word doing the most work: if wars come from how capitalism is built, then no treaty and no goodwill can prevent the next one. Notice also what he does not say. He never names the United States or Britain, and he does not have to. The audience knew which countries were capitalist, and so did every diplomat who read the transcript.",
+      "toggle": "<p>Stalin is answering one question: why did the Second World War happen? His answer is that it was nobody's mistake. He says the war came out of how the capitalist world economy is built. Capitalist countries grow at different speeds. The ones that fall behind on raw materials and markets try to take a bigger share. They use armed force to do it.</p><p>Now the wording. The phrase \"monopolistic capitalism\" is the Marxist term for capitalism at the stage where a few huge firms dominate. The word you should mark is \"inevitable\". If wars come from how capitalism is built, then no treaty and no goodwill can prevent the next one.</p><p>Notice what he does not say. He never names the United States or Britain. He did not have to. His audience knew which countries were capitalist, and so did every diplomat who read the transcript.</p>",
       "toggleLabel": "What does this actually mean?"
     },
     "terms": [
@@ -1411,7 +1413,7 @@ const FLOW = [
       "2": 1,
       "3": 1
     },
-    "explanation": "The two statements about capitalism are printed in front of you. Stalin never names the United States or Britain anywhere in this extract. That is exactly why the option tempts you, because everybody at the time knew who he meant. What a source implies and what it says are different questions. A quote question takes only what the source says. The rest is yours, not the source's.",
+    "explanation": "The two statements about capitalism are printed in front of you. Stalin never names the United States or Britain anywhere in this extract. Everybody at the time knew who he meant, which is why the option tempts you. But what a source implies and what it says are two different questions. A quote question pays only for the words on the page. Put your own reading into a quote and a marker cannot give you the mark.",
     "marks": "2 marks"
   },
   {
@@ -1425,7 +1427,7 @@ const FLOW = [
       "That the United Nations will be able to prevent the next world war"
     ],
     "correct": 0,
-    "explanation": "Follow the logic he sets out for you. If wars are produced by the structure of capitalism, then agreements cannot stop them. The cause was never anybody's intention in the first place. Option {opt2} goes further than the source does, and nothing here calls for an attack. Add an argument the source has not made and it is no longer evidence from the source.",
+    "explanation": "Follow the logic Stalin sets out. If wars come from the way capitalism is built, then no agreement can stop them. Nobody chose the cause, so nobody can talk it away. Option {opt2} goes further than the source does, and Stalin never calls for an attack anywhere here. Write that in and you are quoting yourself rather than the source, which earns nothing.",
     "marks": "(1 x 2)  2 marks"
   },
   {
@@ -1437,7 +1439,7 @@ const FLOW = [
     "source": {
       "attr": "Source B: from the telegram sent by George Kennan, the American charg&eacute; d'affaires in Moscow, to the Secretary of State, 22 February 1946, known as the Long Telegram. Department of State Records, reprinted in Foreign Relations of the United States 1946, Volume VI, Government Printing Office, 1969. A United States government work.",
       "body": "<div class=\"cable-head\"><span class=\"cab-secret\">Secret</span>861.00/2 2246 : Telegram<br><b>The Charg&eacute; in the Soviet Union (Kennan) to the Secretary of State</b><br>No. 511 &middot; Moscow, 22 February 1946, 9 p.m.<br>Received Washington, 22 February, 3:52 p.m.</div><p>(a) USSR still lives in antagonistic [hostile] 'capitalist encirclement' with which in the long run there can be no permanent peaceful coexistence &hellip;</p><p>It indicates that Soviet party line is not based on any objective analysis of situation beyond Russia's borders; that it has, indeed, little to do with conditions outside of Russia; that it arises mainly from basic inner-Russian necessities which existed before recent war and exist today.</p><p>At bottom of Kremlin's neurotic [anxious] view of world affairs is traditional and instinctive Russian sense of insecurity. Originally, this was insecurity of a peaceful agricultural people trying to live on vast exposed plain in neighborhood of fierce nomadic peoples &hellip;</p><p>First, it does not represent natural outlook of Russian people. Latter are, by and large, friendly to outside world &hellip;</p>",
-      "toggle": "Start with the block at the top, because it is evidence too. Secret means this was written for about a dozen readers inside the American government. The two clock times are Moscow time and Washington time, which is why the telegram appears to arrive before it was sent. The clipped grammar with words missing is not carelessness: telegrams were charged by the word, so articles get dropped. Capitalist encirclement is Kennan quoting the Soviet view back, not stating his own. And the argument he is making is that Soviet hostility comes from inside Russia and its history, which means it will not be fixed by anything the West offers or concedes. That conclusion is what made the telegram famous, and it is the seed of the policy in Lesson 3.",
+      "toggle": "<p>Kennan is explaining why the Soviet Union behaves as it does, and his answer is that the reason is internal. Moscow says it is surrounded by hostile capitalist states. Kennan argues this has little to do with anything outside Russia's borders. He traces it to an old Russian sense of insecurity. It goes back to a farming people living on an open plain with no natural defences. He then separates the government from the population, saying ordinary Russians are friendly to the outside world.</p><p>Now the wording. The phrase \"capitalist encirclement\" is Kennan quoting the Soviet view back, not stating his own. The word \"neurotic\" means anxious, and it is his word for the Kremlin, not theirs.</p><p>The block at the top is evidence too. The word \"Secret\" means this was written for about a dozen readers inside the American government. The two clock times are Moscow time and Washington time. That is why the times you see look reversed. The clipped grammar with words missing is not carelessness. Telegrams were charged by the word, so small words get dropped.</p><p>Why it mattered: if Soviet hostility comes from inside Russia, nothing the West offers will fix it. That is the seed of the policy in Lesson 3.</p>",
       "toggleLabel": "What does this actually mean?"
     },
     "terms": [
@@ -1462,7 +1464,7 @@ const FLOW = [
       "From ordinary Russian people, who are hostile to the outside world"
     ],
     "correct": 0,
-    "explanation": "Kennan says it twice. Inner-Russian necessities. A traditional sense of insecurity. Option {opt2} is the exact thing he rules out in that same sentence, which is why it looks right if you read fast. Option {opt3} turns him round, because he says ordinary Russians are friendly. Find the sentence that answers the question and quote it.",
+    "explanation": "Kennan gives the answer twice in the same passage. He names inner-Russian necessities, and he names a traditional sense of insecurity. Option {opt2} is the exact thing he rules out in that sentence, so it looks right if you read fast. Option {opt3} turns him round, because he says ordinary Russians are friendly to the outside world. Find the sentence that answers the question, quote it, and the two marks are yours.",
     "marks": "(1 x 2)  2 marks"
   },
   {
@@ -1476,7 +1478,7 @@ const FLOW = [
       "Because he believes the Soviet government does not actually hold any power"
     ],
     "correct": 0,
-    "explanation": "He is telling Washington who the problem is and who it is not. That matters when you are advising a government on what to do next. Option {opt1} tempts you, because separating a people from a regime often does imply that. Kennan predicts nothing of the kind here. Read it in and you are arguing past your source.",
+    "explanation": "Kennan is telling Washington which part of Russia is the problem. It is the government, not the people who live under it. That distinction matters to anyone deciding what to do about the Soviet Union next. Option {opt1} tempts you, because separating a people from its government often does hint at a revolution. Kennan predicts nothing of the kind in this passage. Read that in and you are answering about a source you have not got, which earns nothing.",
     "marks": "(1 x 2)  2 marks"
   },
   {
@@ -1500,7 +1502,7 @@ const FLOW = [
       4,
       5
     ],
-    "explanation": "February 1945, then February 1946 twice, then March 1946, then 1948 twice. The pair most people reverse is Stalin's speech and Kennan's telegram. The order is the whole point, because Kennan is answering a mood Stalin had just created. Put the telegram first and you turn a response into a provocation. That is the opposite argument to the one you meant.",
+    "explanation": "The order runs February 1945, then February 1946 twice, then March 1946, then 1948 twice. Stalin's speech and Kennan's telegram are the easy pair to swap. They fall thirteen days apart, and Kennan is answering the alarm Stalin had just caused. Put the telegram first and you turn Kennan from a reply into the provocation. A marker reading that sees the causation running backwards, and it earns nothing.",
     "noSource": true
   },
   {
@@ -1520,7 +1522,7 @@ const FLOW = [
       "Source A is about Europe alone, while Source B is about the world"
     ],
     "correct": 0,
-    "explanation": "A comparison answer has to carry both sides, and only one option here does. Each source puts the cause inside the other side and treats its own as reacting. Option {opt3} is true in a small way and useless to you. A difference in geography is not a difference in argument. Name what each source blames and you have both halves of the comparison.",
+    "explanation": "A comparison answer has to carry both sides, and only one option here does. Stalin puts the cause in capitalism itself. Kennan puts it in Russian history. Each of them locates the problem in the other side and treats his own as reacting. Option {opt3} is true in a small way and no use to you. Where a source is looking is not the same as what it blames. Say what each source blames and you have both halves the marker wants.",
     "marks": "(2 x 2)  4 marks"
   },
   {
@@ -1534,7 +1536,7 @@ const FLOW = [
       "Very useful, because it correctly predicted every single thing that happened"
     ],
     "correct": 0,
-    "explanation": "Take a position, then say what the source can do. This telegram went to head office, not to a newspaper. Kennan was arguing with his own colleagues, so you get his real reasoning and not a public version of it. Option {opt1} is a fair point but a weaker answer, because this telegram was passed around the whole government. Naming the job a source can do is the whole of a usefulness answer.",
+    "explanation": "Take a position first, then say what the source can do for the historian. This telegram went to Kennan's own government, not out to a newspaper. He was arguing with colleagues who could disagree with him, so you get his working reasoning. Option {opt1} is a fair point and still a weaker answer, because this telegram was read right across Washington. Say what job the source can do and a marker can give you the marks.",
     "marks": "(2 x 2)  4 marks"
   },
   {
@@ -1571,7 +1573,7 @@ const FLOW = [
   {
     "type": "content",
     "tag": "Beyond the exam",
-    "html": "<h2>Reading people through your own fear</h2><p>Stalin looked at the West and saw a system that produces wars. Kennan looked at the Soviet Union and saw a country that has always felt surrounded. Each was describing something real, and each was describing it from inside his own worry.</p><p>Think back to the two families and the wall. When two people give you opposite accounts of the same events, the useful question is not which one is right. It is what each of them is worried about.</p><p>That question works on an argument between friends, on two news reports of the same protest, and on any two sources you are asked to compare.</p>"
+    "html": "<h2>Reading people through your own fear</h2><p>Stalin looked at the West and saw a system that produces wars. Kennan looked at the Soviet Union and saw a country that has always felt surrounded. Each was describing something real, and each was describing it from inside his own worry.</p><p>Think back to the two accounts of those landings in 1918. When two people give you opposite accounts of the same events, the useful question is not which one is right. It is what each of them is worried about.</p><p>That question works on an argument between friends, on two news reports of the same protest, and on any two sources you are asked to compare.</p>"
   }
 ];
 
