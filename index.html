@@ -352,13 +352,13 @@ body.dark .option, body.dark .option-btn {
 body.dark .option.selected, body.dark .option-btn.selected {
   background: rgba(76,201,240,0.16) !important; border-color: #4CC9F0 !important; }
 body.dark .option.correct, body.dark .option-btn.correct {
-  background: rgba(76,201,240,0.20) !important;
-  border-color: #4CC9F0 !important;
+  background: rgba(74,222,128,0.34);
+  border-color: #4ADE80;
   color: var(--ink) !important;
 }
 body.dark .option.wrong, body.dark .option-btn.wrong {
-  background: rgba(183,155,255,0.18) !important;
-  border-color: #B79BFF !important;
+  background: rgba(255,107,107,0.36);
+  border-color: #FF8787;
   color: var(--ink) !important;
 }
 body.dark .option.correct .opt-text, body.dark .option-btn.correct .opt-text,
@@ -543,8 +543,8 @@ body.dark .figure figcaption { border-top-color: var(--a1); }
   .option:hover:not(:disabled) { background: var(--cut); border-color: var(--a1); }
   .option:disabled { cursor: default; }
   .option.selected { background: var(--cut); border-color: var(--a1); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option.correct { background: var(--ok-bg); border-color: var(--a2); border-width: 2px; padding: 0.94rem 0.99rem; }
-  .option.wrong { background: var(--no-bg); border-color: var(--clay); border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.correct { background: rgba(34,197,94,0.30); border-color: #15803D; border-width: 2px; padding: 0.94rem 0.99rem; }
+  .option.wrong { background: rgba(239,68,68,0.28); border-color: #DC2626; border-width: 2px; padding: 0.94rem 0.99rem; }
   /* The dimmed state fell below readable contrast at 360px. One rule per mode,
      and nothing later in the file competes with it. */
   .option.dimmed, .option-btn.dimmed { opacity: 0.82; }
@@ -905,15 +905,15 @@ body.dark .story-b .story-num { color: #7FDCF7 !important; }
 body.dark { --ok: #8BD1A4; --ok-rgb: 139,209,164; }
 
 .option.correct, .option-btn.correct {
-  background: rgba(var(--ok-rgb),0.13) !important;
-  border-color: var(--ok) !important;
+  background: rgba(34,197,94,0.30);
+  border-color: #15803D;
 }
 .option.correct .opt-letter, .option-btn.correct .opt-letter { color: var(--ok) !important; }
 .option.correct .opt-mark,   .option-btn.correct .opt-mark   { color: var(--ok) !important; }
 
 body.dark .option.correct, body.dark .option-btn.correct {
-  background: rgba(var(--ok-rgb),0.20) !important;
-  border-color: var(--ok) !important;
+  background: rgba(74,222,128,0.34);
+  border-color: #4ADE80;
   color: var(--ink) !important;
 }
 body.dark .option.correct .opt-letter, body.dark .option-btn.correct .opt-letter { color: var(--ok) !important; }
@@ -973,7 +973,7 @@ body.dark { --ok: #8BD1A4; --ok-rgb: 139,209,164; --on-ok: #090B11; }
 
 .option.correct, .option-btn.correct,
 body.dark .option.correct, body.dark .option-btn.correct {
-  background: var(--ok) !important;
+  background: rgba(74,222,128,0.34);
   border: 2px solid var(--ok) !important;
   box-shadow: 5px 5px 0 rgba(var(--ok-rgb),0.30) !important;
   color: var(--on-ok) !important;
@@ -991,7 +991,7 @@ body.dark .option.correct .opt-mark, body.dark .option-btn.correct .opt-mark {
 /* The wrong pick keeps its warm tint and gains a firm edge, so the
    pair reads at a glance without the wrong one competing. */
 .option.wrong, .option-btn.wrong {
-  background: var(--no-bg) !important;
+  background: rgba(239,68,68,0.28);
   border: 2px solid var(--a1) !important;
   box-shadow: none !important;
 }
@@ -1189,6 +1189,35 @@ body.dark .inter-item.no .inter-mark, body.dark .inter-item.no .rank {
   color: #EFA79E !important;
 }
 
+
+/* The answer fills carry the meaning, so the words on top of them have to stay
+   legible on both fills in both modes. Before this, correct-option text kept a
+   near-white colour that sat on a light green fill at 1.22 to 1. The hue lives
+   in the fill and the border; the text is plain ink. */
+.option.correct .opt-text,
+.option-btn.correct .opt-text,
+.option.correct .opt-letter,
+.option-btn.correct .opt-letter,
+.option.correct .opt-mark,
+.option-btn.correct .opt-mark,
+.option.wrong .opt-text,
+.option-btn.wrong .opt-text,
+.option.wrong .opt-letter,
+.option-btn.wrong .opt-letter,
+.option.wrong .opt-mark,
+.option-btn.wrong .opt-mark { color: #101418 !important; opacity: 1 !important; }
+body.dark .option.correct .opt-text,
+body.dark .option-btn.correct .opt-text,
+body.dark .option.correct .opt-letter,
+body.dark .option-btn.correct .opt-letter,
+body.dark .option.correct .opt-mark,
+body.dark .option-btn.correct .opt-mark,
+body.dark .option.wrong .opt-text,
+body.dark .option-btn.wrong .opt-text,
+body.dark .option.wrong .opt-letter,
+body.dark .option-btn.wrong .opt-letter,
+body.dark .option.wrong .opt-mark,
+body.dark .option-btn.wrong .opt-mark { color: #F2F5F8 !important; opacity: 1 !important; }
 </style>
 </head>
 <body class="dark">
@@ -1413,7 +1442,7 @@ const FLOW = [
       "2": 1,
       "3": 1
     },
-    "explanation": "The two statements about capitalism are printed in front of you. Stalin never names the United States or Britain anywhere in this extract. Everybody at the time knew who he meant, which is why the option tempts you. But what a source implies and what it says are two different questions. A quote question pays only for the words on the page. Put your own reading into a quote and a marker cannot give you the mark.",
+    "explanation": "The two statements about capitalism are printed in front of you. Stalin never names the United States or Britain anywhere in this extract. Everybody at the time knew who he meant, which is why the option tempts you. But what a source implies and what it says are two different questions. A quote question pays only for the words on the page.",
     "marks": "2 marks"
   },
   {
@@ -1427,7 +1456,7 @@ const FLOW = [
       "That the United Nations will be able to prevent the next world war"
     ],
     "correct": 0,
-    "explanation": "Follow the logic Stalin sets out. If wars come from the way capitalism is built, then no agreement can stop them. Nobody chose the cause, so nobody can talk it away. Option {opt2} goes further than the source does, and Stalin never calls for an attack anywhere here. Write that in and you are quoting yourself rather than the source, which earns nothing.",
+    "explanation": "Follow the logic Stalin sets out. If wars come from the way capitalism is built, then no agreement can stop them. Nobody chose the cause, so nobody can talk it away. Option {opt2} goes further than the source does, and Stalin never calls for an attack anywhere here. Write that in and you are quoting yourself rather than the source.",
     "marks": "(1 x 2)  2 marks"
   },
   {
@@ -1478,7 +1507,7 @@ const FLOW = [
       "Because he believes the Soviet government does not actually hold any power"
     ],
     "correct": 0,
-    "explanation": "Kennan is telling Washington which part of Russia is the problem. It is the government, not the people who live under it. That distinction matters to anyone deciding what to do about the Soviet Union next. Option {opt1} tempts you, because separating a people from its government often does hint at a revolution. Kennan predicts nothing of the kind in this passage. Read that in and you are answering about a source you have not got, which earns nothing.",
+    "explanation": "Kennan is telling Washington which part of Russia is the problem. It is the government, not the people who live under it. That distinction matters to anyone deciding what to do about the Soviet Union next. Option {opt1} tempts you, because separating a people from its government often does hint at a revolution. Kennan predicts nothing of the kind in this passage. Read that in and you are answering about a source you have not got.",
     "marks": "(1 x 2)  2 marks"
   },
   {
@@ -1573,7 +1602,7 @@ const FLOW = [
   {
     "type": "content",
     "tag": "Beyond the exam",
-    "html": "<h2>Reading people through your own fear</h2><p>Stalin looked at the West and saw a system that produces wars. Kennan looked at the Soviet Union and saw a country that has always felt surrounded. Each was describing something real, and each was describing it from inside his own worry.</p><p>Think back to the two accounts of those landings in 1918. When two people give you opposite accounts of the same events, the useful question is not which one is right. It is what each of them is worried about.</p><p>That question works on an argument between friends, on two news reports of the same protest, and on any two sources you are asked to compare.</p>"
+    "html": "<h2>Reading people through your own fear</h2><p>Stalin looked at the West and saw a system that produces wars. Kennan looked at the Soviet Union and saw a country that has always felt surrounded. Each was describing something real, and each was describing it from inside his own worry.</p><p>Think back to the two accounts of those landings in 1918. When two people give you opposite accounts of the same events, the useful question is not which one is right. It is what each of them is worried about.</p><p>That question works on an argument between friends and on two news reports of the same protest. It works on any two sources you are asked to compare.</p>"
   }
 ];
 
